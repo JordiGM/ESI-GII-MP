@@ -1,0 +1,73 @@
+logeo
+   
+   
+   * actualizar estados de los viajes
+   
+   
+   * menu usuario
+        
+        - Perfil
+        
+            modificar
+       
+        - Vehiculos
+       
+            listar(si tiene alguno)
+            nuevo Vehiculo
+            eliminar(si tiene alguno)
+            modificar(si tiene alguno)
+       
+       - Viajes
+       
+            Listar(de forma automatica)
+            Modificar(si el usuario ha publicado y si no hay ningun usuario adscrito)
+            Publicar(disponible un Vehiculo)
+                Vehiculo a utilizar
+            Incorporarse
+                mostrara los viajes compatibles
+            Detalle
+       
+       - Incidencias
+            
+            listar(al propio usuario)
+            Realizar Incidencia (max una hora despues de finalizar viaje)
+            
+            
+   * menu administrador
+        
+       - Usuarios
+            
+            alta
+            baja
+            modificacion
+            listar (con numero de incidencias)
+            
+       - Vehiculos
+        
+            alta
+            baja
+            modificacion
+            listar
+            viajes realizados
+            
+       - Viajes
+        
+            publicar
+            eliminar
+            modificar
+            listar
+            
+       - Incidencias
+            
+            crear
+            eliminar
+            modificar
+            listar
+            validar
+            
+            
+            
+            
+            
+            
+    
