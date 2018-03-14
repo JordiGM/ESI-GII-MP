@@ -1,6 +1,6 @@
 /* 
  * File:   main.c
- * Author: sheratan
+ * Author: Jordi Güeto Matavera
  *
  * Created on 14 de marzo de 2018, 16:42
  */
