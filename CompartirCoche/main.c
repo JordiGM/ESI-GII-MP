@@ -13,7 +13,7 @@
  */
 int main(int argc, char** argv) {
 
-    printf("Fernandi!!!");
+    printf("Fernandi nnkn!!!");
     printf("esto no esta funcioanndo?");
     
     return (0);
