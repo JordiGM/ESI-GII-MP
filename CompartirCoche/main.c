@@ -14,6 +14,7 @@
 int main(int argc, char** argv) {
 
     printf("Fernandi!!!");
+    printf("esto esta funcioanndo?");
     
     return (0);
 }
