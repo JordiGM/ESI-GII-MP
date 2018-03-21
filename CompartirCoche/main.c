@@ -93,7 +93,7 @@ int main() {
         while(i<elementos || passOK==0){
             if(strcmp(pass,L_Usuario[i].pass)){
                 passOK=1;
-                id=L_Usuario[i].id_usuario;
+                id=L_Usuario[i].id_usuario  ;
             }
         }
 
