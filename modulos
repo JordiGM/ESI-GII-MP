@@ -37,6 +37,7 @@ logeo
         
        - Usuarios
             
+            devueklve el id en formato int altaUsuarioInicio(array dinamico, elementos, nombre del nuevo usuario);
             alta
             baja
             modificacion

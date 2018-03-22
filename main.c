@@ -19,7 +19,7 @@ int main() {
     
     Usuarios L_Usuario[1];
     char user[6], login[9], perfil[15];
-    int elementos, exisUser=0, passOK=0, i, id;
+    int elementos, exisUser=0, passOK=0, i, id=0;
 
     printf("                                                                                             BHU##mgmgm#U\n"
            "                                                                                     BHUUmmgm            mm$\n"
@@ -82,7 +82,14 @@ int main() {
     
     if(exisUser==0){                                                            //Si el usuario no existe creamos una cuenta nueva
         printf("\nUsuario indicado no existe, accediendo para crear una cuenta\n");
-        altaUsuarioInicio(L_Usuario,user);
+        strcpy("usuario",perfil);
+        //id = altaUsuarioInicio(L_Usuario,elementos,user);
+        if(id !=0 ){
+            menu_principal(strcmp(perfil,"administrador"),id);
+        }
+        else{
+            printf("Error al crear el usuario.");
+        }
     }
     else{
         i--;
@@ -128,19 +135,19 @@ void menu_principal(int opc, int id)
             case 0:
                 exit(0);
             case 1:
-                menu_usuario();
+                
                 menu_principal(opc,id);
                 break;
             case 2:
-                menu_alumno();
+                
                 menu_principal(opc,id);
                 break;
             case 3:
-                menuMaterias();
+                
                 menu_principal(opc,id);
                 break;
             case 4:
-                menuHorarios();
+                
                 menu_principal(opc,id);
                 break;
             default:
@@ -164,19 +171,19 @@ void menu_principal(int opc, int id)
             case 0:
                 exit(0);
             case 1:
-                menu_usuario();
+                
                 menu_principal(opc,id);
                 break;
             case 2:
-                menu_alumno();
+                
                 menu_principal(opc,id);
                 break;
             case 3:
-                menuMaterias();
+                
                 menu_principal(opc,id);
                 break;
             case 4:
-                menuHorarios();
+                
                 menu_principal(opc,id);
                 break;
             default:
