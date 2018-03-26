@@ -83,7 +83,7 @@ int main() {
     if(exisUser==0){                                                            //Si el usuario no existe creamos una cuenta nueva
         printf("\nUsuario indicado no existe, accediendo para crear una cuenta\n");
         strcpy("usuario",perfil);
-        //id = altaUsuarioInicio(L_Usuario,elementos,user);
+        //id = altaUsuarioInicio(L_Usuario,elementos,user);                       //Función que crea el usuario con el nombre de usuario indicado que no existe que retorna el ID
         if(id !=0 ){
             menu_principal(strcmp(perfil,"administrador"),id);
         }
