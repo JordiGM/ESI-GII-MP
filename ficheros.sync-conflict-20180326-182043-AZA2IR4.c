@@ -166,23 +166,22 @@ Usuarios* obtenerUsuarios(int *n){
         aux[*n] = (char*) malloc(sizeof(char**) * 20000);
         strcpy(aux[*n],guard);
         ++*n;
-        //e = (Usuarios*) realloc(e, *n*sizeof(Usuarios));
+        e = (Usuarios*) realloc(e, *n*sizeof(Usuarios));
 
         while(guard!=NULL){
             guard=strtok(NULL,"\n");
             if(guard!=NULL){
                 aux[*n] = (char*) malloc(sizeof(char**) * 20000);
                 strcpy(aux[*n],guard);
+                printf("%s\n",aux[*n]*);
                 ++*n;
             }
         }
         
         int i;
         for(i=0;i<*n;i++){
-            e = (Usuarios*) realloc(e, *n*sizeof(Usuarios));
-            printf("\n%s\n",aux[i]);
+            e = (Usuarios*) realloc(e, *n*2000*sizeof(Usuarios));
             e[i] = obtenerUsuario(aux[i]);
-            printf("\n%i\n",e[i].Id_usuario);
         }
         fclose(FICHERO_USUARIO);
     }

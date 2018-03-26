@@ -17,9 +17,11 @@
  */
 int main() {
     
-    Usuarios L_Usuario[1];
+    //Usuarios L_Usuarios[1];
     char user[6], login[9], perfil[15];
     int elementos, exisUser=0, passOK=0, i, id=0;
+    int numeroUsuarios;
+    Usuarios* L_Usuarios;
 
     printf("                                                                                             BHU##mgmgm#U\n"
            "                                                                                     BHUUmmgm            mm$\n"
@@ -66,6 +68,8 @@ int main() {
            "                    mgmgmm                                                                      m\n\n");
     printf("\n\nBIENVENIDO A LA APLICACIÓN");
     
+    L_Usuarios = obtenerUsuarios(&numeroUsuarios);
+    
     printf("\n\nINTRODUZCA SU USUARIO Y CONTRASEÑA PARA ACCEDER:");
     
     printf("Introduce nombre de usuario:\n");                                   //Solicitamos el nombre del usuario
@@ -73,9 +77,9 @@ int main() {
 
     i=0;
     while(i<elementos || exisUser==0){                                          //Buscamos el nombre del usuario si existe
-        if(strcmp(user,L_Usuario[i].User)){
+        if(strcmp(user,L_Usuarios[i].User)){
             exisUser=1;                                                         //Si hay una concidencia guardamos y salimos
-            strcpy(L_Usuario[i].Perfil_usuario,perfil);
+            strcpy(L_Usuarios[i].Perfil_usuario,perfil);
         }
         i++;
     }
@@ -97,9 +101,9 @@ int main() {
         printf("Introduce el password:\n");                                     //Solicitamos la contraseña del usuario
         fgets (login, 9, stdin);
 
-        if(strcmp(login,L_Usuario[i].Login)){
+        if(strcmp(login,L_Usuarios[i].Login)){
             passOK=1;
-            id=L_Usuario[i].Id_usuario;
+            id=L_Usuarios[i].Id_usuario;
             if(passOK==1 && exisUser==1){
                 menu_principal(strcmp(perfil,"administrador"),id);
             }

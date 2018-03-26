@@ -15,13 +15,13 @@
 
 // TIPOS
 typedef struct{
-    int Id_usuario[4];
+    int Id_usuario;
     char Nomb_usuario[21];
     char Localidad[21];
-    int Perfil_usuario;
+    char Perfil_usuario[15];
     char User[6];
     char Login[9];
-    int Estado;    
+    char Estado[12];    
 }Usuarios;
 
 typedef struct{
