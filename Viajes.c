@@ -10,41 +10,45 @@ Postcondición: Permite al ususario publicar un nuevo viaje.*/
 
 void publicar_viaje(){
     Viaje v;
+    /*Vehiculo vh;*/
     char c;
 
-	if(c);/*La c no va ahí, es una medida provisional para que no de un error momentaneo.*/
-		do{
-			printf("Introduzca el id del viaje.");
-			scanf("%s", v.Id_viaje);
+	/*if(vh.Id_mat==true){*/
+            do{
+                printf("Introduzca el id del viaje.");
+                scanf("%s", v.Id_viaje);
         
-			printf("Introduzca la matricula del vehiculo con el que va a realizar el viaje.");
-			scanf("%s", v.Id_mat);
+                printf("Introduzca la matricula del vehiculo con el que va a realizar el viaje.");
+                scanf("%s", v.Id_mat);
         
-			printf("Introduzca la fecha en la que se va a realizar el viaje.");
-			scanf("%s", v.F_inic);
+                printf("Introduzca la fecha en la que se va a realizar el viaje.");
+                scanf("%s", v.F_inic);
         
-			printf("Introduzca la hora de inicio del viaje.");
-			scanf("%s", v.H_inic);
+                printf("Introduzca la hora de inicio del viaje.");
+                scanf("%s", v.H_inic);
         
-			printf("Introduzca la hora de finalización del viaje.");
-			scanf("%s", v.H_fin);
+                printf("Introduzca la hora de finalización del viaje.");
+                scanf("%s", v.H_fin);
         
-			printf("Introduzca el numero de plazas libres que hay en el viaje.");
-			scanf("%s", v.Plazas_libre);
+                printf("Introduzca el numero de plazas libres que hay en el viaje.");
+                scanf("%s", v.Plazas_libre);
         
-			printf("Introduzca el sentido del viaje (ida o vuelta.");
-			scanf("%s", v.Sentido);
+                printf("Introduzca el sentido del viaje (ida o vuelta.");
+                scanf("%s", v.Sentido);
         
-			printf("Introduzca el importe del viaje.");
-			scanf("%s", v.Importe);
+                printf("Introduzca el importe del viaje.");
+                scanf("%s", v.Importe);
         
-			printf("Introduzca el estado del viaje (abierto, cerrado,iniciado, finalizado o anulado).");
-			scanf("%s", v.Estado);
+                printf("Introduzca el estado del viaje (abierto, cerrado,iniciado, finalizado o anulado).");
+                scanf("%s", v.Estado);
 
-			printf("%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n", v.Id_viaje, v.Id_mat, v.F_inic, v.H_inic, v.H_fin, v.Plazas_libre, v.Sentido, v.Importe, v.Estado);
-			printf("¿Son correctos los datos? s/n\n");
-			scanf("%c", &c);
-		} while(c!='s');
+                printf("%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n", v.Id_viaje, v.Id_mat, v.F_inic, v.H_inic, v.H_fin, v.Plazas_libre, v.Sentido, v.Importe, v.Estado);
+                printf("¿Son correctos los datos? s/n\n");
+                scanf("%c", &c);
+            } while(c!='s');
+        /*} else {
+            printf("ERROR: No tiene ningún vehiculo dado de alta.");
+        }*/
 }
 
 /*Cabecera: void eliminar_viaje(Viaje*)
