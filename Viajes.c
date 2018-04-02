@@ -21,25 +21,25 @@ void publicar_viaje(){
                 printf("Introduzca la matricula del vehiculo con el que va a realizar el viaje.");
                 scanf("%s", v.Id_mat);
         
-                printf("Introduzca la fecha en la que se va a realizar el viaje.");
+                printf("Introduzca la fecha en la que se va a realizar el viaje. (dd/mm/aaaa)");
                 scanf("%s", v.F_inic);
         
-                printf("Introduzca la hora de inicio del viaje.");
+                printf("Introduzca la hora de inicio del viaje. (XX:YY)");
                 scanf("%s", v.H_inic);
         
-                printf("Introduzca la hora de finalización del viaje.");
+                printf("Introduzca la hora de finalización del viaje. (XX:YY)");
                 scanf("%s", v.H_fin);
         
                 printf("Introduzca el numero de plazas libres que hay en el viaje.");
                 scanf("%s", v.Plazas_libre);
         
-                printf("Introduzca el sentido del viaje (ida o vuelta.");
+                printf("Introduzca el sentido del viaje. (Ida o vuelta)");
                 scanf("%s", v.Sentido);
         
-                printf("Introduzca el importe del viaje.");
+                printf("Introduzca el importe del viaje. (Ej.: 123,25€)");
                 scanf("%s", v.Importe);
         
-                printf("Introduzca el estado del viaje (abierto, cerrado,iniciado, finalizado o anulado).");
+                printf("Introduzca el estado del viaje. (Abierto, cerrado,iniciado, finalizado o anulado)");
                 scanf("%s", v.Estado);
 
                 printf("%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n", v.Id_viaje, v.Id_mat, v.F_inic, v.H_inic, v.H_fin, v.Plazas_libre, v.Sentido, v.Importe, v.Estado);
@@ -77,7 +77,9 @@ void eliminar_viaje(Viaje *viaje, int n){
 Precondición: 
 Postcondición: Permite al usuario modificar un viaje previamente creado por el mismo.*/
 
-
+void modificar_viaje(){
+    
+}
 
 /*Cabecera: void listar_viaje(Viaje*)
 Precondición: 
@@ -85,4 +87,4 @@ Postcondición: Permite al usuario visualizar una lista de todos los viajes que 
 
 void listar_viaje(){
     int v, N=;
-    
+}
