@@ -54,7 +54,7 @@ void eliminar_viaje(Viaje *viaje, int n){
 
     int id, i;
     listar_viaje(&viaje, n);
-    printf("Introduce el id del viaje a eliminar);
+    printf("Introduce el id del viaje a eliminar");
     scanf("%i", id);
 
     Viaje aux[n];
