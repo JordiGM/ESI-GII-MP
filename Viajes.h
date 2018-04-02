@@ -2,12 +2,12 @@
 #define VIAJE_H_INCLUDED
 
 typedef struct{
-    int Id_viaje[6];
+    char Id_viaje[6];
     char Id_mat[7];
     char F_inic[10];
     char H_inic[5];
     char H_fin[5];
-    int Plazas_libre[1];
+    char Plazas_libre[1];
     char Sentido[6];
     char Importe[7];
     char Estado[10];
