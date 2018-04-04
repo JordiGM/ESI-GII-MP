@@ -15,40 +15,77 @@
 
 // TIPOS
 typedef struct{
-    int Id_usuario;
-    char Nomb_usuario[21];
-    char Localidad[21];
-    char Perfil_usuario[15];
-    char User[6];
-    char Login[9];
-    char Estado[12];    
+    char* Id_usuario;
+    char* Nomb_usuario;
+    char* Localidad;
+    char* Perfil_usuario;
+    char* User;
+    char* Login;
+    char* Estado;    
 }Usuarios;
+//Dimensiones de Usuarios
+#define TAM_ID_USER 4
+#define TAM_NOM_USER 20
+#define TAM_LOC_USER 20
+#define TAM_PER_USER 13
+#define TAM_USE_USER 5
+#define TAM_LOG_USER 8
+#define TAM_EST_USER 9
 
 typedef struct{
-    
+    char* Id_mat;
+    char* Id_usuario;
+    char* Num_plazas;
+    char* Desc_veh;
 }Vehiculos;
+//Dimensiones vehiculos
+#define TAM_ID_VEI 7
+#define TAM_PLA_VEI 1
+#define TAM_DES_VEI 50
 
 typedef struct{
-    int Id_viaje[6];
-    char Id_mat[7];
-    char F_inic[10];
-    char H_inic[5];
-    char H_fin[5];
-    int Plazas_libre[1];
-    char Sentido[6];
-    char Importe[7];
-    char Estado[10];
+    char *Id_viaje;
+    char *Id_mat;
+    char *F_inic;
+    char *H_inic;
+    char *H_fin;
+    char *Plazas_libre;
+    char *Sentido;
+    char *Importe;
+    char *Estado;
 }Viajes;
+//Dimensiones viajes
+#define TAM_ID_VIA 6
+#define TAM_FIN_VIA 10
+#define TAM_HIN_VIA 5
+#define TAM_HFI_VIA 5
+#define TAM_SEN_VEI 6
+#define TAM_IMP_VEI 6
+#define TAM_EST_VEI 10
+
 
 typedef struct{
-    
+    char *Id_viaje;
+    char *Poblacion;
 }Pasos;
+//Dimensiones pasos
+#define TAM_ID_PAS 6
+#define TAM_POB_PAS 20
 
 typedef struct{
-    
+    char *Id_viaje;
+    char *Id_us_registra;
+    char *Id_us_incidencia;
+    char *Desc_incidencia;
+    char *Est_incidencia;
 }Incidencias;
+//Dimensiones incidencias
+#define TAM_ID_INC 6
+#define TAM_DES_INC 100
+#define TAM_EST_INC 8
 
-//Funciones
+
+//Prototipos
 
 Usuarios* obtenerUsuarios(int *n);
 Vehiculos* obtenerVehiculos(int *n);
