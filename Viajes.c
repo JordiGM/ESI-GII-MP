@@ -64,9 +64,9 @@ void eliminar_viaje(Viaje *viaje, int n){
     printf("Introduzca el id del viaje que desea eliminar.");
     scanf("%s", y.Id_viaje);
     
-        for(i=0, i<N, i++) {
+        for(i=0; i<N; i++) {
             if(x.Id_viaje==y.Id_viaje) {
-                for(j=i, j<N, j++) {
+                for(j=i; j<N; j++) {
                     z[j]=z[j+1];
                     a=1;
                 }
@@ -95,7 +95,7 @@ void listar_viaje(){
     int i, N=10;
     Viaje v;
     
-    for(i=0, i<N, i++) {
+    for(i=0; i<N; i++) {
         printf("%i: %s-%s-%s-%s-%s-%s-%s-%s-%s", i+1, v.Id_viaje, v.Id_mat, v.F_inic, v.H_inic, v.H_fin, v.Plazas_libre, v.Sentido, v.Importe, v.Estado);
     }
 }
