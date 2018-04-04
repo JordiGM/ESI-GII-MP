@@ -15,10 +15,10 @@
 #define VEHICULO_H
 
 typedef struct{
-    int Id_mat;
-    int Id_usuario [4];
-    int Num_plazas;
-    char Desc_veh [50];
+    char* Id_mat;
+    char* Id_usuario;
+    char* Num_plazas;
+    char* Desc_veh;
 
 } Vehiculo;
 
