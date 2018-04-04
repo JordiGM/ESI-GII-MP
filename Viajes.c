@@ -89,18 +89,60 @@ Precondición:
 Postcondición: Permite al usuario modificar un viaje previamente creado por el mismo.*/
 
 void modificar_viaje(){
+    int o;
+        
+    do {
+        printf("Indique la seccion que desea modificar:\n1.- El id del viaje.\n2.- La matricula del vehiculo.\n3.- La fecha del viaje.\n4.- La hora de inicio del viaje.\n5.- La hora de finalización del viaje.\n6.- El numero de plazas libres del viaje.\n7.- El sentido del viaje.\n8.- El importe del viaje.\n9.- El estado del viaje.\n0.- Salir");
+        scanf("%d", &o);
+    } while (o<0 || o>9);
     
+    switch(o){
+        case 1:
+            printf("Indique el id del viaje.");
+            gets()
+    }
 }
 
 /*Cabecera: void listar_viaje(Viaje*)
 Precondición: 
 Postcondición: Permite al usuario visualizar una lista de todos los viajes que se encuentran en el sistema.*/
 
-void listar_viaje(){
+void listar_viaje(Viaje* v){
     int i, N=10;
-    Viaje v;
     
     for(i=0; i<N; i++) {
         printf("%i: %s-%s-%s-%s-%s-%s-%s-%s-%s", i+1, v.Id_viaje, v.Id_mat, v.F_inic, v.H_inic, v.H_fin, v.Plazas_libre, v.Sentido, v.Importe, v.Estado);
     }
+}
+
+void menu_viaje() {
+    int o;
+    Viaje*viaje;
+    
+    do {
+        printf("Introduzca la opcion que desea:\n1.- Publicar viaje.\n2.- Eliminar viaje.\n3.- Modificar viaje.\n4.- Listar viajes.\n0.- Salir.");
+        scanf("%d", &o);
+        switch(o) {
+            case 0:
+                exit(0);
+                break;
+            case 1:
+                publicar_viaje();
+                break;
+            case 2:
+                eliminar_viaje();
+                break;
+            case 3:
+                modificar_viaje();
+                break;
+            case 4:
+                listar_viaje();
+                break;
+            default:
+                printf("ERROR: Opcion invalida.");
+                break;
+        }
+    } while(o!=0);
+    fflush(stdin);
+    return;
 }

@@ -17,5 +17,6 @@ void publicar_viaje(Viaje *lista);
 void eliminar_viaje(Viaje *lista);
 void modificar_viaje(Viaje *lista);
 void listar_viaje(Viaje *lista);
+void menu_viaje();
 
 #endif //VIAJE_H_INCLUDED 
