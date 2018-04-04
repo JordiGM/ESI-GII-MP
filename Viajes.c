@@ -58,6 +58,7 @@ Postcondición: Permite al usuario eliminar un viaje previamente creado por él 
 void eliminar_viaje(Viaje *viaje, int n){
     int N=10, a, i, j;
     Viaje x, y, z[N];
+    char c;
     
     do {
     listar_viaje();
@@ -71,8 +72,13 @@ void eliminar_viaje(Viaje *viaje, int n){
                     a=1;
                 }
             } else {
-                printf("Error al introducir el id del viaje.");
+                printf("Error al introducir el id del viaje.\n");
                 a=0;
+                printf("¿Desea salir? s/n\n");
+                scanf("%c", &c);
+                if(c=='s'){
+                    a=1;
+                }
             }
         
         }
