@@ -56,22 +56,28 @@ Precondición: Recibe un puntero a viaje y un entero n.
 Postcondición: Permite al usuario eliminar un viaje previamente creado por él mismo.*/
 
 void eliminar_viaje(Viaje *viaje, int n){
-
-    int i;
-    char id;
-    listar_viaje(&viaje, n);
-    printf("Introduce el id del viaje a eliminar");
-    scanf("%i", id);
-
-    Viaje aux[n];
-    id-=1;
-
-    for(i=0;i<n;i++){
-        if(i<id){
-            aux[i]=viaje[i];
-        } else {
-
-    }
+    int N=10, a, i, j;
+    Viaje x, y, z[N];
+    
+    do {
+    listar_viaje();
+    printf("Introduzca el id del viaje que desea eliminar.");
+    scanf("%s", y.Id_viaje);
+    
+        for(i=0, i<N, i++) {
+            if(x.Id_viaje==y.Id_viaje) {
+                for(j=i, j<N, j++) {
+                    z[j]=z[j+1];
+                    a=1;
+                }
+            } else {
+                printf("Error al introducir el id del viaje.");
+                a=0;
+            }
+        
+        }
+    } while(a!=1);
+}
 
 /*Cabecera: void modificar_viaje(Viaje*)
 Precondición: 
@@ -86,5 +92,10 @@ Precondición:
 Postcondición: Permite al usuario visualizar una lista de todos los viajes que se encuentran en el sistema.*/
 
 void listar_viaje(){
-    int v, N=;
+    int i, N=10;
+    Viaje v;
+    
+    for(i=0, i<N, i++) {
+        printf("%i: %s-%s-%s-%s-%s-%s-%s-%s-%s", i+1, v.Id_viaje, v.Id_mat, v.F_inic, v.H_inic, v.H_fin, v.Plazas_libre, v.Sentido, v.Importe, v.Estado);
+    }
 }
