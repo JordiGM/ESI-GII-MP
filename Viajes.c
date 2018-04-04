@@ -88,7 +88,8 @@ void eliminar_viaje(Viaje *viaje, int n){
 Precondición: 
 Postcondición: Permite al usuario modificar un viaje previamente creado por el mismo.*/
 
-void modificar_viaje(){
+void modificar_viaje(Viaje *viaje){
+    Viaje v;
     int o;
         
     do {
@@ -98,8 +99,41 @@ void modificar_viaje(){
     
     switch(o){
         case 1:
-            printf("Indique el id del viaje.");
-            gets()
+            v.Id_viaje leer_campo(TAM_ID_VIA, "Id del viaje");
+            
+            break;
+        case 2:
+            v.Id_mat leer_campo(TAM_ID_VEI, "Matricula del vehiculo");
+            
+            break;
+        case 3:
+            v.F_inic leer_campo(TAM_FIN_VIA, "Hora de inicio");
+            
+            break;
+        case 4:
+            v.H_inic leer_campo(TAM_HIN_VIA, "Hora de finalizacion");
+            
+            break;
+        case 5:
+            v.H_fin leer_campo(TAM_HFI_VIA, "Hora de finalizacion");
+            
+            break;
+        case 6:
+            v.Plazas_libre leer_campo(TAM_PLA_VEI, "Plazas libres");
+            
+            break;
+        case 7:
+            v.Sentido leer_campo(TAM_SEN_VIA, "Sentido del viaje");
+            
+            break;
+        case 8:
+            v.Importe leer_campo(TAM_IMP_VIA, "Importe del viaje");
+            
+            break;
+        case 9:
+            v.Estado leer_campo(TAM_EST_VIA, "Estado del viaje");
+            
+            break;
     }
 }
 
