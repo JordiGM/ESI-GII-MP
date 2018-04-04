@@ -80,7 +80,6 @@ void eliminar_viaje(Viaje *viaje, int n){
                     a=1;
                 }
             }
-        
         }
     } while(a!=1);
 }
