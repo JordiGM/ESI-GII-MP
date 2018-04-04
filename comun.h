@@ -15,7 +15,6 @@
 //Prototipos
 char *leer_campo( int largo, char *titulo );
 int leer_numero( char *titulo );
-void quitar_saltos( char *cadena );
 
 #endif /* COMUN_H */
 

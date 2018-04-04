@@ -59,9 +59,9 @@ typedef struct{
 #define TAM_FIN_VIA 10
 #define TAM_HIN_VIA 5
 #define TAM_HFI_VIA 5
-#define TAM_SEN_VEI 6
-#define TAM_IMP_VEI 6
-#define TAM_EST_VEI 10
+#define TAM_SEN_VIA 6
+#define TAM_IMP_VIA 6
+#define TAM_EST_VIA 10
 
 
 typedef struct{
