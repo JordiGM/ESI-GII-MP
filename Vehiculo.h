@@ -22,5 +22,8 @@ typedef struct{
 
 } Vehiculo;
 
+
+void listar_vehiculos(Vehiculos*);
+
 #endif
 
