@@ -87,17 +87,17 @@ typedef struct{
 
 //Prototipos
 
-Usuarios* obtenerUsuarios(int *n);
-Vehiculos* obtenerVehiculos(int *n);
-Viajes* obtenerViajes(int *n);
-Pasos* obtenerPasos(int *n);
-Incidencias* obtenerIncidencias(int *n);
+Usuarios* obtenerUsuarios(int *);
+//Vehiculos* obtenerVehiculos(int *);
+//Viajes* obtenerViajes(int *);
+//Pasos* obtenerPasos(int *);
+//Incidencias* obtenerIncidencias(int *);
 
-void guardarDatosUsuarios(Usuarios* usuarios, int elementos);
-void guardarDatosVehiculos(Vehiculos* vehiculos, int elementos);
-void guardarDatosViajes(Viajes* viajes, int elementos);
-void guardarDatosPasos(Pasos* pasos, int elementos);
-void guardarDatosIncidencias(Incidencias* incidencias, int elementos);
+void guardarDatosUsuarios(Usuarios*, int);
+//void guardarDatosVehiculos(Vehiculos*, int);
+//void guardarDatosViajes(Viajes*, int);
+//void guardarDatosPasos(Pasos*, int);
+//void guardarDatosIncidencias(Incidencias*, int);
 
 #endif /* FICHEROS_H */
 

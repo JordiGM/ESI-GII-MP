@@ -51,7 +51,8 @@ Usuarios* obtenerUsuarios(int *n){
 
            if (! *n) alm = (Usuarios *) malloc( (*n+1) * sizeof(Usuarios) );
            else alm = (Usuarios *) realloc( alm, (*n+1) * sizeof(Usuarios) );
-           printf("Registro recuperado: %d - |%*s| - |%-*s| - |%-*s| - |%-*s| - |%-*s| - |%-*s| - |%-*s| >>> OK\n",*n, 
+           
+           printf("\nRegistro recuperado: %d - |%*s| - |%-*s| - |%-*s| - |%-*s| - |%-*s| - |%-*s| - |%-*s| >>> OK\n",*n, 
                    TAM_ID_USER, id,TAM_NOM_USER, nombre,TAM_LOC_USER, localidad,
                    TAM_PER_USER, perfil,TAM_USE_USER, usuario,TAM_LOG_USER, login,
                    TAM_EST_USER, estado);

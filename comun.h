@@ -12,9 +12,12 @@
 #ifndef COMUN_H
 #define COMUN_H
 
+//Temporal para la funcion de Adri
+char *altaUsuarioInicio(Usuarios *, int *, char *);
+
 //Prototipos
-char *leer_campo( int largo, char *titulo );
-int leer_numero( char *titulo );
+char *leer_campo( int, char * );
+int leer_numero( char * );
 
 #endif /* COMUN_H */
 

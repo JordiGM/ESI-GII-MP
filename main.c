@@ -8,18 +8,21 @@
  */
 
 #include "ficheros.h"
+#include "comun.h"
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
+
+//Prototipos
+int menu_principal(int opc, int id, Usuarios *ListaUsuarios, int *NumUser);
 
 /*
  * 
  */
 int main() {
     
-    //Usuarios L_Usuarios[1];
-    char user[6], login[9], perfil[15];
-    int elementos, exisUser=0, passOK=0, i, id=0;
+    char *user, *login, *perfil, *id;
+    int exisUser=0, passOK=0, i, valor=0;
     int numeroUsuarios;
     Usuarios* L_Usuarios;
 
@@ -46,7 +49,7 @@ int main() {
            "       h           8VSBnnnnX  ono   XnnnnBX    EiBB  kiim  cBl   D1iiBli$  kB|B      V B|B  #B|B  BBB              @m\n"
            "       $          mBnnnnnnon  2on  hnnoooon$    iBBVYiBBV  CBi$ DiBBgpilB  m;BBB    FB B|B9HBBBB  >BB              E\n"
            "       m           nonm moon  Enn$ mom  mnnd    cBlilllliB kllB CBl   iBB   cB|BBYYBBB$cBBB;<>BB  aww              m\n"
-           "      #            2oo#  knn  mno$    8SnooB    kilBwygBllBmlBB zBiUB1lli    cBBBBBBBsm aB<a gm                     Bm\n"
+           "      #            2oo#  knn  mno$    8SnooB    kilBwygBllBmlBB zBiUB1lli    cBBBBBBBsm aB<a gm                    Bm\n"
            "      D            Enod UBn#   BoB  B1nBqooo    kllB   klBB BBB kiBiiBzBa     w>|B<sy                             m\n"
            "      E            mnoonnnonn$ ooX  1on  kno     ill   CBlj zll  oliam                                           Dm\n"
            "      #             BooowwoooB 2on #nod  Snn$    BBiUV1lBim kiim                                                @m\n"
@@ -70,26 +73,26 @@ int main() {
     
     L_Usuarios = obtenerUsuarios(&numeroUsuarios);
     
-    printf("\n\nINTRODUZCA SU USUARIO Y CONTRASEÑA PARA ACCEDER:");
+    printf("\n\nINTRODUZCA SU USUARIO Y CONTRASEÑA PARA ACCEDER:\n\n");
     
-    printf("Introduce nombre de usuario:\n");                                   //Solicitamos el nombre del usuario
-    fgets (user, 6, stdin);
+    user = leer_campo(TAM_USE_USER,"Introduce nombre de usuario");                         //Solicitamos el nombre del usuario
 
     i=0;
-    while(i<elementos || exisUser==0){                                          //Buscamos el nombre del usuario si existe
-        if(strcmp(user,L_Usuarios[i].User)){
+    while(i<numeroUsuarios && exisUser==0){                                     //Buscamos el nombre del usuario si existe
+        valor = strncmp(user,L_Usuarios[i].User,TAM_NOM_USER);
+        if(!strncmp(user,L_Usuarios[i].User,TAM_NOM_USER)){
             exisUser=1;                                                         //Si hay una concidencia guardamos y salimos
-            strcpy(L_Usuarios[i].Perfil_usuario,perfil);
+            perfil = L_Usuarios[i].Perfil_usuario;
         }
         i++;
     }
     
     if(exisUser==0){                                                            //Si el usuario no existe creamos una cuenta nueva
         printf("\nUsuario indicado no existe, accediendo para crear una cuenta\n");
-        strcpy("usuario",perfil);
-        //id = altaUsuarioInicio(L_Usuario,elementos,user);                       //Función que crea el usuario con el nombre de usuario indicado que no existe que retorna el ID
+        perfil = "usuario";
+        id = altaUsuarioInicio(L_Usuarios,&numeroUsuarios,user);                       //Función que crea el usuario con el nombre de usuario indicado que no existe que retorna el ID
         if(id !=0 ){
-            menu_principal(strcmp(perfil,"administrador"),id);
+            menu_principal(strcmp(perfil,(char *)"administrador"),(int)*id,L_Usuarios,&numeroUsuarios);
         }
         else{
             printf("Error al crear el usuario.");
@@ -97,15 +100,14 @@ int main() {
     }
     else{
         i--;
-       
-        printf("Introduce el password:\n");                                     //Solicitamos la contraseña del usuario
-        fgets (login, 9, stdin);
+        
+        login = leer_campo(TAM_LOG_USER,"Introduce el password");                          //Solicitamos la contraseña del usuario
 
         if(strcmp(login,L_Usuarios[i].Login)){
             passOK=1;
-            id=L_Usuarios[i].Id_usuario;
+            id = L_Usuarios[i].Id_usuario;
             if(passOK==1 && exisUser==1){
-                menu_principal(strcmp(perfil,"administrador"),id);
+                menu_principal(strcmp(perfil,(char *)"administrador"),(int)*id,L_Usuarios,&numeroUsuarios);
             }
         }
         else{
@@ -114,13 +116,15 @@ int main() {
         }
     }
 
+    guardarDatosUsuarios(L_Usuarios, numeroUsuarios);
+    printf("\n\nHASTA PRONTO YU BUEN VIAJE\n\n");
     return (0);
 }
 
 // Cabecera: void menu_principal(E entero opc, E entero id)
 // Precondicion: Valor 1 para administrados, valor <> 1 para usuario
 // Poscondicion:  Accede a los distintos menus de la aplicación, no retorna nada
-void menu_principal(int opc, int id)
+int menu_principal(int opc, int id, Usuarios *ListaUsuarios, int *NumUser)
 {
     int x;
     
@@ -137,22 +141,22 @@ void menu_principal(int opc, int id)
             switch (x)
             {
             case 0:
-                exit(0);
+                return 0;
             case 1:
                 
-                menu_principal(opc,id);
+                menu_principal(opc,id,ListaUsuarios,NumUser);
                 break;
             case 2:
                 
-                menu_principal(opc,id);
+                menu_principal(opc,id,ListaUsuarios,NumUser);
                 break;
             case 3:
                 
-                menu_principal(opc,id);
+                menu_principal(opc,id,ListaUsuarios,NumUser);
                 break;
             case 4:
                 
-                menu_principal(opc,id);
+                menu_principal(opc,id,ListaUsuarios,NumUser);
                 break;
             default:
                 printf("Error al elegir la opcion.\t");
@@ -173,22 +177,22 @@ void menu_principal(int opc, int id)
             switch (x)
             {
             case 0:
-                exit(0);
+                return 0;
             case 1:
                 
-                menu_principal(opc,id);
+                menu_principal(opc,id,ListaUsuarios,NumUser);
                 break;
             case 2:
                 
-                menu_principal(opc,id);
+                menu_principal(opc,id,ListaUsuarios,NumUser);
                 break;
             case 3:
                 
-                menu_principal(opc,id);
+                menu_principal(opc,id,ListaUsuarios,NumUser);
                 break;
             case 4:
                 
-                menu_principal(opc,id);
+                menu_principal(opc,id,ListaUsuarios,NumUser);
                 break;
             default:
                 printf("Error al elegir la opcion.\t");
@@ -196,4 +200,6 @@ void menu_principal(int opc, int id)
             }
         }while(x!=0);
     }
+    
+    return 1;
 }
