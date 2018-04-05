@@ -14,7 +14,7 @@
 #include <stdlib.h>
 
 //Prototipos
-int menu_principal(int opc, int id, Usuarios *ListaUsuarios, int *NumUser);
+void menu_principal(int opc, int id, Usuarios *ListaUsuarios, int *NumUser);
 
 /*
  * 
@@ -90,9 +90,9 @@ int main() {
     if(exisUser==0){                                                            //Si el usuario no existe creamos una cuenta nueva
         printf("\nUsuario indicado no existe, accediendo para crear una cuenta\n");
         perfil = "usuario";
-        id = altaUsuarioInicio(L_Usuarios,&numeroUsuarios,user);                       //Función que crea el usuario con el nombre de usuario indicado que no existe que retorna el ID
+        id = altaUsuarioInicio(L_Usuarios,&numeroUsuarios,user);                //Función que crea el usuario con el nombre de usuario indicado que no existe que retorna el ID
         if(id !=0 ){
-            menu_principal(strcmp(perfil,(char *)"administrador"),(int)*id,L_Usuarios,&numeroUsuarios);
+            menu_principal(0,(int)*id,L_Usuarios,&numeroUsuarios);              //Se fija valor 0 ya que un usuario creado asi nunca será un administrador
         }
         else{
             printf("Error al crear el usuario.");
@@ -107,7 +107,7 @@ int main() {
             passOK=1;
             id = L_Usuarios[i].Id_usuario;
             if(passOK==1 && exisUser==1){
-                menu_principal(strcmp(perfil,(char *)"administrador"),(int)*id,L_Usuarios,&numeroUsuarios);
+                menu_principal(!strcmp(perfil,(char *)"administrador"),(int)*id,L_Usuarios,&numeroUsuarios);
             }
         }
         else{
@@ -117,14 +117,14 @@ int main() {
     }
 
     guardarDatosUsuarios(L_Usuarios, numeroUsuarios);
-    printf("\n\nHASTA PRONTO YU BUEN VIAJE\n\n");
+    printf("\n\nHASTA PRONTO Y BUEN VIAJE\n\n");
     return (0);
 }
 
-// Cabecera: void menu_principal(E entero opc, E entero id)
+// Cabecera: int menu_principal(int opc, int id, Usuarios ListaUsuarios, int NumUser)
 // Precondicion: Valor 1 para administrados, valor <> 1 para usuario
 // Poscondicion:  Accede a los distintos menus de la aplicación, no retorna nada
-int menu_principal(int opc, int id, Usuarios *ListaUsuarios, int *NumUser)
+void menu_principal(int opc, int id, Usuarios *ListaUsuarios, int *NumUser)
 {
     int x;
     
@@ -141,7 +141,7 @@ int menu_principal(int opc, int id, Usuarios *ListaUsuarios, int *NumUser)
             switch (x)
             {
             case 0:
-                return 0;
+                break;
             case 1:
                 
                 menu_principal(opc,id,ListaUsuarios,NumUser);
@@ -177,7 +177,7 @@ int menu_principal(int opc, int id, Usuarios *ListaUsuarios, int *NumUser)
             switch (x)
             {
             case 0:
-                return 0;
+                break;
             case 1:
                 
                 menu_principal(opc,id,ListaUsuarios,NumUser);
@@ -200,6 +200,4 @@ int menu_principal(int opc, int id, Usuarios *ListaUsuarios, int *NumUser)
             }
         }while(x!=0);
     }
-    
-    return 1;
 }
