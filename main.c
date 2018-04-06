@@ -13,7 +13,7 @@
 #include "ficheros.h"
 #include "comun.h"
 
-#include "Viajes.h"
+//#include "Viajes.h"
 
 //Prototipos
 void menu_principal(int opc, char *id, Usuarios *ListaUsuarios, int *NumUser);
