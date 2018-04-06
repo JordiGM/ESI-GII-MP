@@ -275,17 +275,111 @@ Incidencias* obtenerIncidencias(int *n) {
 void guardarDatosUsuarios(Usuarios* usuarios, int elementos) {
     int i;
     Usuarios e;
-    FILE *FICHERO_ALUMNO = fopen("Usuarios.txt", "w");
-    for (i = 0; i < elementos; i++) {
+    FILE *FicheroUsuario = fopen("Usuarios.txt", "w"); //Preparamos el fichero para ser escrito
+    for (i = 0; i < elementos; i++) { //Vamos accediento a cada elemento
         e = usuarios[i];
         if (i == 0) {
-            fprintf(FICHERO_ALUMNO, "%s-%s-%s-%s-%s-%s-%s", e.Id_usuario, e.Nomb_usuario, e.Localidad, e.Perfil_usuario, e.User, e.Login, e.Estado);
+            //Para escribir el primer elemento
+            fprintf(FicheroUsuario, "%s-%s-%s-%s-%s-%s-%s", e.Id_usuario, e.Nomb_usuario, e.Localidad, e.Perfil_usuario, e.User, e.Login, e.Estado);
         } else {
-            fprintf(FICHERO_ALUMNO, "\n%s-%s-%s-%s-%s-%s-%s", e.Id_usuario, e.Nomb_usuario, e.Localidad, e.Perfil_usuario, e.User, e.Login, e.Estado);
+            //Para escribir las demas lineas
+            fprintf(FicheroUsuario, "\n%s-%s-%s-%s-%s-%s-%s", e.Id_usuario, e.Nomb_usuario, e.Localidad, e.Perfil_usuario, e.User, e.Login, e.Estado);
         }
 
     }
-    fclose(FICHERO_ALUMNO);
+    fclose(FicheroUsuario);
 }
 
+// Cabecera: void guardarDatosVehiculos(Vehiculos*,int)
+// Precondicion: Recibe un vector con los vehiculos que deseamos guardar y un int 
+// con el tamano del vector
+// Poscondicion: Guarda en el fichero el vector
 
+void guardarDatosVehiculos(Vehiculos* vehiculos, int elementos) {
+    int i;
+    Vehiculos e;
+    FILE *FichVehiculo = fopen("Vehiculos.txt", "w"); //Preparamos el fichero para ser escrito
+    for (i = 0; i < elementos; i++) { //Vamos accediento a cada elemento
+        e = vehiculos[i];
+        if (i == 0) {
+            //Para escribir el primer elemento
+            fprintf(FichVehiculo, "%s-%s-%s-%s", e.Id_mat, e.Id_usuario, e.Num_plazas, e.Desc_veh);
+        } else {
+            //Para escribir las demas lineas
+            fprintf(FichVehiculo, "\n%s-%s-%s-%s", e.Id_mat, e.Id_usuario, e.Num_plazas, e.Desc_veh);
+        }
+
+    }
+    fclose(FichVehiculo);
+}
+
+// Cabecera: void guardarDatosViajes(Viajes*,int)
+// Precondicion: Recibe un vector con los viajes que deseamos guardar y un int 
+// con el tamano del vector
+// Poscondicion: Guarda en el fichero el vector
+
+void guardarDatosViajes(Viajes* viajes, int elementos) {
+    int i;
+    Viajes e;
+    FILE *FichViajes = fopen("Viajes.txt", "w"); //Preparamos el fichero para ser escrito
+    for (i = 0; i < elementos; i++) { //Vamos accediento a cada elemento
+        e = viajes[i];
+        if (i == 0) {
+            //Para escribir el primer elemento
+            fprintf(FichViajes, "%s-%s-%s-%s-%s-%s-%s-%s-%s", 
+                    e.Id_viaje, e.Id_mat, e.F_inic, e.H_inic, e.H_fin, e.Plazas_libre, e.Sentido, e.Importe, e.Estado);
+        } else {
+            //Para escribir las demas lineas
+            fprintf(FichViajes, "\n%s-%s-%s-%s-%s-%s-%s-%s-%s", 
+                    e.Id_viaje, e.Id_mat, e.F_inic, e.H_inic, e.H_fin, e.Plazas_libre, e.Sentido, e.Importe, e.Estado);
+        }
+
+    }
+    fclose(FichViajes);
+}
+
+// Cabecera: void guardarDatosPasos(Pasos*,int)
+// Precondicion: Recibe un vector con los pasos que deseamos guardar y un int 
+// con el tamano del vector
+// Poscondicion: Guarda en el fichero el vector
+
+void guardarDatosPasos(Pasos* pasos, int elementos) {
+    int i;
+    Pasos e;
+    FILE *FichPasos = fopen("Pasos.txt", "w"); //Preparamos el fichero para ser escrito
+    for (i = 0; i < elementos; i++) { //Vamos accediento a cada elemento
+        e = pasos[i];
+        if (i == 0) {
+            //Para escribir el primer elemento
+            fprintf(FichPasos, "%s-%s", e.Id_viaje, e.Poblacion);
+        } else {
+            //Para escribir las demas lineas
+            fprintf(FichPasos, "\n%s-%s", e.Id_viaje, e.Poblacion);
+        }
+
+    }
+    fclose(FichPasos);
+}
+
+// Cabecera: void guardarDatosIncidencias(Incidencias*,int)
+// Precondicion: Recibe un vector con las incidencias que deseamos guardar y un int 
+// con el tamano del vector
+// Poscondicion: Guarda en el fichero el vector
+
+void guardarDatosIncidencias(Incidencias* incidencias, int elementos) {
+    int i;
+    Incidencias e;
+    FILE *FichIncidencias = fopen("Incidencias.txt", "w"); //Preparamos el fichero para ser escrito
+    for (i = 0; i < elementos; i++) { //Vamos accediento a cada elemento
+        e = incidencias[i];
+        if (i == 0) {
+            //Para escribir el primer elemento
+            fprintf(FichIncidencias, "%s-%s-%s-%s-%s",e.Id_viaje, e.Id_us_registra, e.Id_us_incidencia, e.Desc_incidencia, e.Est_incidencia);
+        } else {
+            //Para escribir las demas lineas
+            fprintf(FichIncidencias, "\n%s-%s-%s-%s-%s",e.Id_viaje, e.Id_us_registra, e.Id_us_incidencia, e.Desc_incidencia, e.Est_incidencia);
+        }
+
+    }
+    fclose(FichIncidencias);
+}

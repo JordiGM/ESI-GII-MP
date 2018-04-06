@@ -92,10 +92,10 @@ Pasos* obtenerPasos(int *);
 Incidencias* obtenerIncidencias(int *);
 
 void guardarDatosUsuarios(Usuarios*, int);
-//void guardarDatosVehiculos(Vehiculos*, int);
-//void guardarDatosViajes(Viajes*, int);
-//void guardarDatosPasos(Pasos*, int);
-//void guardarDatosIncidencias(Incidencias*, int);
+void guardarDatosVehiculos(Vehiculos*, int);
+void guardarDatosViajes(Viajes*, int);
+void guardarDatosPasos(Pasos*, int);
+void guardarDatosIncidencias(Incidencias*, int);
 
 #endif /* FICHEROS_H */
 
