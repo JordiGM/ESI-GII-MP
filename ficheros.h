@@ -69,7 +69,6 @@ typedef struct{
     char *Poblacion;
 }Pasos;
 //Dimensiones pasos
-#define TAM_ID_PAS 6
 #define TAM_POB_PAS 20
 
 typedef struct{
@@ -80,7 +79,6 @@ typedef struct{
     char *Est_incidencia;
 }Incidencias;
 //Dimensiones incidencias
-#define TAM_ID_INC 6
 #define TAM_DES_INC 100
 #define TAM_EST_INC 8
 
@@ -88,10 +86,10 @@ typedef struct{
 //Prototipos
 
 Usuarios* obtenerUsuarios(int *);
-//Vehiculos* obtenerVehiculos(int *);
-//Viajes* obtenerViajes(int *);
-//Pasos* obtenerPasos(int *);
-//Incidencias* obtenerIncidencias(int *);
+Vehiculos* obtenerVehiculos(int *);
+Viajes* obtenerViajes(int *);
+Pasos* obtenerPasos(int *);
+Incidencias* obtenerIncidencias(int *);
 
 void guardarDatosUsuarios(Usuarios*, int);
 //void guardarDatosVehiculos(Vehiculos*, int);
