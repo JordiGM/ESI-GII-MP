@@ -1,6 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "ficheros.h"
+
+// Cabecera: void vacia_buffer()
+// Precondicion: Ninguna
+// Poscondicion: Limpia el buffer de entrada
+void vacia_buffer()
+{
+  int ch;
+  while ((ch = getchar()) != '\n' && ch != EOF);
+}
 
 // Cabecera: char* leer_campo(entero largo, caracter titulo)
 // Precondicion: el tamaño de la cadena que se va a solicitar y  el texto que se quiere mostrar
@@ -12,6 +22,7 @@ char *leer_campo( int largo, char *titulo ) {
      fgets(campo, largo+1, stdin);
      p = strchr(campo, '\n');                                                   //Eliminamos los saltos de linea
      if (p) *p = '\0';
+     vacia_buffer();
      fflush( stdin );
      return campo;
 }
@@ -25,6 +36,23 @@ int leer_numero( char *titulo ) {
      scanf("%d", &num);
      fflush( stdin );
      return num;
+}
+
+// Cabecera: int buscar_usuario(int id)
+// Precondicion: id del usuario a buscar la posición en el array, array y numero de elementos
+// Poscondicion: devuelve el número que ha introducido el usuario, si no lo encuentra devuelve -1
+int buscar_usuario(char *id, Usuarios *lista, int elementos){
+    int posicion = -1, exisUser = 0, i = 0;
+    
+    while (i < elementos && exisUser == 0) { //Buscamos el nombre del usuario si existe
+        if (!strncmp(id, lista[i].Id_usuario, TAM_ID_USER)) {
+            exisUser = 1; //Si hay una concidencia guardamos y salimos
+            posicion = i;
+        }
+        i++;
+    }
+    
+    return posicion;
 }
 
 //Temporal para la función de Adri

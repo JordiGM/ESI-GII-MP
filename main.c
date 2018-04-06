@@ -7,14 +7,16 @@
  * Fichero main del proyecto,  acceso a la aplicación
  */
 
-#include "ficheros.h"
-#include "comun.h"
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include "ficheros.h"
+#include "comun.h"
+
+#include "Viajes.h"
 
 //Prototipos
-void menu_principal(int opc, int id, Usuarios *ListaUsuarios, int *NumUser);
+void menu_principal(int opc, char *id, Usuarios *ListaUsuarios, int *NumUser);
 
 /*
  * 
@@ -79,7 +81,6 @@ int main() {
 
     i = 0;
     while (i < numeroUsuarios && exisUser == 0) { //Buscamos el nombre del usuario si existe
-        valor = strncmp(user, L_Usuarios[i].User, TAM_NOM_USER);
         if (!strncmp(user, L_Usuarios[i].User, TAM_NOM_USER)) {
             exisUser = 1; //Si hay una concidencia guardamos y salimos
             perfil = L_Usuarios[i].Perfil_usuario;
@@ -92,7 +93,7 @@ int main() {
         perfil = "usuario";
         id = altaUsuarioInicio(L_Usuarios, &numeroUsuarios, user); //Función que crea el usuario con el nombre de usuario indicado que no existe que retorna el ID
         if (id != 0) {
-            menu_principal(0, (int) *id, L_Usuarios, &numeroUsuarios); //Se fija valor 0 ya que un usuario creado asi nunca será un administrador
+            menu_principal(0, id, L_Usuarios, &numeroUsuarios); //Se fija valor 0 ya que un usuario creado asi nunca será un administrador
         } else {
             printf("Error al crear el usuario.");
         }
@@ -101,11 +102,11 @@ int main() {
 
         login = leer_campo(TAM_LOG_USER, "Introduce el password"); //Solicitamos la contraseña del usuario
 
-        if (strcmp(login, L_Usuarios[i].Login)) {
+        if (!strcmp(login, L_Usuarios[i].Login)) {
             passOK = 1;
             id = L_Usuarios[i].Id_usuario;
             if (passOK == 1 && exisUser == 1) {
-                menu_principal(!strcmp(perfil, (char *) "administrador"), (int) *id, L_Usuarios, &numeroUsuarios);
+                menu_principal(!strcmp(perfil, (char *) "administrador"), id, L_Usuarios, &numeroUsuarios);
             }
         } else {
             printf("\nError contraseña erronea\n");
@@ -122,12 +123,24 @@ int main() {
 // Precondicion: Valor 1 para administrados, valor <> 1 para usuario
 // Poscondicion:  Accede a los distintos menus de la aplicación, no retorna nada
 
-void menu_principal(int opc, int id, Usuarios *ListaUsuarios, int *NumUser) {
-    int x;
-
-    if (opc = 1) {
+void menu_principal(int opc, char *id, Usuarios *ListaUsuarios, int *NumUser) {
+    int x, numVehiculos = 0, numViajes = 0, numPasos = 0, numIncidencias = 0, pos;
+    Vehiculos* L_Vehiculos;
+    Viajes* L_Viajes;
+    Pasos* L_Pasos;
+    Incidencias* L_Incidencias;
+    
+    printf("\nCargando información en el programa.\n");
+    L_Vehiculos = obtenerVehiculos(&numVehiculos);
+    L_Viajes = obtenerViajes(&numViajes); 
+    L_Pasos = obtenerPasos(&numPasos);
+    L_Incidencias = obtenerIncidencias(&numIncidencias);
+    printf("\nInformación cargada.\n");
+    
+    if (opc == 1) {
         do {
-            printf("Introduzca la opcion que desea\n\n "
+            printf("Bienvenido al menu de administración\n"
+                    "Introduzca la opcion que desea\n\n "
                     "1: Menú usuarios\n "
                     "2: Menú vehiculos\n "
                     "3: Menú viajes\n "
@@ -159,19 +172,21 @@ void menu_principal(int opc, int id, Usuarios *ListaUsuarios, int *NumUser) {
             }
         } while (x != 0);
     } else {
+        pos = buscar_usuario(id,ListaUsuarios,*NumUser);
         do {
-            printf("Introduzca la opcion que desea\n\n "
+            printf("Bienvenido al menú de la aplicación %s\n "
+                    "Introduzca la opcion que desea\n\n "
                     "1: Perfil\n "
                     "2: Menú vehiculos\n "
                     "3: Menú viajes\n "
                     "4: Menú incidencias\n "
-                    "0: salir\n");
+                    "0: salir\n",ListaUsuarios[pos].Nomb_usuario);
             scanf("%d", &x);
             switch (x) {
                 case 0:
                     break;
                 case 1:
-
+                    
                     menu_principal(opc, id, ListaUsuarios, NumUser);
                     break;
                 case 2:
@@ -179,7 +194,7 @@ void menu_principal(int opc, int id, Usuarios *ListaUsuarios, int *NumUser) {
                     menu_principal(opc, id, ListaUsuarios, NumUser);
                     break;
                 case 3:
-
+                    //menu_viaje();
                     menu_principal(opc, id, ListaUsuarios, NumUser);
                     break;
                 case 4:
@@ -192,4 +207,11 @@ void menu_principal(int opc, int id, Usuarios *ListaUsuarios, int *NumUser) {
             }
         } while (x != 0);
     }
+    
+    printf("\nGuardando información del programa.\n");
+    guardarDatosVehiculos(L_Vehiculos, numVehiculos);
+    guardarDatosViajes(L_Viajes, numViajes);
+    guardarDatosPasos(L_Pasos, numPasos);
+    guardarDatosIncidencias(L_Incidencias, numIncidencias);
+    printf("\nInformación guardada.\n");
 }

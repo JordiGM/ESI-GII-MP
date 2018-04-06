@@ -18,6 +18,8 @@ char *altaUsuarioInicio(Usuarios *, int *, char *);
 //Prototipos
 char *leer_campo( int, char * );
 int leer_numero( char * );
+int buscar_usuario(char*,Usuarios*,int);
+void vacia_buffer();
 
 #endif /* COMUN_H */
 
