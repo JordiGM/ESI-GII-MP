@@ -194,7 +194,7 @@ void menu_principal(int opc, char *id, Usuarios *ListaUsuarios, int *NumUser) {
                     menu_principal(opc, id, ListaUsuarios, NumUser);
                     break;
                 case 3:
-                    //menu_viaje();
+                    //menu_viaje( );
                     menu_principal(opc, id, ListaUsuarios, NumUser);
                     break;
                 case 4:
