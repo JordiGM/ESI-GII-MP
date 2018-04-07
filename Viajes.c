@@ -8,7 +8,7 @@
 Precondición: Recibe cadenas de carácteres de un viaje.
 Postcondición: Permite al ususario publicar un nuevo viaje.*/
 
-void publicar_viaje(){
+void publicar_viaje(Viaje *viaje){
     Viaje v;
     /*Vehiculo vh;*/
     char c;
@@ -61,7 +61,7 @@ void eliminar_viaje(Viaje *viaje, int n){
     char c;
     
     do {
-    listar_viaje();
+    listar_viaje(&viaje);
     printf("Introduzca el id del viaje que desea eliminar.");
     scanf("%s", y.Id_viaje);
     
@@ -100,39 +100,39 @@ void modificar_viaje(Viaje *viaje){
     switch(o){
         case 1:
             v.Id_viaje leer_campo(TAM_ID_VIA, "Id del viaje");
-            
+            scanf("%s", v.Id_viaje);
             break;
         case 2:
             v.Id_mat leer_campo(TAM_ID_VEI, "Matricula del vehiculo");
-            
+            scanf("%s", v.Id_mat);
             break;
         case 3:
             v.F_inic leer_campo(TAM_FIN_VIA, "Hora de inicio");
-            
+            scanf("%s", v.F_inic);
             break;
         case 4:
             v.H_inic leer_campo(TAM_HIN_VIA, "Hora de finalizacion");
-            
+            scanf("%s", v.H_inic);
             break;
         case 5:
             v.H_fin leer_campo(TAM_HFI_VIA, "Hora de finalizacion");
-            
+            scanf("%s", v.H_fin);
             break;
         case 6:
             v.Plazas_libre leer_campo(TAM_PLA_VEI, "Plazas libres");
-            
+            scanf("%s", v.Plazas_libre);
             break;
         case 7:
             v.Sentido leer_campo(TAM_SEN_VIA, "Sentido del viaje");
-            
+            scanf("%s", v.Sentido);
             break;
         case 8:
             v.Importe leer_campo(TAM_IMP_VIA, "Importe del viaje");
-            
+            scanf("%s", v.Importe);
             break;
         case 9:
             v.Estado leer_campo(TAM_EST_VIA, "Estado del viaje");
-            
+            scanf("%s", v.Estado);
             break;
     }
 }
@@ -141,7 +141,7 @@ void modificar_viaje(Viaje *viaje){
 Precondición: 
 Postcondición: Permite al usuario visualizar una lista de todos los viajes que se encuentran en el sistema.*/
 
-void listar_viaje(Viaje* v){
+void listar_viaje(Viaje* viaje){
     int i, N=10;
     
     for(i=0; i<N; i++) {
@@ -150,7 +150,7 @@ void listar_viaje(Viaje* v){
 }
 
 void menu_viaje() {
-    int o;
+    int o, n;
     Viaje*viaje;
     
     do {
@@ -161,16 +161,16 @@ void menu_viaje() {
                 exit(0);
                 break;
             case 1:
-                publicar_viaje();
+                publicar_viaje(viaje);
                 break;
             case 2:
-                eliminar_viaje();
+                eliminar_viaje(viaje, n);
                 break;
             case 3:
-                modificar_viaje();
+                modificar_viaje(viaje);
                 break;
             case 4:
-                listar_viaje();
+                listar_viaje(viaje);
                 break;
             default:
                 printf("ERROR: Opcion invalida.");
