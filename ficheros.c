@@ -308,7 +308,7 @@ void guardarDatosVehiculos(Vehiculos* vehiculos, int elementos) {
 void guardarDatosViajes(Viajes* viajes, int elementos) {
     int i;
     Viajes e;
-    FILE *FichViajes = fopen("Viajes.txt", "w"); //Preparamos el fichero para ser escrito
+    FILE *FichViajes = fopen("Viajes_out.txt", "w"); //Preparamos el fichero para ser escrito
     for (i = 0; i < elementos; i++) { //Vamos accediento a cada elemento
         e = viajes[i];
         if (i == 0) {

@@ -6,8 +6,7 @@
 // Cabecera: void vacia_buffer()
 // Precondicion: Ninguna
 // Poscondicion: Limpia el buffer de entrada
-void vacia_buffer()
-{
+void vacia_buffer(){
   int ch;
   while ((ch = getchar()) != '\n' && ch != EOF);
 }
@@ -55,8 +54,35 @@ int buscar_usuario(char *id, Usuarios *lista, int elementos){
     return posicion;
 }
 
-//Temporal para la función de Adri
-#include "ficheros.h"
+//Temporal para la función de Adri Ruben
+#include "ficheros.h" //Adri y Ruben
+#include <time.h> //Ruben
+
+int autoFinalizarViaje(Viajes *lista, int elementos){
+    int estadoOp = 1, indice;
+    struct tm fecha, hora, *actual;
+    time_t tiempo;
+    
+    tiempo = time(NULL);
+    actual = localtime(&tiempo);
+    
+    for(indice = 0; indice < elementos; indice++){
+        strptime(lista[indice].F_inic, "%d/%m/%Y", &fecha);
+        strptime(lista[indice].H_fin, "%H:%M", &hora);
+        
+        if(fecha.tm_year+1900 - actual->tm_year > 0 || 
+           fecha.tm_mday - actual->tm_mday > 0 ||
+           fecha.tm_mon+1 - actual->tm_mon+1 > 0 ||
+           hora.tm_hour+1 - actual->tm_hour >= 0){
+            printf("\nViaje Finalizado %s\n",lista[indice].Id_viaje);
+            lista[indice].Estado = "Finalizado";
+        }
+        
+            
+    }
+    
+    return estadoOp;
+}
 
 char *altaUsuarioInicio(Usuarios *lista,int *elementos,char *usuario){
     char *id,*localidad, *nombre, *login;
@@ -77,7 +103,7 @@ char *altaUsuarioInicio(Usuarios *lista,int *elementos,char *usuario){
     lista = (Usuarios *) realloc( lista, (*elementos+1) * sizeof(Usuarios) );
     
     //Guardamos la información recogida y generada en el nuevo elemento    
-    sprintf(id, "%04d", *elementos+1);                                          //Transofrmamos el ultimo id + 1 en una cadena tipo 0001 
+    sprintf(id, "%04d", *elementos + 1); //Transofrmamos el ultimo id + 1 en una cadena tipo 0001 
     lista[*elementos].Id_usuario = id;
     lista[*elementos].Nomb_usuario = nombre;
     lista[*elementos].Localidad = localidad;
