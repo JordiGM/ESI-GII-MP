@@ -58,8 +58,8 @@ int buscar_usuario(char *id, Usuarios *lista, int elementos){
 #include "ficheros.h" //Adri y Ruben
 #include <time.h> //Ruben
 
-int autoFinalizarViaje(Viajes *lista, int elementos){
-    int estadoOp = 1, indice;
+void autoFinalizarViaje(Viajes *lista, int elementos){
+    int indice;
     struct tm fecha, hora, *actual;
     time_t tiempo;
     
@@ -80,8 +80,6 @@ int autoFinalizarViaje(Viajes *lista, int elementos){
         
             
     }
-    
-    return estadoOp;
 }
 
 char *altaUsuarioInicio(Usuarios *lista,int *elementos,char *usuario){
