@@ -76,9 +76,7 @@ void autoFinalizarViaje(Viajes *lista, int elementos){
            hora.tm_hour+1 - actual->tm_hour >= 0){
             printf("\nViaje Finalizado %s\n",lista[indice].Id_viaje);
             lista[indice].Estado = "Finalizado";
-        }
-        
-            
+        }          
     }
 }
 
