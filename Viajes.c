@@ -143,6 +143,7 @@ Postcondición: Permite al usuario visualizar una lista de todos los viajes que 
 
 void listar_viaje(Viaje* viaje){
     int i, N=10;
+    Viaje v;
     
     for(i=0; i<N; i++) {
         printf("%i: %s-%s-%s-%s-%s-%s-%s-%s-%s", i+1, v.Id_viaje, v.Id_mat, v.F_inic, v.H_inic, v.H_fin, v.Plazas_libre, v.Sentido, v.Importe, v.Estado);
