@@ -21,7 +21,8 @@ typedef struct{
     char* Perfil_usuario;
     char* User;
     char* Login;
-    char* Estado;    
+    char* Estado;  
+    char* Eliminado;
 }Usuarios;
 //Dimensiones de Usuarios
 #define TAM_ID_USER 4
@@ -31,12 +32,14 @@ typedef struct{
 #define TAM_USE_USER 5
 #define TAM_LOG_USER 8
 #define TAM_EST_USER 9
+#define TAM_ELIMINADO 2
 
 typedef struct{
     char* Id_mat;
     char* Id_usuario;
     char* Num_plazas;
     char* Desc_veh;
+    char* Eliminado;
 }Vehiculos;
 //Dimensiones vehiculos
 #define TAM_ID_VEI 7
@@ -53,6 +56,7 @@ typedef struct{
     char *Sentido;
     char *Importe;
     char *Estado;
+    char* Eliminado;
 }Viajes;
 //Dimensiones viajes
 #define TAM_ID_VIA 6
@@ -67,6 +71,7 @@ typedef struct{
 typedef struct{
     char *Id_viaje;
     char *Poblacion;
+    char* Eliminado;
 }Pasos;
 //Dimensiones pasos
 #define TAM_POB_PAS 20
@@ -77,6 +82,7 @@ typedef struct{
     char *Id_us_incidencia;
     char *Desc_incidencia;
     char *Est_incidencia;
+    char* Eliminado;
 }Incidencias;
 //Dimensiones incidencias
 #define TAM_DES_INC 100

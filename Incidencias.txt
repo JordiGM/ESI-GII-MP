@@ -1,2 +1,2 @@
-000001-0004-0001-No ha pasado a recogerme-Abierta
-000001-0002-0005-Se niega a pagar el trayecto-Cerrada
+000001-0004-0001-No ha pasado a recogerme-Abierta-No
+000001-0002-0005-Se niega a pagar el trayecto-Cerrada-No

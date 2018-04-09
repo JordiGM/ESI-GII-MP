@@ -99,18 +99,24 @@ int main() {
         }
     } else {
         i--;
-
-        login = leer_campo(TAM_LOG_USER, "Introduce el password"); //Solicitamos la contraseña del usuario
-
-        if (!strcmp(login, L_Usuarios[i].Login)) {
-            passOK = 1;
-            id = L_Usuarios[i].Id_usuario;
-            if (passOK == 1 && exisUser == 1) {
-                menu_principal(!strcmp(perfil, (char *) "administrador"), id, L_Usuarios, &numeroUsuarios);
-            }
-        } else {
-            printf("\nError contraseña erronea\n");
+        
+        if(!strcmp(L_Usuarios[i].Eliminado,(char *) "Si")){ //Nos aseguramos que el nombre de usuario que se quiere utilizar no ha sido de un usuario eliminado
+            printf("\nNombre de usuario no permitido.\n");
             printf("Saliendo del sistema\n");
+        }
+        else{
+            login = leer_campo(TAM_LOG_USER, "Introduce el password"); //Solicitamos la contraseña del usuario
+
+            if (!strcmp(login, L_Usuarios[i].Login)) {
+                passOK = 1;
+                id = L_Usuarios[i].Id_usuario;
+                if (passOK == 1 && exisUser == 1) {
+                    menu_principal(!strcmp(perfil, (char *) "administrador"), id, L_Usuarios, &numeroUsuarios);
+                }
+            } else {
+                printf("\nError contraseña erronea\n");
+                printf("Saliendo del sistema\n");
+            }
         }
     }
 
@@ -194,7 +200,7 @@ void menu_principal(int opc, char *id, Usuarios *ListaUsuarios, int *NumUser) {
                     menu_principal(opc, id, ListaUsuarios, NumUser);
                     break;
                 case 3:
-                    //menu_viaje( );
+                    //menu_viaje(L_Viajes, L_Vehiculos, numViajes, numVehiculos, id );
                     menu_principal(opc, id, ListaUsuarios, NumUser);
                     break;
                 case 4:
