@@ -56,7 +56,9 @@ int buscar_usuario(char *id, Usuarios *lista, int elementos){
 
 //Temporal para la función de Adri Ruben
 #include "ficheros.h" //Adri y Ruben
+#define __USE_XOPEN //Ruben
 #include <time.h> //Ruben
+
 
 void autoFinalizarViaje(Viajes *lista, int elementos){
     int indice;
@@ -67,7 +69,9 @@ void autoFinalizarViaje(Viajes *lista, int elementos){
     actual = localtime(&tiempo);
     
     for(indice = 0; indice < elementos; indice++){
-        if(lista[indice].Estado){
+        if(!strcmp(lista[indice].Estado,(char *)"Iniciado") || 
+           !strcmp(lista[indice].Estado,(char *)"Cerrado") ||
+           !strcmp(lista[indice].Estado,(char *)"Abierto")){
             strptime(lista[indice].F_inic, "%d/%m/%Y", &fecha);
             strptime(lista[indice].H_fin, "%H:%M", &hora);
 

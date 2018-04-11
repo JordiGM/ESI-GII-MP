@@ -20,9 +20,9 @@
 #include <stdlib.h>
 #include <locale.h>
 
-//############################################
+//####################################
 //##### Funciones de lectura de ficheros #####
-//############################################
+//####################################
 
 // Cabecera: Usuarios* obtenerUsuarios(int*)
 // Precondicion: el int que recibe debe estar declarado ya que almacenará el 
@@ -260,9 +260,9 @@ Incidencias* obtenerIncidencias(int *n) {
 }
 
 
-//##############################################
+//######################################
 //##### Funciones de escritura de ficheros #####
-//##############################################
+//######################################
 
 // Cabecera: void guardarDatosUsuario(Usuarios*,int)
 // Precondicion: Recibe un vector con los usuarios que deseamos guardar y un int 

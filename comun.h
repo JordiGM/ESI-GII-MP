@@ -15,6 +15,9 @@
 //Temporal para la funcion de Adri
 char *altaUsuarioInicio(Usuarios *, int *, char *);
 
+//Temporal para la funcion de Ruben
+void autoFinalizarViaje(Viajes *, int);
+
 //Prototipos
 char *leer_campo( int, char * );
 int leer_numero( char * );
