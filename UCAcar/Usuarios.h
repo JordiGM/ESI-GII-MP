@@ -14,15 +14,17 @@
 #ifndef USUARIOS_H
 #define USUARIOS_H
 typedef struct{
-    int Id_usuario[4];
-    char Nomb_usuario[21];
-    char Localidad[21];
-    int Perfil_usuario;
-    char User[6];
-    char Login[9];
-    int Estado;
+    char* Id_usuario;
+    char* Nomb_usuario;
+    char* Localidad;
+    char*Perfil_usuario;
+    char* User;
+    char* Login;//contra
+    char* Estado;
     
-}usuarios;
+}Usuarios;
+
+void mostrar_datos(char*);
 
 #endif /* USUARIOS_H */
 
