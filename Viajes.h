@@ -17,6 +17,7 @@ void publicar_viaje(Viaje *lista);
 void eliminar_viaje(Viaje *lista);
 void modificar_viaje(Viaje *lista);
 void listar_viaje(Viaje *lista);
+void autoFinalizarViaje(Viaje *lista, int elementos);
 void menu_viaje(Viaje *lista, Vehiculos *lista, int *n, int *m, char *c);
 
 #endif //VIAJE_H_INCLUDED 
