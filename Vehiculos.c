@@ -15,11 +15,14 @@
 #include"comun.h"
 //prototipos
 //void listar_vehiculos();
-void listar_vehiculos(Vehiculos* );
+void listar_vehiculo(Vehiculos* );
 void menu_vehiculo();
+void alta_vehiculo();
+void baja_vehiculo();
+void modificar_vehiculo();
 
 
-void listar_vehiculos(Vehiculo* vh){
+void listar_vehiculo(Vehiculos* vh){
     int i,N=10;
      
     for(i=0; i<N; i++) {
@@ -29,7 +32,7 @@ void listar_vehiculos(Vehiculo* vh){
 
 
 
-void *alta_vehiculo(Vehiculo *vh,int *elementos,char *usuario){
+void *alta_vehiculo(Vehiculos *vh,int *elementos,char *usuario){
     char *id_mat,*id_usu, *descripcion, *num_plazas;
     
     //Obtenemos espacio en memoria suficiente para la dimension maxima de cada cadena
@@ -45,10 +48,9 @@ void *alta_vehiculo(Vehiculo *vh,int *elementos,char *usuario){
     
         
     //Obtenemos memoria para un nuevo elemento
-    vh = (Vehiculo *) realloc( vh, (*elementos+1) * sizeof(Vehiculo) );
+    vh = (Vehiculos *) realloc( vh, (*elementos+1) * sizeof(Vehiculos) );
     
-    //Guardamos la información recogida y generada en el nuevo elemento    
-    sprintf(id, "%04d", *elementos+1);                                          //Transofrmamos el ultimo id + 1 en una cadena tipo 0001 
+    //Guardamos la información recogida y generada en el nuevo elemento     
     vh[*elementos].Id_mat = id_mat;
     vh[*elementos].Id_usuario = usuario;
     vh[*elementos].Desc_veh = descripcion;
@@ -61,10 +63,10 @@ void *alta_vehiculo(Vehiculo *vh,int *elementos,char *usuario){
 
 
 
-void baja_vehiculo(Vehiculo* vh){
+void baja_vehiculo(Vehiculos* vh){
     char matricula[7];
     
-    matricula=*leer_campo(7,"inserte matricula del vehiculo a eliminar;\n");
+    matricula=*leer_campo(7,"inserte matricula del vehiculo a eliminar:\n");
     
    //necesita encontrar el coche en el vector
    //necesita borrar el campo entero y reajustar el vector
@@ -74,11 +76,9 @@ void baja_vehiculo(Vehiculo* vh){
 
 void menu_vehiculo() {
     int o;
-    Vehiculo *vehiculo;
+    Vehiculos *vehiculo;
     
-   
-    
-    do {
+       do {
         printf("Introduzca la opcion que desea:\n1.- Alta vehiculo.\n2.- Eliminar vehiculo.\n3.- Modificar vehiculo.\n4.- Listar viajes.\n0.- Salir.");
         scanf("%d", &o);
         switch(o) {
@@ -86,16 +86,16 @@ void menu_vehiculo() {
                 exit(0);
                 break;
             case 1:
-                publicar_viaje();
+                alta_vehiculo();
                 break;
             case 2:
-                eliminar_viaje();
+                baja_vehiculo();
                 break;
             case 3:
-                modificar_viaje();
+                modificar_vehiculo();
                 break;
             case 4:
-                listar_viaje();
+                listar_vehiculo();
                 break;
             default:
                 printf("ERROR: Opcion invalida.");

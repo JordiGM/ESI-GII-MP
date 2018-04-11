@@ -14,16 +14,10 @@
 #ifndef VEHICULO_H
 #define VEHICULO_H
 
-typedef struct{
-    char* Id_mat;
-    char* Id_usuario;
-    char* Num_plazas;
-    char* Desc_veh;
-
-} Vehiculo;
-
-
 void listar_vehiculos(Vehiculos*);
-
+void menu_vehiculo();
+void alta_vehiculo();
+void baja_vehiculo();
+void modificar_vehiculo();
 #endif
 
