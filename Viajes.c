@@ -1,54 +1,51 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 #include "Viajes.h"
 #include "ficheros.h"
+#define __USE_XOPEN
 
 /*Cabecera: void publicar_viaje(Viaje*)
 Precondición: Recibe cadenas de carácteres de un viaje.
 Postcondición: Permite al ususario publicar un nuevo viaje.*/
 
-void publicar_viaje(Viaje *viaje){
-    Viaje v;
-    /*Vehiculo vh;*/
-    char c;
-
-	/*if(vh.Id_mat==true){*/
-            do{
-                printf("Introduzca el id del viaje.");
-                scanf("%s", v.Id_viaje);
+void *publicar_viaje(Viaje *v, int *elementos, char *viaje){
+    char *Id_viaje, *Id_mat, *F_inic, *H_inic, *H_fin, *Plazas_libre, *Sentido, *Importe, *Estado;
         
-                printf("Introduzca la matricula del vehiculo con el que va a realizar el viaje.");
-                scanf("%s", v.Id_mat);
+    /*Obtenemos espacio en memoria suficiente para la dimension maxima de cada cadena*/
+    Id_viaje = (char *) malloc (TAM_ID_VIA +1*sizeof(char));
+    Id_mat = (char *) malloc (TAM_ID_VEI +1*sizeof(char));
+    F_inic = (char *) malloc (TAM_FIN_VIA +1*sizeof(char));
+    H_inic = (char *) malloc (TAM_HIN_VIA +1*sizeof(char));
+    H_fin = (char *) malloc (TAM_HFI_VIA +1*sizeof(char));
+    Plazas_libre = (char *) malloc (TAM_PLA_VEI +1*sizeof(char));
+    Sentido = (char *) malloc (TAM_SEN_VIA +1*sizeof(char));
+    Importe = (char *) malloc (TAM_IMP_VIA +1*sizeof(char));
+    Estado = (char *) malloc (TAM_EST_VIA +1*sizeof(char));
         
-                printf("Introduzca la fecha en la que se va a realizar el viaje. (dd/mm/aaaa)");
-                scanf("%s", v.F_inic);
+    /*Mostramos informacion que se le solicita al usuario y la recogemos*/
+    Id_mat = leer_campo(TAM_ID_VEI, "Inserte la matricula del vehiculo: \n");
+    F_inic = leer_campo(TAM_FIN_VIA, "Inserte la fecha en la que se producira el viaje: \n");
+    H_inic = leer_campo(TAM_HIN_VIA, "Inserte la hora a la que se iniciara el viaje: \n");
+    H_fin = leer_campo(TAM_HFI_VIA, "Inserte la hora a la que finalizará el viaje: \n");
+    Sentido = leer_campo(TAM_SEN_VIA, "Inserte el sentido en el que ira el viaje (ida o vuelta): \n");
+    Importe = leer_campo(TAM_IMP_VIA, "Inserte el importe del viaje: \n");
+    Estado = leer_campo(TAM_EST_VIA, "Inserte el estado del viaje (abierto, cerrado, iniciado, finalizado o anulado): \n");
         
-                printf("Introduzca la hora de inicio del viaje. (XX:YY)");
-                scanf("%s", v.H_inic);
+    /*Obtenemos memoria para un nuevo elemento*/
+    v = (Viaje *) realloc(c, (*elementos+1) * sizeof(Viaje));
         
-                printf("Introduzca la hora de finalización del viaje. (XX:YY)");
-                scanf("%s", v.H_fin);
-        
-                printf("Introduzca el numero de plazas libres que hay en el viaje.");
-                scanf("%s", v.Plazas_libre);
-        
-                printf("Introduzca el sentido del viaje. (Ida o vuelta)");
-                scanf("%s", v.Sentido);
-        
-                printf("Introduzca el importe del viaje. (Ej.: 123,25€)");
-                scanf("%s", v.Importe);
-        
-                printf("Introduzca el estado del viaje. (Abierto, cerrado,iniciado, finalizado o anulado)");
-                scanf("%s", v.Estado);
-
-                printf("%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n", v.Id_viaje, v.Id_mat, v.F_inic, v.H_inic, v.H_fin, v.Plazas_libre, v.Sentido, v.Importe, v.Estado);
-                printf("¿Son correctos los datos? s/n\n");
-                scanf("%c", &c);
-            } while(c!='s');
-        /*} else {
-            printf("ERROR: No tiene ningún vehiculo dado de alta.");
-        }*/
+    /*Guardamos la informacionrecogida y generada en el nuevo elemento*/
+    sprintf(Id_viaje, "%06d", *elementos+1);
+    v[*elementos].Id_mat = Id_mat;
+    v[*elementos].F_inic = F_inic;
+    v[*elementos].H_inic = H_inic;
+    v[*elementos].H_fin = H_fin;
+    v[*elementos].Sentido = Sentido;
+    v[*elementos].Importe = Importe;
+    v[*elementos].Estado = Estado;
+    (*elementos)++;
 }
 
 /*Cabecera: void eliminar_viaje(Viaje*)
