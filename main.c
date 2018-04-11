@@ -14,6 +14,7 @@
 #include "comun.h"
 
 //#include "Viajes.h"
+//#include "Usuarios.h"
 
 //Prototipos
 void menu_principal(int opc, char *id, Usuarios *ListaUsuarios, int *NumUser);
@@ -142,6 +143,10 @@ void menu_principal(int opc, char *id, Usuarios *ListaUsuarios, int *NumUser) {
     L_Pasos = obtenerPasos(&numPasos);
     L_Incidencias = obtenerIncidencias(&numIncidencias);
     printf("\nInformación cargada.\n");
+    
+    printf("\nActualizando información\n");
+    autoFinalizarViaje(L_Viajes, numViajes);
+    printf("\nInformación actualizada\n");
     
     if (opc == 1) {
         do {

@@ -67,16 +67,18 @@ void autoFinalizarViaje(Viajes *lista, int elementos){
     actual = localtime(&tiempo);
     
     for(indice = 0; indice < elementos; indice++){
-        strptime(lista[indice].F_inic, "%d/%m/%Y", &fecha);
-        strptime(lista[indice].H_fin, "%H:%M", &hora);
-        
-        if(fecha.tm_year+1900 - actual->tm_year > 0 || 
-           fecha.tm_mday - actual->tm_mday > 0 ||
-           fecha.tm_mon+1 - actual->tm_mon+1 > 0 ||
-           hora.tm_hour+1 - actual->tm_hour >= 0){
-            printf("\nViaje Finalizado %s\n",lista[indice].Id_viaje);
-            lista[indice].Estado = "Finalizado";
-        }          
+        if(lista[indice].Estado){
+            strptime(lista[indice].F_inic, "%d/%m/%Y", &fecha);
+            strptime(lista[indice].H_fin, "%H:%M", &hora);
+
+            if(fecha.tm_year+1900 - actual->tm_year > 0 || 
+               fecha.tm_mday - actual->tm_mday > 0 ||
+               fecha.tm_mon+1 - actual->tm_mon+1 > 0 ||
+               hora.tm_hour+1 - actual->tm_hour >= 0){
+                printf("\nViaje Finalizado %s\n",lista[indice].Id_viaje);
+                lista[indice].Estado = "Finalizado";
+            }
+        }
     }
 }
 
