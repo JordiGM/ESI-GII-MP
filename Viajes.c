@@ -4,89 +4,96 @@
 #include <time.h>
 #include "Viajes.h"
 #include "ficheros.h"
+#include "comun.h"
 #define __USE_XOPEN
 
-/*Cabecera: void publicar_viaje(Viaje*)
+/*Cabecera: int buscar_viaje(int id)
+Precondicion: id del viaje a buscar la posición en el array, array y numero de elementos
+Poscondicion: Devuelve el número que ha introducido el usuario, si no lo encuentra devuelve -1*/
+
+int buscar_viaje(char *id, Viajes *lista, int elementos) {
+    int posicion = -1, exisVia = 0, i = 0;
+
+    while (i < elementos && exisVia == 0) { //Buscamos el id del viaje si existe
+        if (!strncmp(id, lista[i].Id_viaje, TAM_ID_VIA)) {
+            exisVia = 1; //Si hay una concidencia guardamos y salimos
+            posicion = i;
+        }
+        i++;
+    }
+
+    return posicion;
+}
+
+/*Cabecera: void publicar_viaje(Viajes*)
 Precondición: Recibe cadenas de carácteres de un viaje.
 Postcondición: Permite al ususario publicar un nuevo viaje.*/
 
-void *publicar_viaje(Viaje *v, int *elementos, char *viaje){
+void *publicar_viaje(Viajes *v, int *elementos, char *viaje){
     char *Id_viaje, *Id_mat, *F_inic, *H_inic, *H_fin, *Plazas_libre, *Sentido, *Importe, *Estado;
-        
-    /*Obtenemos espacio en memoria suficiente para la dimension maxima de cada cadena*/
-    Id_viaje = (char *) malloc (TAM_ID_VIA +1*sizeof(char));
-    Id_mat = (char *) malloc (TAM_ID_VEI +1*sizeof(char));
-    F_inic = (char *) malloc (TAM_FIN_VIA +1*sizeof(char));
-    H_inic = (char *) malloc (TAM_HIN_VIA +1*sizeof(char));
-    H_fin = (char *) malloc (TAM_HFI_VIA +1*sizeof(char));
-    Plazas_libre = (char *) malloc (TAM_PLA_VEI +1*sizeof(char));
-    Sentido = (char *) malloc (TAM_SEN_VIA +1*sizeof(char));
-    Importe = (char *) malloc (TAM_IMP_VIA +1*sizeof(char));
-    Estado = (char *) malloc (TAM_EST_VIA +1*sizeof(char));
-        
-    /*Mostramos informacion que se le solicita al usuario y la recogemos*/
-    Id_mat = leer_campo(TAM_ID_VEI, "Inserte la matricula del vehiculo: \n");
-    F_inic = leer_campo(TAM_FIN_VIA, "Inserte la fecha en la que se producira el viaje: \n");
-    H_inic = leer_campo(TAM_HIN_VIA, "Inserte la hora a la que se iniciara el viaje: \n");
-    H_fin = leer_campo(TAM_HFI_VIA, "Inserte la hora a la que finalizará el viaje: \n");
-    Sentido = leer_campo(TAM_SEN_VIA, "Inserte el sentido en el que ira el viaje (ida o vuelta): \n");
-    Importe = leer_campo(TAM_IMP_VIA, "Inserte el importe del viaje: \n");
-    Estado = leer_campo(TAM_EST_VIA, "Inserte el estado del viaje (abierto, cerrado, iniciado, finalizado o anulado): \n");
-        
-    /*Obtenemos memoria para un nuevo elemento*/
-    v = (Viaje *) realloc(v, (*elementos+1) * sizeof(Viaje));
-        
-    /*Guardamos la informacionrecogida y generada en el nuevo elemento*/
-    sprintf(Id_viaje, "%06d", *elementos+1);
-    v[*elementos].Id_mat = Id_mat;
-    v[*elementos].F_inic = F_inic;
-    v[*elementos].H_inic = H_inic;
-    v[*elementos].H_fin = H_fin;
-    v[*elementos].Sentido = Sentido;
-    v[*elementos].Importe = Importe;
-    v[*elementos].Estado = Estado;
-    (*elementos)++;
+    int i, n;
+    
+    for(i=0;i<n;i++){
+        /*Obtenemos espacio en memoria suficiente para la dimension maxima de cada cadena*/
+        Id_viaje = (char *) malloc (TAM_ID_VIA +1*sizeof(char));
+        Id_mat = (char *) malloc (TAM_ID_VEI +1*sizeof(char));
+        F_inic = (char *) malloc (TAM_FIN_VIA +1*sizeof(char));
+        H_inic = (char *) malloc (TAM_HIN_VIA +1*sizeof(char));
+        H_fin = (char *) malloc (TAM_HFI_VIA +1*sizeof(char));
+        Plazas_libre = (char *) malloc (TAM_PLA_VEI +1*sizeof(char));
+        Sentido = (char *) malloc (TAM_SEN_VIA +1*sizeof(char));
+        Importe = (char *) malloc (TAM_IMP_VIA +1*sizeof(char));
+        Estado = (char *) malloc (TAM_EST_VIA +1*sizeof(char));
+
+        /*Mostramos informacion que se le solicita al usuario y la recogemos*/
+        Id_mat = leer_campo(TAM_ID_VEI, "Inserte la matricula del vehiculo: \n");
+        F_inic = leer_campo(TAM_FIN_VIA, "Inserte la fecha en la que se producira el viaje: \n");
+        H_inic = leer_campo(TAM_HIN_VIA, "Inserte la hora a la que se iniciara el viaje: \n");
+        H_fin = leer_campo(TAM_HFI_VIA, "Inserte la hora a la que finalizará el viaje: \n");
+        Sentido = leer_campo(TAM_SEN_VIA, "Inserte el sentido en el que ira el viaje (ida o vuelta): \n");
+        Importe = leer_campo(TAM_IMP_VIA, "Inserte el importe del viaje: \n");
+        Estado = leer_campo(TAM_EST_VIA, "Inserte el estado del viaje (abierto, cerrado, iniciado, finalizado o anulado): \n");
+
+        /*Obtenemos memoria para un nuevo elemento*/
+        v = (Viajes *) realloc(v, (*elementos+1) * sizeof(Viajes));
+
+        /*Guardamos la informacionrecogida y generada en el nuevo elemento*/
+        sprintf(Id_viaje, "%06d", *elementos+1);
+        v[*elementos].Id_mat = Id_mat;
+        v[*elementos].F_inic = F_inic;
+        v[*elementos].H_inic = H_inic;
+        v[*elementos].H_fin = H_fin;
+        v[*elementos].Sentido = Sentido;
+        v[*elementos].Importe = Importe;
+        v[*elementos].Estado = Estado;
+        (*elementos)++;
+    }
 }
 
-/*Cabecera: void eliminar_viaje(Viaje*)
-Precondición: Recibe un puntero a viaje y un entero n.
-Postcondición: Permite al usuario eliminar un viaje previamente creado por él mismo.*/
+/*Cabecera: void eliminar_viaje(Viajess* lista, int* elemento)
+ Precondicion: lista de viajes y numero de elementos 
+ Poscondicion: modifica a borrado un viaje*/
 
-void eliminar_viaje(Viaje *viaje, int n){
-    int N=10, a, i, j;
-    Viaje x, y, z[N];
-    char c;
+void eliminar_viaje(Viajes *lista, int *elementos) {
+    char *id;
+    int pos;
+
+    printf("\n\nBorrado de un viaje:\n\n");
     
-    do {
-    listar_viaje(&viaje);
-    printf("Introduzca el id del viaje que desea eliminar.");
-    scanf("%s", y.Id_viaje);
+    /*Solicitamos el id del viaje*/
+    id = leer_campo(TAM_ID_VIA, "Introduce el id del viaje"); 
     
-        for(i=0; i<N; i++) {
-            if(x.Id_viaje==y.Id_viaje) {
-                for(j=i; j<N; j++) {
-                    z[j]=z[j+1];
-                    a=1;
-                }
-            } else {
-                printf("Error al introducir el id del viaje.\n");
-                a=0;
-                printf("¿Desea salir? s/n\n");
-                scanf("%c", &c);
-                if(c=='s'){
-                    a=1;
-                }
-            }
-        }
-    } while(a!=1);
+    pos = buscar_viaje(id, lista, elementos);
+    
+    lista[pos].Eliminado = "Si";
 }
 
-/*Cabecera: void modificar_viaje(Viaje*)
+/*Cabecera: void modificar_viaje(Viajes*)
 Precondición: recibe un puntero a viaje.
 Postcondición: Permite al usuario modificar un viaje previamente creado por el mismo.*/
 
-void modificar_viaje(Viaje *viaje){
-    Viaje v;
+void modificar_viaje(Viajes *viaje){
+    Viajes v;
     int o;
         
     do {
@@ -134,20 +141,24 @@ void modificar_viaje(Viaje *viaje){
     }
 }
 
-/*Cabecera: void listar_viaje(Viaje*)
+/*Cabecera: void listar_viaje(Viajes*)
 Precondición: Recibe un puntero a viaje.
 Postcondición: Permite al usuario visualizar una lista de todos los viajes que se encuentran en el sistema.*/
 
-void listar_viaje(Viaje* viaje){
-    int i, N=10;
-    Viaje v;
+void listar_viaje(Viajes* viaje, int *elementos){
+    int i;
+    Viajes v;
     
-    for(i=0; i<N; i++) {
-        printf("%i: %s-%s-%s-%s-%s-%s-%s-%s-%s", i+1, v.Id_viaje, v.Id_mat, v.F_inic, v.H_inic, v.H_fin, v.Plazas_libre, v.Sentido, v.Importe, v.Estado);
+    printf("Id del viaje - Matricula del vehiculo - Fecha de inicio - Hora de inicio - Hora de finalizacion - Numero de plazas libres - Sentido del viaje - Importe - Estado del viaje");
+    for(i=0; i<elementos; i++) {
+        if(strcmp(v[i].Eliminado, (char *) "No"){
+            printf("%d: %s - %s - %s - %s - %s - %s - %s - %s - %s", i+1, v.Id_viaje, v.Id_mat, v.F_inic, v.H_inic, v.H_fin, v.Plazas_libre, v.Sentido, v.Importe, v.Estado);
+    
+        }
     }
 }
 
-void autoFinalizarViaje(Viajes *lista, int elementos){
+void autoFinalizarViajes(Viajes *lista, int elementos){
     int indice;
     struct tm fecha, hora, *actual;
     time_t tiempo;
@@ -161,7 +172,7 @@ void autoFinalizarViaje(Viajes *lista, int elementos){
             strptime(lista[indice].H_fin, "%H:%M", &hora);
 
             if(fecha.tm_year+1900 - actual->tm_year > 0 || fecha.tm_mday - actual->tm_mday > 0 || fecha.tm_mon+1 - actual->tm_mon+1 > 0 || hora.tm_hour+1 - actual->tm_hour >= 0){
-               printf("\nViaje Finalizado %s\n",lista[indice].Id_viaje);
+               printf("\nViajes Finalizado %s\n",lista[indice].Id_viaje);
                lista[indice].Estado = "Finalizado";
             }
         }
@@ -170,7 +181,7 @@ void autoFinalizarViaje(Viajes *lista, int elementos){
 
 void menu_viaje() {
     int o, n;
-    Viaje*viaje;
+    Viajes*viaje;
     
     do {
         printf("Introduzca la opcion que desea:\n1.- Publicar viaje.\n2.- Eliminar viaje.\n3.- Modificar viaje.\n4.- Listar viajes.\n0.- Salir.");
