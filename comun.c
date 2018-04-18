@@ -51,6 +51,8 @@ void autoFinalizarViaje(Viajes *, int);
 
 void menu_principal(int opc, char *id, Usuarios *ListaUsuarios, int *NumUser) {
     int x, numVehiculos = 0, numViajes = 0, numPasos = 0, numIncidencias = 0, pos;
+    int u;
+    char *id_new;
     Vehiculos* L_Vehiculos;
     Viajes* L_Viajes;
     Pasos* L_Pasos;
@@ -81,7 +83,36 @@ void menu_principal(int opc, char *id, Usuarios *ListaUsuarios, int *NumUser) {
                 case 0:
                     break;
                 case 1:
-                    menu_usuario(opc, id, ListaUsuarios, NumUser);
+                    do {
+                        printf("Bienvenido al menu de administración\n"
+                                "Introduzca la opcion que desea\n\n "
+                                "1: Alta usuario\n "
+                                "2: Baja usuario\n "
+                                "3: Modificar usuario\n "
+                                "4: Mostrar usuarios\n "
+                                "0: salir\n");
+                        u = leer_numero("Indica la opción");
+                        switch (u) {
+                            case 0:
+                                break;
+                            case 1:
+                                id = altaUsuario(ListaUsuarios, NumUser);
+                                printf("\n\tDado de alta usuario nuevo con el id : %s\n", id_new);
+                                break;
+                            case 2:
+                                bajaUsuario(ListaUsuarios, NumUser);
+                                break;
+                            case 3:
+
+                                break;
+                            case 4:
+                                listarUsuario(ListaUsuarios, NumUser);
+                                break;
+                            default:
+                                printf("Error al elegir la opcion.\t");
+                                break;
+                        }
+                    } while (u != 0);
                     break;
                 case 2:
 
@@ -112,7 +143,27 @@ void menu_principal(int opc, char *id, Usuarios *ListaUsuarios, int *NumUser) {
                 case 0:
                     break;
                 case 1:
+                    do {
+                        printf("Bienvenido al menú del usuario, administra tu cuenta %s\n "
+                                "Introduzca la opcion que desea\n\n "
+                                "1: Mostrar datos\n "
+                                "2: Modificar datos\n "
+                                "0: salir\n", ListaUsuarios[pos].Nomb_usuario);
+                        x = leer_numero("Indica la opción");
+                        switch (x) {
+                            case 0:
+                                break;
+                            case 1:
 
+                                break;
+                            case 2:
+
+                                break;
+                            default:
+                                printf("Error al elegir la opcion.\t");
+                                break;
+                        }
+                    } while (x != 0);
                     break;
                 case 2:
 

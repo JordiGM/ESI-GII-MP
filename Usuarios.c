@@ -71,20 +71,36 @@ char *altaUsuario(Usuarios *lista, int *elementos) {
 // Cabecera: void bajaUsuario(Usuarios* lista, int* elemento)
 // Precondicion: lista de usuarios y numero de elementos 
 // Poscondicion: modifica a borrado un usuario
-void *bajaUsuario(Usuarios *lista, int *elementos) {
+void bajaUsuario(Usuarios *lista, int *elementos) {
     char *id;
     int pos;
 
     printf("\n\nBorrado de un usuario:\n\n");
     
-    id = leer_campo(TAM_USE_USER, "Introduce id de usuario"); //Solicitamos el nombre del usuario
+    id = leer_campo(TAM_ID_USER, "Introduce id de usuario"); //Solicitamos el nombre del usuario
     
-    pos = buscar_usuario(id, lista, elementos);
+    pos = buscar_usuario(id, lista, *elementos);
     
     lista[pos].Eliminado = "Si";
 }
 
+// Cabecera: void listarUsuario(Usuarios* lista, int* elemento)
+// Precondicion: lista de usuarios y numero de elementos 
+// Poscondicion: muestra los usuarios disponibles
+void listarUsuario(Usuarios *lista, int *elementos) {
+    int indice;
+    Usuarios e;
 
+    printf("\nID - Nombre - Localidad - Perfil - Usuario - Login - Estado - Eliminado");
+    
+    for (indice = 0; indice < *elementos; indice++) { //Vamos accediento a cada elemento
+        e = lista[indice];
+        
+        printf("\n%s-%s-%s-%s-%s-%s-%s-%s", 
+               e.Id_usuario, e.Nomb_usuario, e.Localidad, e.Perfil_usuario, 
+               e.User, e.Login, e.Estado, e.Eliminado);
+    }
+}
 
 // Cabecera: void login(Usuarios *lista, int *numeroElementos)
 // Precondicion: lista de usuarios y el numero de elementos 
@@ -138,12 +154,13 @@ void login(Usuarios *L_Usuarios, int *numeroUsuarios) {
     }
 }
 
+/**
 // Cabecera: void menu_usuario(Usuarios *lista, int *numeroElementos)
 // Precondicion: lista de usuarios y el numero de elementos 
 // Poscondicion: accede al menu principal según el usuario, en caso contrario o finalizar la funcion sale sin devolver nada
 void menu_usuario(int opc, char *id, Usuarios *ListaUsuarios, int *NumUser) {
     int x = -1, pos = -1;
-    char *id;
+    char *id_new;
     
     if (opc == 1) {
         do {
@@ -160,7 +177,7 @@ void menu_usuario(int opc, char *id, Usuarios *ListaUsuarios, int *NumUser) {
                     break;
                 case 1:
                     id = altaUsuario(ListaUsuarios,NumUser);
-                    printf("\n\tDado de alta usuario nuevo con el id : %s\n", id);
+                    printf("\n\tDado de alta usuario nuevo con el id : %s\n", id_new);
                     break;
                 case 2:
                     bajaUsuario(ListaUsuarios,NumUser);
@@ -169,7 +186,7 @@ void menu_usuario(int opc, char *id, Usuarios *ListaUsuarios, int *NumUser) {
                     
                     break;
                 case 4:
-                    
+                    listarUsuario(ListaUsuarios,NumUser);
                     break;
                 default:
                     printf("Error al elegir la opcion.\t");
@@ -201,3 +218,4 @@ void menu_usuario(int opc, char *id, Usuarios *ListaUsuarios, int *NumUser) {
         } while (x != 0);
     }
 }
+ **/
