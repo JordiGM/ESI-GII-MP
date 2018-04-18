@@ -55,6 +55,37 @@ char *altaUsuarioInicio(Usuarios *lista, int *elementos, char *usuario) {
     return id;
 }
 
+// Cabecera: char* altaUsuario(Usuarios* lista, int* elemento)
+// Precondicion: lista de usuarios y numero de elementos 
+// Poscondicion: retorna el id del usuario tras registrarlo
+char *altaUsuario(Usuarios *lista, int *elementos) {
+    char *usuario;
+
+    printf("\n\nRegistro de un nuevo usuario:\n\n");
+    
+    usuario = leer_campo(TAM_USE_USER, "Introduce nombre de usuario"); //Solicitamos el nombre del usuario
+    
+    return altaUsuarioInicio(lista, elementos, usuario);
+}
+
+// Cabecera: void bajaUsuario(Usuarios* lista, int* elemento)
+// Precondicion: lista de usuarios y numero de elementos 
+// Poscondicion: modifica a borrado un usuario
+void *bajaUsuario(Usuarios *lista, int *elementos) {
+    char *id;
+    int pos;
+
+    printf("\n\nBorrado de un usuario:\n\n");
+    
+    id = leer_campo(TAM_USE_USER, "Introduce id de usuario"); //Solicitamos el nombre del usuario
+    
+    pos = buscar_usuario(id, lista, elementos);
+    
+    lista[pos].Eliminado = "Si";
+}
+
+
+
 // Cabecera: void login(Usuarios *lista, int *numeroElementos)
 // Precondicion: lista de usuarios y el numero de elementos 
 // Poscondicion: accede al menu principal según el usuario, en caso contrario o finalizar la funcion sale sin devolver nada
@@ -78,7 +109,6 @@ void login(Usuarios *L_Usuarios, int *numeroUsuarios) {
 
     if (exisUser == 0) { //Si el usuario no existe creamos una cuenta nueva
         printf("\nUsuario indicado no existe, accediendo para crear una cuenta\n");
-        perfil = "usuario";
         id = altaUsuarioInicio(L_Usuarios, numeroUsuarios, user); //Función que crea el usuario con el nombre de usuario indicado que no existe que retorna el ID
         if (id != 0) {
             menu_principal(0, id, L_Usuarios, numeroUsuarios); //Se fija valor 0 ya que un usuario creado asi nunca será un administrador
@@ -113,6 +143,7 @@ void login(Usuarios *L_Usuarios, int *numeroUsuarios) {
 // Poscondicion: accede al menu principal según el usuario, en caso contrario o finalizar la funcion sale sin devolver nada
 void menu_usuario(int opc, char *id, Usuarios *ListaUsuarios, int *NumUser) {
     int x = -1, pos = -1;
+    char *id;
     
     if (opc == 1) {
         do {
@@ -128,20 +159,17 @@ void menu_usuario(int opc, char *id, Usuarios *ListaUsuarios, int *NumUser) {
                 case 0:
                     break;
                 case 1:
-                    menu_usuario(opc, id, ListaUsuarios, NumUser)
-                    menu_principal(opc, id, ListaUsuarios, NumUser);
+                    id = altaUsuario(ListaUsuarios,NumUser);
+                    printf("\n\tDado de alta usuario nuevo con el id : %s\n", id);
                     break;
                 case 2:
-
-                    menu_principal(opc, id, ListaUsuarios, NumUser);
+                    bajaUsuario(ListaUsuarios,NumUser);
                     break;
                 case 3:
-
-                    menu_principal(opc, id, ListaUsuarios, NumUser);
+                    
                     break;
                 case 4:
-
-                    menu_principal(opc, id, ListaUsuarios, NumUser);
+                    
                     break;
                 default:
                     printf("Error al elegir la opcion.\t");
@@ -162,11 +190,9 @@ void menu_usuario(int opc, char *id, Usuarios *ListaUsuarios, int *NumUser) {
                     break;
                 case 1:
 
-                    menu_principal(opc, id, ListaUsuarios, NumUser);
                     break;
                 case 2:
 
-                    menu_principal(opc, id, ListaUsuarios, NumUser);
                     break;
                 default:
                     printf("Error al elegir la opcion.\t");
