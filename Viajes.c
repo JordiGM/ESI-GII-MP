@@ -82,7 +82,7 @@ void eliminar_viaje(Viaje *viaje, int n){
 }
 
 /*Cabecera: void modificar_viaje(Viaje*)
-Precondición: 
+Precondición: recibe un puntero a viaje.
 Postcondición: Permite al usuario modificar un viaje previamente creado por el mismo.*/
 
 void modificar_viaje(Viaje *viaje){
@@ -135,7 +135,7 @@ void modificar_viaje(Viaje *viaje){
 }
 
 /*Cabecera: void listar_viaje(Viaje*)
-Precondición: 
+Precondición: Recibe un puntero a viaje.
 Postcondición: Permite al usuario visualizar una lista de todos los viajes que se encuentran en el sistema.*/
 
 void listar_viaje(Viaje* viaje){
