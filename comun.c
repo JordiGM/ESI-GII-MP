@@ -81,20 +81,16 @@ void menu_principal(int opc, char *id, Usuarios *ListaUsuarios, int *NumUser) {
                 case 0:
                     break;
                 case 1:
-                    menu_usuario(opc, id, ListaUsuarios, NumUser)
-                    menu_principal(opc, id, ListaUsuarios, NumUser);
+                    menu_usuario(opc, id, ListaUsuarios, NumUser);
                     break;
                 case 2:
 
-                    menu_principal(opc, id, ListaUsuarios, NumUser);
                     break;
                 case 3:
 
-                    menu_principal(opc, id, ListaUsuarios, NumUser);
                     break;
                 case 4:
 
-                    menu_principal(opc, id, ListaUsuarios, NumUser);
                     break;
                 default:
                     printf("Error al elegir la opcion.\t");
@@ -117,19 +113,15 @@ void menu_principal(int opc, char *id, Usuarios *ListaUsuarios, int *NumUser) {
                     break;
                 case 1:
 
-                    menu_principal(opc, id, ListaUsuarios, NumUser);
                     break;
                 case 2:
 
-                    menu_principal(opc, id, ListaUsuarios, NumUser);
                     break;
                 case 3:
                     //menu_viaje(L_Viajes, L_Vehiculos, numViajes, numVehiculos, id );
-                    menu_principal(opc, id, ListaUsuarios, NumUser);
                     break;
                 case 4:
 
-                    menu_principal(opc, id, ListaUsuarios, NumUser);
                     break;
                 default:
                     printf("Error al elegir la opcion.\t");
