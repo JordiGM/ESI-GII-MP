@@ -11,6 +11,7 @@
 #include <stdlib.h>
 #include "ficheros.h"
 #include "comun.h"
+#include "Usuarios.h"
 
 int main() {
 
