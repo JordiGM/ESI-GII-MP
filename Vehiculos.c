@@ -94,6 +94,7 @@ void modificar_vehiculo(Vehiculos *vh){
 
 
 void baja_vehiculo(Vehiculos* vh){
+    printf("vamos a ver si esta cosa comita bien o no");
       
 }
 
