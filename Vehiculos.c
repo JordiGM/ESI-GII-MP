@@ -15,12 +15,12 @@
 #include"comun.h"
 
 //prototipos
-void listar_vehiculo(Vehiculos* );
+void listar_vehiculo(Vehiculos* , int );
 void menu_vehiculo();
-void alta_vehiculo();
+void alta_vehiculo(Vehiculos*, int, char);
 void baja_vehiculo();
-void modificar_vehiculo();
-int buscar_veh(Vehiculos *h);
+void modificar_vehiculo(Vehiculos*);
+int buscar_vehiculo(char *id, Vehiculos *lista, int elementos);
 
 void listar_vehiculo(Vehiculos* vh, int elementos){
     int i;
@@ -93,43 +93,40 @@ void modificar_vehiculo(Vehiculos *vh){
 
 
 
-void baja_vehiculo(Vehiculos* vh){
-    printf("vamos a ver si esta cosa comita bien o no");
-      
+// Cabecera: void bajaUsuario(Usuarios* lista, int* elemento)
+// Precondicion: lista de usuarios y numero de elementos 
+// Poscondicion: modifica a borrado un usuario
+void baja_vehiculo(Vehiculos *lista, int *elementos) {
+    char *matricula;
+    int pos;
+
+    printf("\n\nBorrado de un vehiculo:\n\n");
+    
+    matricula = leer_campo(TAM_ID_VEI, "Introduce matricula"); //Solicitamos la matricula
+    
+    pos = buscar_vehiculo(matricula, lista, *elementos);
+    
+    lista[pos].Eliminado = "Si";
+    printf("El vehiculo ha sido eliminado con exito");
 }
 
-void menu_vehiculo() {
-    int o;
-    Vehiculos *vehiculo, elemento;
-    
-       do {
-        printf("Introduzca la opcion que desea:\n1.- Alta vehiculo.\n2.- Eliminar vehiculo.\n3.- Modificar vehiculo.\n4.- Listar viajes.\n0.- Salir.");
-        scanf("%d", &o);
-        switch(o) {
-            case 0:
-                exit(0);
-                break;
-            case 1:
-                alta_vehiculo();
-                break;
-            case 2:
-                baja_vehiculo();
-                break;
-            case 3:
-                elemento = buscar_veh();
-                modificar_vehiculo(elemento);
-                break;
-            case 4:
-                listar_vehiculo();
-                break;
-            default:
-                printf("ERROR: Opcion invalida.");
-                break;
+int buscar_vehiculo(char *id, Vehiculos *lista, int elementos) {
+    int pos = -1, exisUser = 0, i = 0;
+
+    while (i < elementos && exisUser == 0) { //Buscamos el nombre del usuario si existe
+        if (!strncmp(id, lista[i].Id_usuario, TAM_ID_USER)) {
+            printf********************************************************************************************
+            //exisUser = 1; //Si hay una concidencia guardamos y salimos
+            pos = i;
         }
-    } while(o!=0);
-    fflush(stdin);
-    return;
+        i++;
+    }
+
+    return pos;
 }
+
+
+
 
 
 void menu_vehiculo(int opc, char *id, Usuarios *ListaUsuarios, int *NumUser) {
@@ -200,17 +197,3 @@ void menu_vehiculo(int opc, char *id, Usuarios *ListaUsuarios, int *NumUser) {
 }
 
 
-int buscar_veh(char *id, Vehiculos *lista, int elementos) {
-    int pos = -1, exisUser = 0, i = 0;
-
-    while (i < elementos && exisUser == 0) { //Buscamos el nombre del usuario si existe
-        if (!strncmp(id, lista[i].Id_usuario, TAM_ID_USER)) {
-            printf********************************************************************************************
-            //exisUser = 1; //Si hay una concidencia guardamos y salimos
-            pos = i;
-        }
-        i++;
-    }
-
-    return pos;
-}
