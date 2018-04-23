@@ -28,13 +28,12 @@ void listar_vehiculo(Vehiculos* vh, int elementos){
     for(i=0; i<elementos; i++) {
         if(!strcmp(vh[i].Eliminado, (char *) "No")==0){
         //Visualiza cada regisrtro del fichero no eliminado
-        printf("\n : %d - |%*s| - |%-*s| - |%-*s| - |%-*s| >>> OK\n", 
+            printf("Nº ||Id matricula||Usuario||Descripción||Numero plaza")
+            printf("\n : %d - |%*s| - |%-*s| - |%-*s| - |%-*s| >>> OK\n", 
                  i+1, vh.Id_mat ,vh.Id_usuario, vh.Desc_veh, vh.Num_plazas );
     }
     }
 }   
-
-
 
 void *alta_vehiculo(Vehiculos *vh,int *elementos,char *usuario){
     char *id_mat,*id_usu, *descripcion, *num_plazas;
@@ -115,21 +114,32 @@ int buscar_vehiculo(char *id, Vehiculos *lista, int elementos) {
 
     while (i < elementos && exisUser == 0) { //Buscamos el nombre del usuario si existe
         if (!strncmp(id, lista[i].Id_usuario, TAM_ID_USER)) {
-            printf********************************************************************************************
-            //exisUser = 1; //Si hay una concidencia guardamos y salimos
+            exisUser = 1; //Si hay una concidencia guardamos y salimos
             pos = i;
         }
         i++;
     }
-
     return pos;
+}
+
+void vehiculos_user(char *id, Vehiculos *lista, int elementos) {
+    int pos = -1, exisUser = 0, i = 0;
+
+    while (i < elementos) { //Buscamos el nombre del usuario si existe
+        if (!strncmp(id, lista[i].Id_usuario, TAM_ID_USER)) {
+            //exisUser = 1; //Si hay una concidencia guardamos y salimos
+            printf("Nº ||Id matricula||Usuario||Descripción||Numero plaza")
+            printf("\n : %d - |%*s| - |%-*s| - |%-*s| - |%-*s| >>> OK\n", 
+                 i+1, lista.Id_mat ,lista.Id_usuario, lista.Desc_veh, lista.Num_plazas );
+            pos = i;
+        }
+        i++;
+    }
 }
 
 
 
-
-
-void menu_vehiculo(int opc, char *id, Usuarios *ListaUsuarios, int *NumUser) {
+void menu_vehiculo(int opc, char *id, Usuarios *ListaUsuarios, int *NumUser, Vehiculos* vh) {
     int x, numVehiculos = 0, numViajes = 0, numPasos = 0, numIncidencias = 0, pos;
    
     if (opc == 1) {
@@ -146,16 +156,16 @@ void menu_vehiculo(int opc, char *id, Usuarios *ListaUsuarios, int *NumUser) {
                 case 0:
                     break;
                 case 1:                    
-                    alta_vehiculo();
+                    alta_vehiculo(Vehiculos* vh, int*elemento, char* usuario);
                     break;
                 case 2:
-                    baja_vehiculo();
+                    baja_vehiculo(Vehiculos*vh, int*elemento);
                     break;
                 case 3:
-                    listar_vehiculo();
+                    vehiculos_user(char* id, Vehiculos* , int elementos);
                     break;
                 case 4:
-                    modificar_vehiculo();
+                    modificar_vehiculo(Vehiculos* vh);
                     break;
                 default:
                     printf("Error al elegir la opcion.\t");
