@@ -3,8 +3,8 @@
  * alta vehiculo    :)
  * baja vehiculo
  * modificar vehiculo + buscar vehiculo(contemplar la opcion de mas de un vehiculopor usuario)
- *  
  *hacer un menu :)
+ * listar los viajes de un coche
  */
 
 #include<stdio.h>
@@ -13,13 +13,14 @@
 #include"Vehiculo.h"
 #include"ficheros.h"
 #include"comun.h"
+#include"Viajes.h"
 
 //prototipos
 void listar_vehiculo(Vehiculos* , int );
 void menu_vehiculo();
 void alta_vehiculo(Vehiculos*, int, char);
-void baja_vehiculo();
-void modificar_vehiculo(Vehiculos*);
+void baja_vehiculo(Vehiculos* ,int*);
+void modificar_vehiculo(Vehiculos*,int);
 int buscar_vehiculo(char *id, Vehiculos *lista, int elementos);
 
 void listar_vehiculo(Vehiculos* vh, int elementos){
@@ -62,8 +63,7 @@ void *alta_vehiculo(Vehiculos *vh,int *elementos,char *usuario){
 ////////////////////////////////////
 }
 
-void modificar_vehiculo(Vehiculos *vh){
-    Vehiculos v;
+void modificar_vehiculo(Vehiculos *vh, int pos){
     int a;
         
     do {
@@ -73,13 +73,13 @@ void modificar_vehiculo(Vehiculos *vh){
     
     switch(a){
         case 1:
-            v.Id_mat=leer_campo(TAM_ID_VEI, "Numero de la matricula actual");
+            vh[pos].Id_mat=leer_campo(TAM_ID_VEI, "Numero de la matricula actual");
             break;
         case 2:
-            v.Num_plazas= leer_campo(TAM_PLA_VEI, "Numero de plazas");
+            vh[pos].Num_plazas= leer_campo(TAM_PLA_VEI, "Numero de plazas");
             break;
         case 3:
-            v.Desc_veh= leer_campo(TAM_DES_VEI, "Descripcion del vehiculo");
+            vh[pos].Desc_veh= leer_campo(TAM_DES_VEI, "Descripcion del vehiculo");
             break;
         case 0:
              break;
@@ -109,12 +109,17 @@ void baja_vehiculo(Vehiculos *lista, int *elementos) {
     printf("El vehiculo ha sido eliminado con exito");
 }
 
-int buscar_vehiculo(char *id, Vehiculos *lista, int elementos) {
-    int pos = -1, exisUser = 0, i = 0;
 
-    while (i < elementos && exisUser == 0) { //Buscamos el nombre del usuario si existe
-        if (!strncmp(id, lista[i].Id_usuario, TAM_ID_USER)) {
-            exisUser = 1; //Si hay una concidencia guardamos y salimos
+
+
+
+//le damos una matricula y busca el coche
+int buscar_vehiculo(char *matricula, Vehiculos *lista, int elementos) {
+    int pos = -1, exisCoche = 0, i = 0;
+
+    while (i < elementos && exisCoche == 0) { //Buscamos el nombre del usuario si existe
+        if (!strncmp(matricula, lista[i].Id_mat, TAM_ID_VEI)) {
+            exisCoche = 1; //Si hay una concidencia guardamos y salimos
             pos = i;
         }
         i++;
@@ -122,11 +127,14 @@ int buscar_vehiculo(char *id, Vehiculos *lista, int elementos) {
     return pos;
 }
 
-void vehiculos_user(char *id, Vehiculos *lista, int elementos) {
+
+
+//le damos un usuario y busca sus coches asociados
+void vehiculos_user(char *id_usu, Vehiculos *lista, int elementos) {
     int pos = -1, exisUser = 0, i = 0;
 
-    while (i < elementos) { //Buscamos el nombre del usuario si existe
-        if (!strncmp(id, lista[i].Id_usuario, TAM_ID_USER)) {
+    while (i < elementos) { //Buscamos el nombre del vehiculo si existe
+        if (!strncmp(id_usu, lista[i].Id_usuario, TAM_ID_USER)) {
             //exisUser = 1; //Si hay una concidencia guardamos y salimos
             printf("Nº ||Id matricula||Usuario||Descripción||Numero plaza")
             printf("\n : %d - |%*s| - |%-*s| - |%-*s| - |%-*s| >>> OK\n", 
@@ -138,9 +146,25 @@ void vehiculos_user(char *id, Vehiculos *lista, int elementos) {
 }
 
 
+listar_viajes_vehiculo(Viajes ,){
 
-void menu_vehiculo(int opc, char *id, Usuarios *ListaUsuarios, int *NumUser, Vehiculos* vh) {
-    int x, numVehiculos = 0, numViajes = 0, numPasos = 0, numIncidencias = 0, pos;
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
+void menu_vehiculo(int opc, char *id,Viajes *via, Usuarios *ListaUsuarios, int *NumUser, Vehiculos* vh, int elementos) {
+    int x, pos;
+    char matricula;
    
     if (opc == 1) {
         do {
@@ -150,30 +174,36 @@ void menu_vehiculo(int opc, char *id, Usuarios *ListaUsuarios, int *NumUser, Veh
                     "2: Baja vehiculos\n "
                     "3: Listar vehiculos\n "
                     "4: Modificar vehiculos\n "
+                    "5: Listar los viajes de un vehiculo"
                     "0: salir\n");
             x = leer_numero("Indica la opción");
             switch (x) {
                 case 0:
                     break;
                 case 1:                    
-                    alta_vehiculo(Vehiculos* vh, int*elemento, char* usuario);
+                    alta_vehiculo(Vehiculos* vh, int*elementos, char* NumUser);
                     break;
                 case 2:
-                    baja_vehiculo(Vehiculos*vh, int*elemento);
+                    baja_vehiculo(Vehiculos*vh, int*elementos);
                     break;
                 case 3:
-                    vehiculos_user(char* id, Vehiculos* , int elementos);
+                    vehiculos_user(char* id, Vehiculos* vh, int elementos);
                     break;
                 case 4:
-                    modificar_vehiculo(Vehiculos* vh);
+                    vehiculos_user(char*id, Vehiculos* vh, int elementos);
+                    matricula=leer_campo(TAM_ID_VEI,"Escriba la matricula del vehiculo a modificar");
+                    pos=buscar_vehiculo(char matricula, Vehiculos* vh, int elementos);
+                    modificar_vehiculo(Vehiculos* vh,int pos);
                     break;
+                case 5:
+                    listar_viajes_vehiculo();
                 default:
                     printf("Error al elegir la opcion.\t");
                     break;
             }
         } while (x != 0);
     } else {
-        pos = buscar_usuario(id, ListaUsuarios, *NumUser);
+        
         do {
             printf("Bienvenido al menú de la aplicación %s\n "
                     "Introduzca la opcion que desea\n\n "
