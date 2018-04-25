@@ -31,7 +31,7 @@ void listar_vehiculo(Vehiculos* vh, int elementos){
         //Visualiza cada regisrtro del fichero no eliminado
             printf("Nº ||Id matricula||Usuario||Descripción||Numero plaza")
             printf("\n : %d - |%*s| - |%-*s| - |%-*s| - |%-*s| >>> OK\n", 
-                 i+1, vh.Id_mat ,vh.Id_usuario, vh.Desc_veh, vh.Num_plazas );
+                 i+1, vh[i].Id_mat ,vh[i].Id_usuario, vh[i].Desc_veh, vh[i].Num_plazas );
     }
     }
 }   
@@ -62,6 +62,8 @@ void *alta_vehiculo(Vehiculos *vh,int *elementos,char *usuario){
     (*elementos)++;
 ////////////////////////////////////
 }
+
+
 
 void modificar_vehiculo(Vehiculos *vh, int pos){
     int a;
@@ -111,8 +113,6 @@ void baja_vehiculo(Vehiculos *lista, int *elementos) {
 
 
 
-
-
 //le damos una matricula y busca el coche
 int buscar_vehiculo(char *matricula, Vehiculos *lista, int elementos) {
     int pos = -1, exisCoche = 0, i = 0;
@@ -138,7 +138,7 @@ void vehiculos_user(char *id_usu, Vehiculos *lista, int elementos) {
             //exisUser = 1; //Si hay una concidencia guardamos y salimos
             printf("Nº ||Id matricula||Usuario||Descripción||Numero plaza")
             printf("\n : %d - |%*s| - |%-*s| - |%-*s| - |%-*s| >>> OK\n", 
-                 i+1, lista.Id_mat ,lista.Id_usuario, lista.Desc_veh, lista.Num_plazas );
+                 i+1, lista[i].Id_mat ,lista[i].Id_usuario, lista[i].Desc_veh, lista[i].Num_plazas );
             pos = i;
         }
         i++;
@@ -146,19 +146,24 @@ void vehiculos_user(char *id_usu, Vehiculos *lista, int elementos) {
 }
 
 
-listar_viajes_vehiculo(Viajes ,){
 
 
+void listar_viajes_coche(Viajes* v, char matricula, int elementos){
+    int pos = -1, exisUser = 0, i = 0;
 
-
-
-
-
-
-
-
+    while (i < elementos) { //Buscamos el nombre del vehiculo si existe
+        if (!strncmp(matricula, v[i].Id_mat, TAM_ID_VEI)) {
+            //exisUser = 1; //Si hay una concidencia guardamos y salimos
+            printf("Nº ||Id matricula||Usuario||Descripción||Numero plaza")
+            printf("\n : %d - |%*s| - |%-*s| - |%-*s| - |%-*s| >>> OK\n", 
+                 i+1, v[i].Id_mat ,v[i].Id_usuario, v[i].Desc_veh, v[i].Num_plazas );
+            pos = i;
+        }
+        i++;
+    }
 
 }
+
 
 
 
@@ -196,7 +201,7 @@ void menu_vehiculo(int opc, char *id,Viajes *via, Usuarios *ListaUsuarios, int *
                     modificar_vehiculo(Vehiculos* vh,int pos);
                     break;
                 case 5:
-                    listar_viajes_vehiculo();
+                    //listar_viajes_vehiculo();
                 default:
                     printf("Error al elegir la opcion.\t");
                     break;
