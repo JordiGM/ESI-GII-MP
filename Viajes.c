@@ -86,6 +86,7 @@ void eliminar_viaje(Viajes *lista, int *elementos) {
     pos = buscar_viaje(id, lista, elementos);
     
     lista[pos].Eliminado = "Si";
+    printf("El viaje ha sido eliminado con exito.");
 }
 
 /*Cabecera: void modificar_viaje(Viajes*)
@@ -152,7 +153,7 @@ void listar_viaje(Viajes* viaje, int *elementos){
     printf("Id del viaje - Matricula del vehiculo - Fecha de inicio - Hora de inicio - Hora de finalizacion - Numero de plazas libres - Sentido del viaje - Importe - Estado del viaje");
     for(i=0; i<elementos; i++) {
         if(strcmp(v[i].Eliminado, (char *) "No"){
-            printf("%d: %s - %s - %s - %s - %s - %s - %s - %s - %s", i+1, v.Id_viaje, v.Id_mat, v.F_inic, v.H_inic, v.H_fin, v.Plazas_libre, v.Sentido, v.Importe, v.Estado);
+            printf("%d: %s - %s - %s - %s - %s - %s - %s - %s - %s", i+1, v[i].Id_viaje, v[i].Id_mat, v[i].F_inic, v[i].H_inic, v[i].H_fin, v[i].Plazas_libre, v[i].Sentido, v[i].Importe, v[i].Estado);
     
         }
     }
