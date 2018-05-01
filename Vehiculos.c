@@ -29,8 +29,8 @@ void listar_vehiculo(Vehiculos* vh, int elementos){
     for(i=0; i<elementos; i++) {
         if(!strcmp(vh[i].Eliminado, (char *) "No")==0){
         //Visualiza cada regisrtro del fichero no eliminado
-            printf("Nº ||Id matricula||Usuario||Descripción||Numero plaza")
-            printf("\n : %d - |%*s| - |%-*s| - |%-*s| - |%-*s| >>> OK\n", 
+            printf("Nº ||Id matricula||Usuario||Descripción||Numero plaza");
+            printf("\n : %d - |%*s| - |%*s| - |%*s| - |%*s| >>> OK\n", 
                  i+1, vh[i].Id_mat ,vh[i].Id_usuario, vh[i].Desc_veh, vh[i].Num_plazas );
     }
     }
@@ -136,7 +136,7 @@ void vehiculos_user(char *id_usu, Vehiculos *lista, int elementos) {
     while (i < elementos) { //Buscamos el nombre del vehiculo si existe
         if (!strncmp(id_usu, lista[i].Id_usuario, TAM_ID_USER)) {
             //exisUser = 1; //Si hay una concidencia guardamos y salimos
-            printf("Nº ||Id matricula||Usuario||Descripción||Numero plaza")
+            printf("Nº ||Id matricula||Usuario||Descripción||Numero plaza");
             printf("\n : %d - |%*s| - |%-*s| - |%-*s| - |%-*s| >>> OK\n", 
                  i+1, lista[i].Id_mat ,lista[i].Id_usuario, lista[i].Desc_veh, lista[i].Num_plazas );
             pos = i;
@@ -154,9 +154,9 @@ void listar_viajes_coche(Viajes* v, char matricula, int elementos){
     while (i < elementos) { //Buscamos el nombre del vehiculo si existe
         if (!strncmp(matricula, v[i].Id_mat, TAM_ID_VEI)) {
             //exisUser = 1; //Si hay una concidencia guardamos y salimos
-            printf("Nº ||Id matricula||Usuario||Descripción||Numero plaza")
-            printf("\n : %d - |%*s| - |%-*s| - |%-*s| - |%-*s| >>> OK\n", 
-                 i+1, v[i].Id_mat ,v[i].Id_usuario, v[i].Desc_veh, v[i].Num_plazas );
+            printf("Nº ||Id matricula||Usuario||Descripción||Numero plaza");
+            printf("\n : %d - |%*s| - |%-*s| - |%-*s| - |%-*s| - |%-*s| - |%-*s| >>> OK\n",
+                 i+1, v[i].Id_mat ,v[i].Id_viaje,v[i].F_inic v[i].H_inic, v[i].Sentido, v[i].Importe );
             pos = i;
         }
         i++;
