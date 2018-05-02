@@ -104,7 +104,7 @@ void menu_principal(int opc, char *id, Usuarios *ListaUsuarios, int *NumUser) {
                                 bajaUsuario(ListaUsuarios, NumUser);
                                 break;
                             case 3:
-
+                                modificaAdmin(ListaUsuarios,NumUser);
                                 break;
                             case 4:
                                 listarUsuario(ListaUsuarios, NumUser);
@@ -211,10 +211,10 @@ void menu_principal(int opc, char *id, Usuarios *ListaUsuarios, int *NumUser) {
                             case 0:
                                 break;
                             case 1:
-
+                                  mostrarUsuario(ListaUsuarios,pos);
                                 break;
                             case 2:
-
+                                  modificaUsuario(ListaUsuarios,pos);
                                 break;
                             default:
                                 printf("Error al elegir la opcion.\t");
@@ -224,7 +224,7 @@ void menu_principal(int opc, char *id, Usuarios *ListaUsuarios, int *NumUser) {
                     break;
                 case 2:
                            do {
-            printf("Bienvenido al menú de la aplicación %s\n "
+            printf("Bienvenido al menú de la aplicación \n "
                     "Introduzca la opcion que desea\n\n "
                     "1: Alta vehiculo\n "
                     "2: Baja vehiculos\n "
