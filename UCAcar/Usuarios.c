@@ -33,7 +33,7 @@ void modificaAdmin(Usuarios *lista,int *elementos){
     }while(modificar==1);
 }
 
-void modificaUsuario(Usuarios* lista, int id){
+void modificaUsuario(Usuarios* lista, int* id){
     int opcion;
     switch(opcion){
         case 1:lista[id].Nomb_usuario=leer_campo(TAM_NOM_USER,"Modifique el NOMBRE del usuario:\n");
@@ -47,7 +47,7 @@ void modificaUsuario(Usuarios* lista, int id){
         }
 }
 
-void mostrarUsuario(Usuarios *lista, int id){
+void mostrarUsuario(Usuarios *lista, int* id){
 printf("\nID:%s\nNombre:%s\nNick:%s\nContraseña:%s\nLocalidad:%s\nEstado:%s",lista[id].Id_usuario,lista[id].Nomb_usuario,lista[id].User,lista[id].Login,lista[id].Localidad,lista[id].Estado);   
 }
 
