@@ -3,7 +3,7 @@
 #include <string.h>
 #include "ficheros.h"
 #include "Usuarios.h"
-//#include "Viajes.h"
+#include "Viajes.h"
 
 // Cabecera: void vacia_buffer()
 // Precondicion: Ninguna
@@ -51,7 +51,7 @@ void autoFinalizarViaje(Viajes *, int);
 
 void menu_principal(int opc, char *id, Usuarios *ListaUsuarios, int *NumUser) {
     int x, numVehiculos = 0, numViajes = 0, numPasos = 0, numIncidencias = 0, pos;
-    int u;
+    int u, o;
     char *id_new;
     Vehiculos* L_Vehiculos;
     Viajes* L_Viajes;
@@ -118,7 +118,30 @@ void menu_principal(int opc, char *id, Usuarios *ListaUsuarios, int *NumUser) {
 
                     break;
                 case 3:
-
+                    do {
+                        printf("Introduzca la opcion que desea:\n1.- Publicar viaje.\n2.- Eliminar viaje.\n3.- Modificar viaje.\n4.- Listar viajes.\n0.- Salir.");
+                        scanf("%d", &o);
+                        switch(o) {
+                            case 0:
+                                exit(0);
+                                break;
+                            case 1:
+                                publicar_viaje(viaje);
+                                break;
+                            case 2:
+                                eliminar_viaje(viaje, n);
+                                break;
+                            case 3:
+                                modificar_viaje(viaje);
+                                break;
+                            case 4:
+                                listar_viaje(viaje);
+                                break;
+                            default:
+                                printf("ERROR: Opcion invalida.");
+                                break;
+                        }
+                    } while(o!=0);
                     break;
                 case 4:
 
