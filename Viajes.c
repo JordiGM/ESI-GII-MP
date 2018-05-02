@@ -104,39 +104,39 @@ void modificar_viaje(Viajes *viaje){
     
     switch(o){
         case 1:
-            v.Id_viaje leer_campo(TAM_ID_VIA, "Id del viaje");
+            v.Id_viaje = leer_campo(TAM_ID_VIA, "Id del viaje");
             scanf("%s", v.Id_viaje);
             break;
         case 2:
-            v.Id_mat leer_campo(TAM_ID_VEI, "Matricula del vehiculo");
+            v.Id_mat = leer_campo(TAM_ID_VEI, "Matricula del vehiculo");
             scanf("%s", v.Id_mat);
             break;
         case 3:
-            v.F_inic leer_campo(TAM_FIN_VIA, "Hora de inicio");
+            v.F_inic = leer_campo(TAM_FIN_VIA, "Hora de inicio");
             scanf("%s", v.F_inic);
             break;
         case 4:
-            v.H_inic leer_campo(TAM_HIN_VIA, "Hora de finalizacion");
+            v.H_inic = leer_campo(TAM_HIN_VIA, "Hora de finalizacion");
             scanf("%s", v.H_inic);
             break;
         case 5:
-            v.H_fin leer_campo(TAM_HFI_VIA, "Hora de finalizacion");
+            v.H_fin = leer_campo(TAM_HFI_VIA, "Hora de finalizacion");
             scanf("%s", v.H_fin);
             break;
         case 6:
-            v.Plazas_libre leer_campo(TAM_PLA_VEI, "Plazas libres");
+            v.Plazas_libre = leer_campo(TAM_PLA_VEI, "Plazas libres");
             scanf("%s", v.Plazas_libre);
             break;
         case 7:
-            v.Sentido leer_campo(TAM_SEN_VIA, "Sentido del viaje");
+            v.Sentido = leer_campo(TAM_SEN_VIA, "Sentido del viaje");
             scanf("%s", v.Sentido);
             break;
         case 8:
-            v.Importe leer_campo(TAM_IMP_VIA, "Importe del viaje");
+            v.Importe = leer_campo(TAM_IMP_VIA, "Importe del viaje");
             scanf("%s", v.Importe);
             break;
         case 9:
-            v.Estado leer_campo(TAM_EST_VIA, "Estado del viaje");
+            v.Estado = leer_campo(TAM_EST_VIA, "Estado del viaje");
             scanf("%s", v.Estado);
             break;
     }
@@ -152,7 +152,7 @@ void listar_viaje(Viajes* viaje, int *elementos){
     
     printf("Id del viaje - Matricula del vehiculo - Fecha de inicio - Hora de inicio - Hora de finalizacion - Numero de plazas libres - Sentido del viaje - Importe - Estado del viaje");
     for(i=0; i<elementos; i++) {
-        if(strcmp(v[i].Eliminado, (char *) "No"){
+        if(strcmp(v[i].Eliminado, (char *)), "No"){
             printf("%d: %s - %s - %s - %s - %s - %s - %s - %s - %s", i+1, v[i].Id_viaje, v[i].Id_mat, v[i].F_inic, v[i].H_inic, v[i].H_fin, v[i].Plazas_libre, v[i].Sentido, v[i].Importe, v[i].Estado);
     
         }
