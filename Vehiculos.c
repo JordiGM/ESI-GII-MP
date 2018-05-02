@@ -173,8 +173,7 @@ void menu_vehiculo(int opc, char *id,Viajes *via, Usuarios *ListaUsuarios, int *
    
     if (opc == 1) {
         do {
-            printf("Bienvenido al menu de administración\n"
-                    "Introduzca la opcion que desea\n\n "
+            printf("Introduzca la opcion que desea\n\n "
                     "1: Alta vehiculo\n "
                     "2: Baja vehiculos\n "
                     "3: Listar vehiculos\n "
@@ -201,7 +200,7 @@ void menu_vehiculo(int opc, char *id,Viajes *via, Usuarios *ListaUsuarios, int *
                     modificar_vehiculo(Vehiculos* vh,int pos);
                     break;
                 case 5:
-                    //listar_viajes_vehiculo();
+                    listar_viajes_coche(Viajes* via, char matricula, int elementos);
                 default:
                     printf("Error al elegir la opcion.\t");
                     break;
@@ -222,16 +221,19 @@ void menu_vehiculo(int opc, char *id,Viajes *via, Usuarios *ListaUsuarios, int *
                 case 0:
                     break;
                 case 1:
-
+                     alta_vehiculo(Vehiculos* vh, int*elementos, char* NumUser);
                     break;
                 case 2:
-
+                    baja_vehiculo(Vehiculos*vh, int*elementos);
                     break;
                 case 3:
-                    //menu_viaje(L_Viajes, L_Vehiculos, numViajes, numVehiculos, id );
+                    vehiculos_user(char* id, Vehiculos* vh, int elementos);
                     break;
                 case 4:
-
+                    vehiculos_user(char*id, Vehiculos* vh, int elementos);
+                    matricula=leer_campo(TAM_ID_VEI,"Escriba la matricula del vehiculo a modificar");
+                    pos=buscar_vehiculo(char matricula, Vehiculos* vh, int elementos);
+                    modificar_vehiculo(Vehiculos* vh,int pos);
                     break;
                 default:
                     printf("Error al elegir la opcion.\t");
