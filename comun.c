@@ -4,6 +4,7 @@
 #include "ficheros.h"
 #include "Usuarios.h"
 #include "Viajes.h"
+#include "Vehiculo.h"
 
 // Cabecera: void vacia_buffer()
 // Precondicion: Ninguna
@@ -52,7 +53,7 @@ void autoFinalizarViaje(Viajes *, int);
 void menu_principal(int opc, char *id, Usuarios *ListaUsuarios, int *NumUser) {
     int x, numVehiculos = 0, numViajes = 0, numPasos = 0, numIncidencias = 0, pos;
     int u, o;
-    char *id_new;
+    char *id_new,matricula;
     Vehiculos* L_Vehiculos;
     Viajes* L_Viajes;
     Pasos* L_Pasos;
@@ -115,7 +116,40 @@ void menu_principal(int opc, char *id, Usuarios *ListaUsuarios, int *NumUser) {
                     } while (u != 0);
                     break;
                 case 2:
-
+                       do{
+                           printf("Introduzca la opcion que desea\n\n "
+                    "1: Alta vehiculo\n "
+                    "2: Baja vehiculos\n "
+                    "3: Listar vehiculos\n "
+                    "4: Modificar vehiculos\n "
+                    "5: Listar los viajes de un vehiculo"
+                    "0: salir\n");
+            x = leer_numero("Indica la opción");
+            switch (x) {
+                case 0:
+                    break;
+                case 1:                    
+                    alta_vehiculo(Vehiculos* L_Vehiculos, int*numVehiculos, char* NumUser);
+                    break;
+                case 2:
+                    baja_vehiculo(Vehiculos*L_Vehiculos, int*numVehiculos);
+                    break;
+                case 3:
+                    vehiculos_user(char* id, Vehiculos* L_Vehiculos, int numVehiculos);
+                    break;
+                case 4:
+                    vehiculos_user(char*id, Vehiculos* L_Vehiculos, int numVehiculos);
+                    matricula=leer_campo(TAM_ID_VEI,"Escriba la matricula del vehiculo a modificar");
+                    pos=buscar_vehiculo(char matricula, Vehiculos* L_Vehiculos, int numVehiculos);
+                    modificar_vehiculo(Vehiculos* L_Vehiculos,int pos);
+                    break;
+                case 5:
+                    listar_viajes_coche(Viajes* L_Viajes, char matricula, int numVehiculos);
+                default:
+                    printf("Error al elegir la opcion.\t");
+                    break;
+            }
+        } while (x != 0);
                     break;
                 case 3:
                     do {
@@ -189,7 +223,38 @@ void menu_principal(int opc, char *id, Usuarios *ListaUsuarios, int *NumUser) {
                     } while (x != 0);
                     break;
                 case 2:
-
+                           do {
+            printf("Bienvenido al menú de la aplicación %s\n "
+                    "Introduzca la opcion que desea\n\n "
+                    "1: Alta vehiculo\n "
+                    "2: Baja vehiculos\n "
+                    "3: Listas vehiculos(propios)\n "
+                    "4: Modificar vehiculo\n "
+                    "0: salir\n");
+            x = leer_numero("Indica la opción");
+            switch (x) {
+                case 0:
+                    break;
+                case 1:
+                     alta_vehiculo(Vehiculos* L_Vehiculos, int*numVehiculos, char* NumUser);
+                    break;
+                case 2:
+                    baja_vehiculo(Vehiculos*L_Vehiculos, int*numVehiculos);
+                    break;
+                case 3:
+                    vehiculos_user(char* id, Vehiculos* L_Vehiculos, int numVehiculos);
+                    break;
+                case 4:
+                    vehiculos_user(char*id, Vehiculos* L_Vehiculos, int numVehiculos);
+                    matricula=leer_campo(TAM_ID_VEI,"Escriba la matricula del vehiculo a modificar");
+                    pos=buscar_vehiculo(char matricula, Vehiculos* L_Vehiculos, int numVehiculos);
+                    modificar_vehiculo(Vehiculos* L_Vehiculos,int pos);
+                    break;
+                default:
+                    printf("Error al elegir la opcion.\t");
+                    break;
+            }
+        } while (x != 0); 
                     break;
                 case 3:
                     //menu_viaje(L_Viajes, L_Vehiculos, numViajes, numVehiculos, id );
