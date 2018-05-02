@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-#include "Viajes.h"
 #include "ficheros.h"
 #include "comun.h"
 #define __USE_XOPEN
@@ -83,7 +82,7 @@ void eliminar_viaje(Viajes *lista, int *elementos) {
     /*Solicitamos el id del viaje*/
     id = leer_campo(TAM_ID_VIA, "Introduce el id del viaje"); 
     
-    pos = buscar_viaje(id, lista, elementos);
+    pos = buscar_viaje(id, lista, *elementos);
     
     lista[pos].Eliminado = "Si";
     printf("El viaje ha sido eliminado con exito.");
@@ -179,28 +178,3 @@ void autoFinalizarViajes(Viajes *lista, int elementos){
         }
     }
 }
-
-                do {
-                        printf("Introduzca la opcion que desea:\n1.- Publicar viaje.\n2.- Eliminar viaje.\n3.- Modificar viaje.\n4.- Listar viajes.\n0.- Salir.");
-                        scanf("%d", &o);
-                        switch(o) {
-                            case 0:
-                                exit(0);
-                                break;
-                            case 1:
-                                //publicar_viaje(Viajes* L_Viajes, int*numViajes, char* numUser);
-                                break;
-                            case 2:
-                                //eliminar_viaje(Viajes* L_Viajes, int*numViajes);
-                                break;
-                            case 3:
-                                //modificar_viaje(Viajes* L_Viajes);
-                                break;
-                            case 4:
-                                //listar_viaje(Viajes* L_Viajes, int*numViajes);
-                                break;
-                            default:
-                                printf("ERROR: Opcion invalida.");
-                                break;
-                        }
-                    } while(o!=0);
