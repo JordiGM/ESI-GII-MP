@@ -343,7 +343,7 @@ void guardarDatosViajes(Viajes* viajes, int elementos) {
     fclose(FichViajes);
 }
 
-// Cabecera: void guardarDatosPasos(Pasos*,int)
+// Cabecera: void guardarDatosPasos(Pasos*,int) 
 // Precondicion: Recibe un vector con los pasos que deseamos guardar y un int 
 // con el tamano del vector
 // Poscondicion: Guarda en el fichero el vector
