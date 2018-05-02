@@ -151,7 +151,7 @@ void listar_viaje(Viajes* viaje, int *elementos){
     
     printf("Id del viaje - Matricula del vehiculo - Fecha de inicio - Hora de inicio - Hora de finalizacion - Numero de plazas libres - Sentido del viaje - Importe - Estado del viaje");
     for(i=0; i<elementos; i++) {
-        if(strcmp(v[i].Eliminado, (char *)), "No"){
+        if(strcmp(v[i].Eliminado, (char *) "No"){
             printf("%d: %s - %s - %s - %s - %s - %s - %s - %s - %s", i+1, v[i].Id_viaje, v[i].Id_mat, v[i].F_inic, v[i].H_inic, v[i].H_fin, v[i].Plazas_libre, v[i].Sentido, v[i].Importe, v[i].Estado);
     
         }
