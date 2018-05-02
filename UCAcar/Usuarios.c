@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include "ficheros.h" 
 #include "comun.h"
+#include "Usuarios.h"
 void modificaAdmin(Usuarios *lista,int *elementos){
     int id,seguir,opcion,otro,modificar;
     do{
