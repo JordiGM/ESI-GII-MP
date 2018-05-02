@@ -179,35 +179,3 @@ void autoFinalizarViajes(Viajes *lista, int elementos){
         }
     }
 }
-
-void menu_viaje() {
-    int o, n;
-    Viajes*viaje;
-    
-    do {
-        printf("Introduzca la opcion que desea:\n1.- Publicar viaje.\n2.- Eliminar viaje.\n3.- Modificar viaje.\n4.- Listar viajes.\n0.- Salir.");
-        scanf("%d", &o);
-        switch(o) {
-            case 0:
-                exit(0);
-                break;
-            case 1:
-                publicar_viaje(viaje);
-                break;
-            case 2:
-                eliminar_viaje(viaje, n);
-                break;
-            case 3:
-                modificar_viaje(viaje);
-                break;
-            case 4:
-                listar_viaje(viaje);
-                break;
-            default:
-                printf("ERROR: Opcion invalida.");
-                break;
-        }
-    } while(o!=0);
-    fflush(stdin);
-    return;
-}
