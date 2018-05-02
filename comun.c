@@ -126,16 +126,16 @@ void menu_principal(int opc, char *id, Usuarios *ListaUsuarios, int *NumUser) {
                                 exit(0);
                                 break;
                             case 1:
-                                publicar_viaje(viaje);
+                                //ublicar_viaje(viaje);
                                 break;
                             case 2:
-                                eliminar_viaje(viaje, n);
+                                //eliminar_viaje(viaje, n);
                                 break;
                             case 3:
-                                modificar_viaje(viaje);
+                                //modificar_viaje(viaje);
                                 break;
                             case 4:
-                                listar_viaje(viaje);
+                                //listar_viaje(viaje);
                                 break;
                             default:
                                 printf("ERROR: Opcion invalida.");
@@ -211,36 +211,3 @@ void menu_principal(int opc, char *id, Usuarios *ListaUsuarios, int *NumUser) {
     guardarDatosIncidencias(L_Incidencias, numIncidencias);
     printf("\nInformación guardada.\n");
 }
-
-
-//Temporal para la función de Ruben
-#include "ficheros.h" //Ruben
-#define __USE_XOPEN //Ruben
-#include <time.h> //Ruben
-
-void autoFinalizarViaje(Viajes *lista, int elementos) {
-    int indice;
-    struct tm fecha, hora, *actual;
-    time_t tiempo;
-
-    tiempo = time(NULL);
-    actual = localtime(&tiempo);
-
-    for (indice = 0; indice < elementos; indice++) {
-        if (!strcmp(lista[indice].Estado, (char *) "Iniciado") ||
-                !strcmp(lista[indice].Estado, (char *) "Cerrado") ||
-                !strcmp(lista[indice].Estado, (char *) "Abierto")) {
-            strptime(lista[indice].F_inic, "%d/%m/%Y", &fecha);
-            strptime(lista[indice].H_fin, "%H:%M", &hora);
-
-            if (fecha.tm_year + 1900 - actual->tm_year > 0 ||
-                    fecha.tm_mday - actual->tm_mday > 0 ||
-                    fecha.tm_mon + 1 - actual->tm_mon + 1 > 0 ||
-                    hora.tm_hour + 1 - actual->tm_hour >= 0) {
-                printf("\nViaje Finalizado %s\n", lista[indice].Id_viaje);
-                lista[indice].Estado = "Finalizado";
-            }
-        }
-    }
-}
-
