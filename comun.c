@@ -155,27 +155,27 @@ void menu_principal(int opc, char *id, Usuarios *ListaUsuarios, int *NumUser) {
                     do {
                         printf("Introduzca la opcion que desea:\n1.- Publicar viaje.\n2.- Eliminar viaje.\n3.- Modificar viaje.\n4.- Listar viajes.\n0.- Salir.");
                         scanf("%d", &o);
-                        switch(o) {
+                        switch (o) {
                             case 0:
                                 exit(0);
                                 break;
                             case 1:
-                                //ublicar_viaje(viaje);
+                                publicar_viaje(Viajes* L_Viajes, int*numViajes, char* numUser);
                                 break;
                             case 2:
-                                //eliminar_viaje(viaje, n);
+                                eliminar_viaje(Viajes* L_Viajes, int*numViajes);
                                 break;
                             case 3:
-                                //modificar_viaje(viaje);
+                                modificar_viaje(Viajes * L_Viajes);
                                 break;
                             case 4:
-                                //listar_viaje(viaje);
+                                listar_viaje(Viajes* L_Viajes, int*numViajes);
                                 break;
                             default:
                                 printf("ERROR: Opcion invalida.");
                                 break;
                         }
-                    } while(o!=0);
+                    } while (o != 0);
                     break;
                 case 4:
 

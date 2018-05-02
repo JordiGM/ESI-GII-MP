@@ -6,7 +6,7 @@
 #include "comun.h"
 #define __USE_XOPEN
 
-/*Cabecera: int buscar_viaje(int id)
+/*Cabecera: int buscar_viaje(char* id, Viajes* lista, int elementos)
 Precondicion: id del viaje a buscar la posición en el array, array y numero de elementos
 Poscondicion: Devuelve el número que ha introducido el usuario, si no lo encuentra devuelve -1*/
 
@@ -24,7 +24,7 @@ int buscar_viaje(char *id, Viajes *lista, int elementos) {
     return posicion;
 }
 
-/*Cabecera: void publicar_viaje(Viajes*)
+/*Cabecera: void publicar_viaje(Viajes* v, int* elementos, char* viaje)
 Precondición: Recibe cadenas de carácteres de un viaje.
 Postcondición: Permite al ususario publicar un nuevo viaje.*/
 
@@ -88,7 +88,7 @@ void eliminar_viaje(Viajes *lista, int *elementos) {
     printf("El viaje ha sido eliminado con exito.");
 }
 
-/*Cabecera: void modificar_viaje(Viajes*)
+/*Cabecera: void modificar_viaje(Viajes* viaje)
 Precondición: recibe un puntero a viaje.
 Postcondición: Permite al usuario modificar un viaje previamente creado por el mismo.*/
 
@@ -141,8 +141,8 @@ void modificar_viaje(Viajes *viaje){
     }
 }
 
-/*Cabecera: void listar_viaje(Viajes*)
-Precondición: Recibe un puntero a viaje.
+/*Cabecera: void listar_viaje(Viajes* viaje, int* elementos)
+Precondición: Recibe un puntero a viaje y un puntero a entero.
 Postcondición: Permite al usuario visualizar una lista de todos los viajes que se encuentran en el sistema.*/
 
 void listar_viaje(Viajes* viaje, int *elementos){
@@ -157,6 +157,10 @@ void listar_viaje(Viajes* viaje, int *elementos){
         }
     }
 }
+
+/*Cabecera: void autoFinalizarViajes(Viajes* lista, int elementos)
+ Precondición: Recibe un puntero a viaje y un entero
+ Postcondición: Finaliza un viaje una vez pasada una hora de su hora de finalización*/
 
 void autoFinalizarViajes(Viajes *lista, int elementos){
     int indice;
