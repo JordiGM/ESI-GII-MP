@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
-#include"Vehiculo.h"
+#include"Vehiculos.h"
 #include"ficheros.h"
 #include"comun.h"
 #include"Viajes.h"

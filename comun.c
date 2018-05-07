@@ -4,7 +4,7 @@
 #include "ficheros.h"
 #include "Usuarios.h"
 #include "Viajes.h"
-#include "Vehiculo.h"
+#include "Vehiculos.h"
 
 // Cabecera: void vacia_buffer()
 // Precondicion: Ninguna
