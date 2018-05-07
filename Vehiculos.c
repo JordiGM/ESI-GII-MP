@@ -94,7 +94,7 @@ void modificar_vehiculo(Vehiculos *vh, int pos) {
 // Precondicion: lista de vehiculos y numero de elementos 
 // Poscondicion: modifica a borrado un vehiculo
 
-void baja_vehiculo(Vehiculos *lista, int *elementos) {
+void baja_vehiculo(Vehiculos *lista, int elementos) {
     char *matricula;
     int pos;
 
@@ -102,7 +102,7 @@ void baja_vehiculo(Vehiculos *lista, int *elementos) {
 
     matricula = leer_campo(TAM_ID_VEI, "Introduce matricula"); //Solicitamos la matricula
 
-    pos = buscar_vehiculo(matricula, lista, *elementos);
+    pos = buscar_vehiculo(*matricula, *lista, elementos);
 
     lista[pos].Eliminado = "Si";
     printf("El vehiculo ha sido eliminado con exito");
@@ -160,7 +160,6 @@ void listar_viajes_coche(Viajes* v, char matricula, int elementos) {
 
     while (i < elementos) { //Buscamos el nombre del vehiculo si existe
         if (!strncmp(matricula, v[i].Id_mat, TAM_ID_VEI)) {
-            //exisUser = 1; //Si hay una concidencia guardamos y salimos
             printf("Nº ||Id matricula||Usuario||Descripción||Numero plaza");
             printf("\n : %d - |%*s| - |%-*s| - |%-*s| - |%-*s| - |%-*s| - |%-*s| >>> OK\n",
                     i + 1, v[i].Id_mat, v[i].Id_viaje, v[i].F_inic, v[i].H_inic, v[i].Sentido, v[i].Importe);

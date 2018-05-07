@@ -3,7 +3,7 @@
 
 void listar_vehiculo(Vehiculos* , int );
 void alta_vehiculo(Vehiculos*, int, char);
-void baja_vehiculo(Vehiculos* ,int*);
+void baja_vehiculo(Vehiculos* ,int);
 void modificar_vehiculo(Vehiculos*,int);
 int buscar_vehiculo(char*, Vehiculos*, int);
 void vehiculos_user(char*, Vehiculos*, int);
