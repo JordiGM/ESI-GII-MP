@@ -54,7 +54,7 @@ void *publicar_viaje(Viajes *v, int *elementos, char *viaje, char *id){
             H_fin = leer_campo(TAM_HFI_VIA, "Inserte la hora a la que finalizará el viaje: \n");
             Sentido = leer_campo(TAM_SEN_VIA, "Inserte el sentido en el que ira el viaje (ida o vuelta): \n");
             Importe = leer_campo(TAM_IMP_VIA, "Inserte el importe del viaje: \n");
-            Estado = leer_campo(TAM_EST_VIA, "Inserte el estado del viaje (abierto, cerrado, iniciado, finalizado o anulado): \n");
+            Estado = 'Abierto';
 
             /*Obtenemos memoria para un nuevo elemento*/
             v = (Viajes *) realloc(v, (*elementos + 1) * sizeof (Viajes));
