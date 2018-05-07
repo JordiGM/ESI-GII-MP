@@ -32,11 +32,10 @@ void listar_vehiculo(Vehiculos* vh, int elementos) {
 // Poscondicion: añade un elemento mas al vector con informacion nueva de un elemento vehiculo que se pide por teclado
 
 void *alta_vehiculo(Vehiculos *vh, int *elementos, char *usuario) {
-    char *id_mat, *id_usu, *descripcion, *num_plazas;
+    char *id_mat, *descripcion, *num_plazas;
 
     //Obtenemos espacio en memoria suficiente para la dimension maxima de cada cadena
     id_mat = (char *) malloc(TAM_ID_VEI + 1 * sizeof (char));
-    id_usu = (char *) malloc(TAM_ID_USER + 1 * sizeof (char));
     descripcion = (char *) malloc(TAM_DES_VEI + 1 * sizeof (char));
     num_plazas = (char *) malloc(TAM_PLA_VEI + 1 * sizeof (char));
 
