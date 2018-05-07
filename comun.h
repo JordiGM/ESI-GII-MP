@@ -12,9 +12,6 @@
 #ifndef COMUN_H
 #define COMUN_H
 
-//Temporal para la funcion de Ruben
-void autoFinalizarViaje(Viajes *, int);
-
 //Prototipos
 char *leer_campo( int, char * );
 int leer_numero( char * );
