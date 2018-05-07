@@ -52,8 +52,8 @@ void autoFinalizarViaje(Viajes *, int);
 
 void menu_principal(int opc, char *id, Usuarios *ListaUsuarios, int *NumUser) {
     int x, numVehiculos = 0, numViajes = 0, numPasos = 0, numIncidencias = 0, pos;
-    int u, o;
-    char *id_new,matricula;
+    int u, o, i;
+    char *id_new,matricula, c;
     Vehiculos* L_Vehiculos;
     Viajes* L_Viajes;
     Pasos* L_Pasos;
@@ -257,7 +257,14 @@ void menu_principal(int opc, char *id, Usuarios *ListaUsuarios, int *NumUser) {
         } while (x != 0); 
                     break;
                 case 3:
-                    //menu_viaje(L_Viajes, L_Vehiculos, numViajes, numVehiculos, id );
+                    printf("Bienvenido al menú de viajes. Estos son los viajes que hay abiertos actualmente.\n");
+                    for(i = 0;i < numViajes; i++){
+                        if(L_Viajes[i].Estado == "Abierto"){
+                            listar_viaje(Viajes *L_Viajes, int numViajes);
+                        }
+                    }
+                    printf("¿Desea modificar algún viaje que usted haya publicado? s/n");
+                    scanf("%s", &c);
                     break;
                 case 4:
 
