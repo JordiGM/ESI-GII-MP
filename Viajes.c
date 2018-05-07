@@ -4,6 +4,7 @@
 #include <time.h>
 #include "ficheros.h"
 #include "comun.h"
+#include "Vehiculos.h"
 #define __USE_XOPEN
 
 /*Cabecera: int buscar_viaje(char* id, Viajes* lista, int elementos)
@@ -24,15 +25,16 @@ int buscar_viaje(char *id, Viajes *lista, int elementos) {
     return posicion;
 }
 
-/*Cabecera: void publicar_viaje(Viajes* v, int* elementos, char* viaje)
+/*Cabecera: void publicar_viaje(Viajes* v, int* elementos, char* viaje, char *id)
 Precondición: Recibe cadenas de carácteres de un viaje.
 Postcondición: Permite al ususario publicar un nuevo viaje.*/
 
-void *publicar_viaje(Viajes *v, int *elementos, char *viaje){
+void *publicar_viaje(Viajes *v, int *elementos, char *viaje, char *id){
     char *Id_viaje, *Id_mat, *F_inic, *H_inic, *H_fin, *Plazas_libre, *Sentido, *Importe, *Estado;
     int i, n;
+    Vehiculos vh;
     
-    if () {
+    if (!strncmp(*id, vh[i].Id_usuario, TAM_ID_USER) {
         for (i = 0; i < n; i++) {
             /*Obtenemos espacio en memoria suficiente para la dimension maxima de cada cadena*/
             Id_viaje = (char *) malloc(TAM_ID_VIA + 1 * sizeof (char));
