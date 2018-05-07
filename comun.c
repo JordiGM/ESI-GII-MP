@@ -160,7 +160,7 @@ void menu_principal(int opc, char *id, Usuarios *ListaUsuarios, int *NumUser) {
                                 exit(0);
                                 break;
                             case 1:
-                                publicar_viaje(Viajes* L_Viajes, int*numViajes, char* numUser);
+                                publicar_viaje(Viajes* L_Viajes, int*numViajes, char* NumUser);
                                 break;
                             case 2:
                                 eliminar_viaje(Viajes* L_Viajes, int*numViajes);

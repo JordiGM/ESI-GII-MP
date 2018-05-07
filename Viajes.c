@@ -32,6 +32,7 @@ void *publicar_viaje(Viajes *v, int *elementos, char *viaje){
     char *Id_viaje, *Id_mat, *F_inic, *H_inic, *H_fin, *Plazas_libre, *Sentido, *Importe, *Estado;
     int i, n;
     
+    if()
     for(i=0;i<n;i++){
         /*Obtenemos espacio en memoria suficiente para la dimension maxima de cada cadena*/
         Id_viaje = (char *) malloc (TAM_ID_VIA +1*sizeof(char));
