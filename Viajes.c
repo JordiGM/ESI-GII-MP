@@ -34,7 +34,8 @@ void *publicar_viaje(Viajes *v, int *elementos, char *viaje, char *id){
     int i, n;
     Vehiculos vh;
     
-    if (!strncmp(*id, vh[i].Id_usuario, TAM_ID_USER) {
+    for (i = 0; i < n; i++){
+    if (!strncmp(*id, vh[i].Id_usuario)) {
         for (i = 0; i < n; i++) {
             /*Obtenemos espacio en memoria suficiente para la dimension maxima de cada cadena*/
             Id_viaje = (char *) malloc(TAM_ID_VIA + 1 * sizeof (char));
