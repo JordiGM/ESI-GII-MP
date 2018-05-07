@@ -69,7 +69,7 @@ void *publicar_viaje(Viajes *v, int *elementos, char *viaje){
             (*elementos)++;
         }
     } else {
-        printf("ERROR: No tiene ningún vehículo matriculado.");
+        printf("ERROR: No tiene ningún vehículo dado de alta.");
     }
 }
 
@@ -149,14 +149,13 @@ void modificar_viaje(Viajes *viaje){
 Precondición: Recibe un puntero a viaje y un puntero a entero.
 Postcondición: Permite al usuario visualizar una lista de todos los viajes que se encuentran en el sistema.*/
 
-void listar_viaje(Viajes* viaje, int *elementos){
+void listar_viaje(Viajes* viaje, int elementos){
     int i;
-    Viajes v;
     
     printf("Id del viaje - Matricula del vehiculo - Fecha de inicio - Hora de inicio - Hora de finalizacion - Numero de plazas libres - Sentido del viaje - Importe - Estado del viaje");
     for(i=0; i<elementos; i++) {
-        if(strcmp(v[i].Eliminado, (char *) "No"){
-            printf("%d: %s - %s - %s - %s - %s - %s - %s - %s - %s", i+1, v[i].Id_viaje, v[i].Id_mat, v[i].F_inic, v[i].H_inic, v[i].H_fin, v[i].Plazas_libre, v[i].Sentido, v[i].Importe, v[i].Estado);
+        if(strcmp(viaje[i].Eliminado, (char *) "No")){
+            printf("%d: %s - %s - %s - %s - %s - %s - %s - %s - %s", i+1, viaje[i].Id_viaje, viaje[i].Id_mat, viaje[i].F_inic, viaje[i].H_inic, viaje[i].H_fin, viaje[i].Plazas_libre, viaje[i].Sentido, viaje[i].Importe, viaje[i].Estado);
     
         }
     }
