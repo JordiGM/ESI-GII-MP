@@ -32,45 +32,43 @@ Postcondición: Permite al ususario publicar un nuevo viaje.*/
 void *publicar_viaje(Viajes *v, int *elementos, char *viaje, char *id){
     char *Id_viaje, *Id_mat, *F_inic, *H_inic, *H_fin, *Plazas_libre, *Sentido, *Importe, *Estado;
     int i, n;
-    Vehiculos vh;
+    Vehiculos* vh;
     
     for (i = 0; i < n; i++) {
-        if (!strncmp(*id, vh[i].Id_usuario)) {
-            for (i = 0; i < n; i++) {
-                /*Obtenemos espacio en memoria suficiente para la dimension maxima de cada cadena*/
-                Id_viaje = (char *) malloc(TAM_ID_VIA + 1 * sizeof (char));
-                Id_mat = (char *) malloc(TAM_ID_VEI + 1 * sizeof (char));
-                F_inic = (char *) malloc(TAM_FIN_VIA + 1 * sizeof (char));
-                H_inic = (char *) malloc(TAM_HIN_VIA + 1 * sizeof (char));
-                H_fin = (char *) malloc(TAM_HFI_VIA + 1 * sizeof (char));
-                Plazas_libre = (char *) malloc(TAM_PLA_VEI + 1 * sizeof (char));
-                Sentido = (char *) malloc(TAM_SEN_VIA + 1 * sizeof (char));
-                Importe = (char *) malloc(TAM_IMP_VIA + 1 * sizeof (char));
-                Estado = (char *) malloc(TAM_EST_VIA + 1 * sizeof (char));
+        if (!strcmp(id, vh[i].Id_usuario)) {
+            /*Obtenemos espacio en memoria suficiente para la dimension maxima de cada cadena*/
+            Id_viaje = (char *) malloc(TAM_ID_VIA + 1 * sizeof (char));
+            Id_mat = (char *) malloc(TAM_ID_VEI + 1 * sizeof (char));
+            F_inic = (char *) malloc(TAM_FIN_VIA + 1 * sizeof (char));
+            H_inic = (char *) malloc(TAM_HIN_VIA + 1 * sizeof (char));
+            H_fin = (char *) malloc(TAM_HFI_VIA + 1 * sizeof (char));
+            Plazas_libre = (char *) malloc(TAM_PLA_VEI + 1 * sizeof (char));
+            Sentido = (char *) malloc(TAM_SEN_VIA + 1 * sizeof (char));
+            Importe = (char *) malloc(TAM_IMP_VIA + 1 * sizeof (char));
+            Estado = (char *) malloc(TAM_EST_VIA + 1 * sizeof (char));
 
-                /*Mostramos informacion que se le solicita al usuario y la recogemos*/
-                Id_mat = leer_campo(TAM_ID_VEI, "Inserte la matricula del vehiculo: \n");
-                F_inic = leer_campo(TAM_FIN_VIA, "Inserte la fecha en la que se producira el viaje: \n");
-                H_inic = leer_campo(TAM_HIN_VIA, "Inserte la hora a la que se iniciara el viaje: \n");
-                H_fin = leer_campo(TAM_HFI_VIA, "Inserte la hora a la que finalizará el viaje: \n");
-                Sentido = leer_campo(TAM_SEN_VIA, "Inserte el sentido en el que ira el viaje (ida o vuelta): \n");
-                Importe = leer_campo(TAM_IMP_VIA, "Inserte el importe del viaje: \n");
-                Estado = leer_campo(TAM_EST_VIA, "Inserte el estado del viaje (abierto, cerrado, iniciado, finalizado o anulado): \n");
+            /*Mostramos informacion que se le solicita al usuario y la recogemos*/
+            Id_mat = leer_campo(TAM_ID_VEI, "Inserte la matricula del vehiculo: \n");
+            F_inic = leer_campo(TAM_FIN_VIA, "Inserte la fecha en la que se producira el viaje: \n");
+            H_inic = leer_campo(TAM_HIN_VIA, "Inserte la hora a la que se iniciara el viaje: \n");
+            H_fin = leer_campo(TAM_HFI_VIA, "Inserte la hora a la que finalizará el viaje: \n");
+            Sentido = leer_campo(TAM_SEN_VIA, "Inserte el sentido en el que ira el viaje (ida o vuelta): \n");
+            Importe = leer_campo(TAM_IMP_VIA, "Inserte el importe del viaje: \n");
+            Estado = leer_campo(TAM_EST_VIA, "Inserte el estado del viaje (abierto, cerrado, iniciado, finalizado o anulado): \n");
 
-                /*Obtenemos memoria para un nuevo elemento*/
-                v = (Viajes *) realloc(v, (*elementos + 1) * sizeof (Viajes));
+            /*Obtenemos memoria para un nuevo elemento*/
+            v = (Viajes *) realloc(v, (*elementos + 1) * sizeof (Viajes));
 
-                /*Guardamos la informacionrecogida y generada en el nuevo elemento*/
-                sprintf(Id_viaje, "%06d", *elementos + 1);
-                v[*elementos].Id_mat = Id_mat;
-                v[*elementos].F_inic = F_inic;
-                v[*elementos].H_inic = H_inic;
-                v[*elementos].H_fin = H_fin;
-                v[*elementos].Sentido = Sentido;
-                v[*elementos].Importe = Importe;
-                v[*elementos].Estado = Estado;
-                (*elementos)++;
-            }
+            /*Guardamos la informacionrecogida y generada en el nuevo elemento*/
+            sprintf(Id_viaje, "%06d", *elementos + 1);
+            v[*elementos].Id_mat = Id_mat;
+            v[*elementos].F_inic = F_inic;
+            v[*elementos].H_inic = H_inic;
+            v[*elementos].H_fin = H_fin;
+            v[*elementos].Sentido = Sentido;
+            v[*elementos].Importe = Importe;
+            v[*elementos].Estado = Estado;
+            (*elementos)++;
         } else {
             printf("ERROR: No tiene ningún vehículo dado de alta.");
         }
