@@ -1,7 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
-#include"Vehiculos.h"
 #include"ficheros.h"
 #include"comun.h"
 #include"Viajes.h"
@@ -41,8 +40,8 @@ void *alta_vehiculo(Vehiculos *vh, int *elementos, char *usuario) {
 
     //Mostramos información que se le solicita al usuario y la recogemos
     id_mat = leer_campo(TAM_ID_VEI, "Inserte numero de la matricula:\n");
-    descripcion = leer_campo(TAM_DES_VEI, "Inserte descripcion de su vehiculo(MAX 50 caracteres):\n")
-            num_plazas = leer_campo(TAM_PLA_VEI, "Inserte numero de plazas disponibles:\n")
+    descripcion = leer_campo(TAM_DES_VEI, "Inserte descripcion de su vehiculo(MAX 50 caracteres):\n");
+            num_plazas = leer_campo(TAM_PLA_VEI, "Inserte numero de plazas disponibles:\n");
 
 
             //Obtenemos memoria para un nuevo elemento
@@ -164,7 +163,7 @@ void listar_viajes_coche(Viajes* v, char matricula, int elementos) {
             //exisUser = 1; //Si hay una concidencia guardamos y salimos
             printf("Nº ||Id matricula||Usuario||Descripción||Numero plaza");
             printf("\n : %d - |%*s| - |%-*s| - |%-*s| - |%-*s| - |%-*s| - |%-*s| >>> OK\n",
-                    i + 1, v[i].Id_mat, v[i].Id_viaje, v[i].F_inic v[i].H_inic, v[i].Sentido, v[i].Importe);
+                    i + 1, v[i].Id_mat, v[i].Id_viaje, v[i].F_inic, v[i].H_inic, v[i].Sentido, v[i].Importe);
             pos = i;
         }
         i++;
