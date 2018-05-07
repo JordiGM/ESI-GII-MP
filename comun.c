@@ -258,13 +258,18 @@ void menu_principal(int opc, char *id, Usuarios *ListaUsuarios, int *NumUser) {
                     break;
                 case 3:
                     printf("Bienvenido al menú de viajes. Estos son los viajes que hay abiertos actualmente.\n");
-                    for(i = 0;i < numViajes; i++){
-                        if(L_Viajes[i].Estado == "Abierto"){
+                    for(i = 0; i < numViajes; i++){
+                        if(!strcmp(L_Viajes[i].Estado, "Abierto")){
                             listar_viaje(Viajes *L_Viajes, int numViajes);
+                            if(!strcmp(id, L_Vehiculos[i].Id_usuario) && !strcmp(L_Vehiculos[i].Num_plazas, L_Viajes[i].Plazas_libre)){
+                                printf("¿Desea modificar algún viaje que usted haya publicado? s/n");
+                                scanf("%s", &c);
+                                if(c == "s"){
+                                    modificar_viaje(Viajes* L_Viajes);
+                                }
+                            }
                         }
                     }
-                    printf("¿Desea modificar algún viaje que usted haya publicado? s/n");
-                    scanf("%s", &c);
                     break;
                 case 4:
 

@@ -52,13 +52,14 @@ void *publicar_viaje(Viajes *v, int *elementos, char *viaje, char *id){
             F_inic = leer_campo(TAM_FIN_VIA, "Inserte la fecha en la que se producira el viaje: \n");
             H_inic = leer_campo(TAM_HIN_VIA, "Inserte la hora a la que se iniciara el viaje: \n");
             H_fin = leer_campo(TAM_HFI_VIA, "Inserte la hora a la que finalizará el viaje: \n");
+            Plazas_libre = vh[i].Num_plazas;
             Sentido = leer_campo(TAM_SEN_VIA, "Inserte el sentido en el que ira el viaje (ida o vuelta): \n");
             Importe = leer_campo(TAM_IMP_VIA, "Inserte el importe del viaje: \n");
             Estado = "Abierto";
 
             /*Obtenemos memoria para un nuevo elemento*/
             v = (Viajes *) realloc(v, (*elementos + 1) * sizeof (Viajes));
-
+//Variable de control
             /*Guardamos la informacionrecogida y generada en el nuevo elemento*/
             sprintf(Id_viaje, "%06d", *elementos + 1);
             v[*elementos].Id_mat = Id_mat;
