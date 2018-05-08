@@ -179,24 +179,30 @@ void listar_viaje(Viajes* viaje, int elementos, Pasos *lista, int* numPasos) {
         if (strcmp(viaje[i].Eliminado, (char *) "No")) {
             printf("%d: %s - %s - %s - %s - %s - %s - %s - %s - %s", i + 1, viaje[i].Id_viaje, viaje[i].Id_mat, viaje[i].F_inic, viaje[i].H_inic, viaje[i].H_fin, viaje[i].Plazas_libre, viaje[i].Sentido, viaje[i].Importe, viaje[i].Estado);
 
-            void listar_paso(Pasos *lista, int* numPasos, viaje[i].Id_viaje);
+            listar_paso(lista, numPasos, viaje[i].Id_viaje);
         }
     }
 }
 
-void listar_viaje_usuario(Viajes* viaje, int elementos, Usuarios* Id_usuario){
+void listar_viaje_usuario(Viajes* viaje, int elementos, Usuarios* usuario, char* id){
     int i;
     
     printf("Id del viaje - Matricula del vehiculo - Fecha de inicio - Hora de inicio - Hora de finalizacion - Numero de plazas libres - Sentido del viaje - Importe - Estado del viaje");
     for (i = 0; i < elementos; i++){
-        if (strcmp(viaje[i].Eliminado, (char *) "No") && strcmp(usuario[i].)){
-            
+        if (strcmp(viaje[i].Eliminado, (char *) "No") && !strcmp(usuario[i].Id_usuario, id)){
+            printf("%d: %s - %s - %s - %s - %s - %s - %s - %s - %s", i + 1, viaje[i].Id_viaje, viaje[i].Id_mat, viaje[i].F_inic, viaje[i].H_inic, viaje[i].H_fin, viaje[i].Plazas_libre, viaje[i].Sentido, viaje[i].Importe, viaje[i].Estado);
         }
     }
 }
 
-void conductor_viaje(Viajes* viaje, int elementos){
+char* conductor_viaje(Viajes* viaje, int elementos, Vehiculos* vehiculo){
+    int i;
     
+    for (i = 0; i < elementos; i++){
+    if (!strcmp(vehiculo[i].Id_mat, viaje[i].Id_mat)){
+            return vehiculo[i].Id_usuario;
+        }
+    }
 }
 
 /*Cabecera: void autoFinalizarViajes(Viajes* lista, int elementos)
