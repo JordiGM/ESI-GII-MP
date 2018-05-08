@@ -30,7 +30,7 @@ int buscar_viaje(char *id, Viajes *lista, int elementos) {
 Precondición: Recibe cadenas de carácteres de un viaje.
 Postcondición: Permite al ususario publicar un nuevo viaje.*/
 
-void *publicar_viaje(Viajes *v, int *elementos, char *viaje, char *id){
+void publicar_viaje(Viajes *v, int *elementos, char *viaje, char *id){
     char *Id_viaje, *Id_mat, *F_inic, *H_inic, *H_fin, *Plazas_libre, *Sentido, *Importe, *Estado;
     int i, n;
     Vehiculos* vh;
