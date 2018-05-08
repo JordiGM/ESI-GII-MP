@@ -304,7 +304,28 @@ void menu_principal(int opc, char *id, Usuarios *ListaUsuarios, int *NumUser) {
                     }
                     break;
                 case 4:
-
+                    do {
+                        printf("Introduzca la opcion que desea:\n"
+                                "1.- Publicar incidencia.\n"
+                                "2.- Listar incidencia.\n"
+                                "0.- Salir.");
+                        scanf("%d", &o);
+                        char *usuario,*conductor,*viaje;
+                        switch (o) {
+                            case 0:
+                                exit(0);
+                                break;
+                            case 1:
+                                crearIncidencias(L_Incidencias, numIncidencias,usuario,viaje,conductor);
+                                break;
+                            case 2:
+                                listarIncidencias(L_Incidencias,numIncidencias);
+                                break;
+                            default:
+                                printf("ERROR: Opcion invalida.");
+                                break;
+                        }
+                    } while (o != 0);
                     break;
                 default:
                     printf("Error al elegir la opcion.\t");
