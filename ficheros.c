@@ -55,10 +55,10 @@ Usuarios* obtenerUsuarios(int *n) {
         else alm = (Usuarios *) realloc(alm, (*n + 1) * sizeof (Usuarios)); //Reserva memoria para los elementos restantes
 
         //Visualiza cada regisrtro que recupera del fichero
-        printf("\nRegistro recuperado: %d - |%*s| - |%-*s| - |%-*s| - |%-*s| - |%-*s| - |%-*s| - |%-*s| - |%-*s| >>> OK\n", *n,
+        /*printf("\nRegistro recuperado: %d - |%*s| - |%-*s| - |%-*s| - |%-*s| - |%-*s| - |%-*s| - |%-*s| - |%-*s| >>> OK\n", *n,
                 TAM_ID_USER, id, TAM_NOM_USER, nombre, TAM_LOC_USER, localidad,
                 TAM_PER_USER, perfil, TAM_USE_USER, usuario, TAM_LOG_USER, login,
-                TAM_EST_USER, estado,TAM_ELIMINADO, eliminado);
+                TAM_EST_USER, estado,TAM_ELIMINADO, eliminado);*/
 
         alm[*n].Id_usuario = id; //Asiganamos los valores recogidos al elemento
         alm[*n].Nomb_usuario = nombre;
@@ -104,8 +104,8 @@ Vehiculos* obtenerVehiculos(int *n) {
         else alm = (Vehiculos *) realloc(alm, (*n + 1) * sizeof (Vehiculos)); //Reserva memoria para los elementos restantes
 
         //Visualiza cada regisrtro que recupera del fichero
-        printf("\nRegistro recuperado: %d - |%*s| - |%-*s| - |%-*s| - |%-*s| - |%-*s| >>> OK\n", *n,
-                TAM_ID_VEI, id, TAM_ID_USER, IdUser, TAM_PLA_VEI, plazas, TAM_DES_VEI, descripcion, TAM_ELIMINADO, eliminado);
+        /*printf("\nRegistro recuperado: %d - |%*s| - |%-*s| - |%-*s| - |%-*s| - |%-*s| >>> OK\n", *n,
+                TAM_ID_VEI, id, TAM_ID_USER, IdUser, TAM_PLA_VEI, plazas, TAM_DES_VEI, descripcion, TAM_ELIMINADO, eliminado);*/
 
         alm[*n].Id_mat = id; //Asiganamos los valores recogidos al elemento
         alm[*n].Id_usuario = IdUser;
@@ -152,10 +152,10 @@ Viajes* obtenerViajes(int *n) {
         else alm = (Viajes *) realloc(alm, (*n + 1) * sizeof (Viajes)); //Reserva memoria para los elementos restantes
 
         //Visualiza cada regisrtro que recupera del fichero
-                   printf("\nRegistro recuperado: %d - |%*s| - |%-*s| - |%-*s| - |%-*s| - |%-*s| - |%-*s| - |%-*s| - |%-*s| - |%-*s| - |%-*s| >>> OK\n",*n, 
+        /*           printf("\nRegistro recuperado: %d - |%*s| - |%-*s| - |%-*s| - |%-*s| - |%-*s| - |%-*s| - |%-*s| - |%-*s| - |%-*s| - |%-*s| >>> OK\n",*n, 
                            TAM_ID_VIA, id,TAM_ID_VEI, IdMat,TAM_FIN_VIA, FecIni,
                            TAM_HIN_VIA, HorIni,TAM_HFI_VIA, HorFin,TAM_PLA_VEI, plazas,
-                           TAM_SEN_VIA, sentido, TAM_IMP_VIA, importe, TAM_EST_VIA, estado, TAM_ELIMINADO, eliminado);
+                           TAM_SEN_VIA, sentido, TAM_IMP_VIA, importe, TAM_EST_VIA, estado, TAM_ELIMINADO, eliminado);*/
 
         alm[*n].Id_viaje = id; //Asiganamos los valores recogidos al elemento
         alm[*n].Id_mat = IdMat;
@@ -200,8 +200,8 @@ Pasos* obtenerPasos(int *n) {
         else alm = (Pasos *) realloc(alm, (*n + 1) * sizeof (Pasos)); //Reserva memoria para los elementos restantes
 
         //Visualiza cada regisrtro que recupera del fichero
-        printf("\nRegistro recuperado: %d - |%*s| - |%*s| - |%-*s| >>> OK\n", *n,
-                TAM_ID_VIA, id, TAM_POB_PAS, poblacion, TAM_ELIMINADO, eliminado);
+        /*printf("\nRegistro recuperado: %d - |%*s| - |%*s| - |%-*s| >>> OK\n", *n,
+                TAM_ID_VIA, id, TAM_POB_PAS, poblacion, TAM_ELIMINADO, eliminado);*/
 
         alm[*n].Id_viaje = id; //Asiganamos los valores recogidos al elemento
         alm[*n].Poblacion = poblacion;
@@ -242,9 +242,9 @@ Incidencias* obtenerIncidencias(int *n) {
         else alm = (Incidencias *) realloc(alm, (*n + 1) * sizeof (Incidencias)); //Reserva memoria para los elementos restantes
 
         //Visualiza cada regisrtro que recupera del fichero
-        printf("\nRegistro recuperado: %d - |%*s| - |%-*s| - |%-*s| - |%-*s| - |%-*s| - |%-*s| >>> OK\n", *n,
+        /*printf("\nRegistro recuperado: %d - |%*s| - |%-*s| - |%-*s| - |%-*s| - |%-*s| - |%-*s| >>> OK\n", *n,
                 TAM_ID_VIA, id, TAM_ID_USER, IdUsReg, TAM_ID_USER, IdUsInc,
-                TAM_DES_INC, descripcion, TAM_EST_INC, estado, TAM_ELIMINADO, eliminado);
+                TAM_DES_INC, descripcion, TAM_EST_INC, estado, TAM_ELIMINADO, eliminado);*/
 
         alm[*n].Id_viaje = id; //Asiganamos los valores recogidos al elemento
         alm[*n].Id_us_registra = IdUsReg;
