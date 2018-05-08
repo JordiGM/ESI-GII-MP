@@ -1,8 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "comun.h"
 #include "ficheros.h"
-#include "Usuarios.h"
+#include "UCAcar/Usuarios.h"
 #include "Viajes.h"
 #include "Vehiculos.h"
 
