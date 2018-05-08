@@ -302,6 +302,29 @@ void menu_principal(int opc, char *id, Usuarios *ListaUsuarios, int *NumUser) {
                             }
                         }
                     }
+                    
+                    printf("Introduzca la opcion que desea:\n"
+                                "1.- Publicar viaje.\n"
+                                "2.- Incorporarse a un viaje.\n"
+                                "3.- Visualizar viaje.\n"
+                                "0.- Salir.");
+                    switch(o){
+                        case 0:
+                            exit(0);
+                            break;
+                        case 1:
+                            publicar_viaje(L_Viajes, numViajes, numUser, id);
+                            break;
+                        case 2:
+                            
+                            break;
+                        case 3:
+                            listar_viaje(L_Viajes, numViajes, L_Pasos, numPasos);
+                            break;
+                        default:
+                            printf("ERROR: Opcion invalida.");
+                            break;
+                    }
                     break;
                 case 4:
                     do {

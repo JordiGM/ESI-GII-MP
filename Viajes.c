@@ -60,6 +60,7 @@ void publicar_viaje(Viajes *v, int *elementos, char *viaje, char *id){
 
             /*Obtenemos memoria para un nuevo elemento*/
             v = (Viajes *) realloc(v, (*elementos + 1) * sizeof (Viajes));
+            
 //Variable de control
             
 /*if( > fecha.tm_year - actual){
@@ -274,3 +275,4 @@ void listar_paso(Pasos *lista, int* numPasos, char* idViaje){
         }
     }
 }
+
