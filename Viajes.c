@@ -5,6 +5,7 @@
 #include "ficheros.h"
 #include "comun.h"
 #include "Vehiculos.h"
+#include "Viajes.h"
 #define __USE_XOPEN
 
 /*Cabecera: int buscar_viaje(char* id, Viajes* lista, int elementos)
@@ -60,6 +61,25 @@ void *publicar_viaje(Viajes *v, int *elementos, char *viaje, char *id){
             /*Obtenemos memoria para un nuevo elemento*/
             v = (Viajes *) realloc(v, (*elementos + 1) * sizeof (Viajes));
 //Variable de control
+            
+/*if( > fecha.tm_year - actual){
+    v[*elementos].F_inic = F_inic;
+} else {
+    if( <= fecha.tm_year - actual){
+        if( > fecha.tm_mon - actual){
+            v[*elementos].F_inic = F_inic;
+        } else {
+            if( <= fecha.tm_mon - actual){
+                if( >= fecha.tm_mday - actual){
+                    v[*elementos].F_inic = F_inic;
+                } else {
+                    printf("ERROR: La tiene tiene que ser la actual o una posterior a la actual.");
+                    return 0;
+                }
+            }
+        }
+    }
+}*/
             /*Guardamos la informacionrecogida y generada en el nuevo elemento*/
             sprintf(Id_viaje, "%06d", *elementos + 1);
             v[*elementos].Id_mat = Id_mat;
@@ -185,6 +205,52 @@ void autoFinalizarViajes(Viajes *lista, int elementos){
                printf("\nViajes Finalizado %s\n",lista[indice].Id_viaje);
                lista[indice].Estado = "Finalizado";
             }
+        }
+    }
+}
+
+void publicar_paso(Pasos *lista, int* numPasos, char* idViaje){
+    char *poblacion;
+    
+    poblacion = (char *) malloc(TAM_POB_PAS + 1 * sizeof (char));
+        
+    poblacion = leer_campo(TAM_POB_PAS,"Población por la que pasa el viaje");
+    
+    if (! *numPasos) lista = (Pasos *) malloc((*numPasos + 1) * sizeof (Pasos)); //Reserva memoria para el primer elemento
+    else lista = (Pasos *) realloc(lista, (*numPasos + 1) * sizeof (Pasos)); //Reserva memoria para los elementos restantes
+
+    lista[*numPasos].Id_viaje = idViaje; //Asiganamos los valores recogidos al elemento
+    lista[*numPasos].Poblacion = poblacion;
+    lista[*numPasos].Eliminado = "No";
+    (*numPasos)++; //Aumentamos el numero de elementos del array
+}
+
+void eliminar_paso(Pasos *lista, int* numPasos, char* idViaje, char* poblacion){
+    
+    int indice = 0;
+    
+    if(*numPasos == 1){
+        free(lista);
+    }
+    else{
+        while(indice < *numPasos || (!strcmp(idViaje,lista[indice].Id_viaje) && !strcmp(poblacion, lista[indice].Poblacion)))
+            indice++;
+        
+        if(*numPasos-1 != indice){
+            lista[indice] = lista[*numPasos-1];
+        }
+        lista = (Pasos *) realloc(lista, (*numPasos - 1) * sizeof (Pasos));
+    }  
+}
+
+void listar_paso(Pasos *lista, int* numPasos, char* idViaje){
+    int indice;
+    
+    printf("El viaje pasa por las siguientes localidades:\n\n");
+    
+    for(indice = 0; indice < *numPasos; indice++){
+        if(!strcmp(lista[indice].Id_viaje,idViaje)){
+            printf("%s\n",lista[indice].Poblacion);
         }
     }
 }
