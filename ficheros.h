@@ -71,7 +71,6 @@ typedef struct{
 typedef struct{
     char *Id_viaje;
     char *Poblacion;
-    char* Eliminado;
 }Pasos;
 //Dimensiones pasos
 #define TAM_POB_PAS 20

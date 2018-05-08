@@ -3,6 +3,7 @@
 #include "comun.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 //Cabecera: vacio crearIncidencias(E/S Incidencias lista, E entero numIncidencias, E/S caracter usuario, E/S caracter idViaje, E/S caracter idConductor
 //Precondicion: Se facilitara el vactor de incidencias, el numero de elementos del vector, el usuario que pone la incidencia, el id del viaje y su conductor relacionado
@@ -28,12 +29,26 @@ void crearIncidencias(Incidencias *lista, int *numIncidencias, char *usuario, ch
     (*numIncidencias)++; //Aumentamos el numero de elementos del array
 }
 
-void eliminarIncidencias(Incidencias *lista, int *numIncidencias) {
-
+void eliminarIncidencias(Incidencias *lista, int *numIncidencias, char *usuario, char *idViaje, char *idConductor) {
+    int indice = 0;
+       
+    while(indice < *numIncidencias || !(!strcmp(lista[indice].Id_us_incidencia,idConductor) && !strcmp(lista[indice].Id_us_registra,usuario) && !strcmp(lista[indice].Id_viaje, idViaje)))
+        indice++;
+    
+    lista[indice].Eliminado = "Si";
 }
 
-void modificarIncidencias(Incidencias *lista, int numIncidencias) {
 
+//Cabecera: vacio modificarIncidencias(E/S Incidencias lista, E entero numIncidencias, E/S caracter usuario, E/S caracter idViaje, E/S caracter idConductor)
+//Precondición: Lista de incidencias, numero de elementos del vector, el usuario que pone la incidencia, el viaje que se ha realicado y el conductor asociado.
+//Postcondición: Modifica la descripción de la incidencia del viaje indicado
+void modificarIncidencias(Incidencias *lista, int numIncidencias, char *usuario, char *idViaje, char *idConductor) {
+    int indice = 0;
+       
+    while(indice < numIncidencias || !(!strcmp(lista[indice].Id_us_incidencia,idConductor) && !strcmp(lista[indice].Id_us_registra,usuario) && !strcmp(lista[indice].Id_viaje, idViaje)))
+        indice++;            
+        
+    lista[indice].Desc_incidencia = leer_campo(TAM_DES_INC,"Introduce la nueva descripcion de la incidencia");
 }
 
 //Cabecera: vacio listaIncidencias(E/S Incidencias lista, E entero numIncidencias, E/S caracter usuario)
@@ -44,16 +59,23 @@ void modificarIncidencias(Incidencias *lista, int numIncidencias) {
 void listarIncidencias(Incidencias *lista, int numIncidencias, char *usuario) {
     int indice;
     Incidencias elemento;
+    
+    if (!strcmp(lista[indice].Id_us_incidencia, usuario))
+        printf("Id Viaje - Estado - Descripcion de la incidencia");
+    else
+        printf("Id Viaje - Estado - Id usuario - Id conductor - Eliminado - Descripcion de la incidencia");
+    
     for (indice = 0; indice < numIncidencias; indice++) { //Vamos accediento a cada elemento
+        elemento = lista[indice];
+        if (!strcmp(lista[indice].Id_us_incidencia, usuario)) { //En el caso que se pase un id de un usuario solo imprimira las incidencias hechas a ese usuario, si es admin imprimira todas las incidencias
+            if(!strcmp(elemento.Eliminado,(char *) "No")){
+                printf("\n%s-%s-%s", elemento.Id_viaje, elemento.Est_incidencia, elemento.Desc_incidencia);
+            }
+        }
         
-        
-        //REVISAR
-        
-        if (!strcmp(lista[indice].Id_us_incidencia, usuario) || !strcmp(usuario, (char) "Admin")) { //En el caso que se pase un id de un usuario solo imprimira las incidencias hechas a ese usuario, si es admin imprimira todas las incidencias
-            elemento = lista[indice];
-            printf("\n%s-%s-%s-%s-%s-%s",
-                    elemento.Id_viaje, elemento.Id_us_registra, elemento.Id_us_incidencia, elemento.Desc_incidencia,
-                    elemento.Est_incidencia, elemento.Eliminado);
+        if(!strcmp(usuario, (char*) "Admin")){
+            printf("\n%s-%s-%s-%s-%s-%s", elemento.Id_viaje, elemento.Est_incidencia, elemento.Id_us_registra, 
+                    elemento.Id_us_incidencia, elemento.Eliminado, elemento.Desc_incidencia);
         }
     }
 }
