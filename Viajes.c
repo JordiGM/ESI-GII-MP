@@ -167,19 +167,19 @@ void modificar_viaje(Viajes *viaje){
             break;
     }
 }
-
 /*Cabecera: void listar_viaje(Viajes* viaje, int* elementos)
 Precondición: Recibe un puntero a viaje y un puntero a entero.
 Postcondición: Permite al usuario visualizar una lista de todos los viajes que se encuentran en el sistema.*/
 
-void listar_viaje(Viajes* viaje, int elementos){
+void listar_viaje(Viajes* viaje, int elementos) {
     int i;
-    
+
     printf("Id del viaje - Matricula del vehiculo - Fecha de inicio - Hora de inicio - Hora de finalizacion - Numero de plazas libres - Sentido del viaje - Importe - Estado del viaje");
-    for(i=0; i<elementos; i++) {
-        if(strcmp(viaje[i].Eliminado, (char *) "No")){
-            printf("%d: %s - %s - %s - %s - %s - %s - %s - %s - %s", i+1, viaje[i].Id_viaje, viaje[i].Id_mat, viaje[i].F_inic, viaje[i].H_inic, viaje[i].H_fin, viaje[i].Plazas_libre, viaje[i].Sentido, viaje[i].Importe, viaje[i].Estado);
-    
+    for (i = 0; i < elementos; i++) {
+        if (strcmp(viaje[i].Eliminado, (char *) "No")) {
+            printf("%d: %s - %s - %s - %s - %s - %s - %s - %s - %s", i + 1, viaje[i].Id_viaje, viaje[i].Id_mat, viaje[i].F_inic, viaje[i].H_inic, viaje[i].H_fin, viaje[i].Plazas_libre, viaje[i].Sentido, viaje[i].Importe, viaje[i].Estado);
+
+            void listar_paso(Pasos *lista, int* numPasos, char* idViaje);
         }
     }
 }

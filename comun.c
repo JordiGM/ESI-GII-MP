@@ -44,9 +44,6 @@ int leer_numero(char *titulo) {
     return num;
 }
 
-//TEMPORAL prototipo
-void autoFinalizarViaje(Viajes *, int);
-
 // Cabecera: int menu_principal(int opc, int id, Usuarios ListaUsuarios, int NumUser)
 // Precondicion: Valor 1 para administrados, valor <> 1 para usuario
 // Poscondicion:  Accede a los distintos menus de la aplicación, no retorna nada
