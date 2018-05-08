@@ -6,6 +6,7 @@
 #include "UCAcar/Usuarios.h"
 #include "Viajes.h"
 #include "Vehiculos.h"
+#include "Incidencias.h"
 
 // Cabecera: void vacia_buffer()
 // Precondicion: Ninguna
@@ -50,8 +51,8 @@ int leer_numero(char *titulo) {
 
 void menu_principal(int opc, char *id, Usuarios *ListaUsuarios, int *NumUser) {
     int x, numVehiculos = 0, numViajes = 0, numPasos = 0, numIncidencias = 0, pos;
-    int u, o, i;
-    char *id_new,matricula, c;
+    int o, i;
+    char *id_new, matricula, c;
     Vehiculos* L_Vehiculos;
     Viajes* L_Viajes;
     Pasos* L_Pasos;
@@ -90,8 +91,8 @@ void menu_principal(int opc, char *id, Usuarios *ListaUsuarios, int *NumUser) {
                                 "3: Modificar usuario\n "
                                 "4: Mostrar usuarios\n "
                                 "0: salir\n");
-                        u = leer_numero("Indica la opción");
-                        switch (u) {
+                        o = leer_numero("Indica la opción");
+                        switch (o) {
                             case 0:
                                 break;
                             case 1:
@@ -102,7 +103,7 @@ void menu_principal(int opc, char *id, Usuarios *ListaUsuarios, int *NumUser) {
                                 bajaUsuario(ListaUsuarios, NumUser);
                                 break;
                             case 3:
-                                modificaAdmin(ListaUsuarios,NumUser);
+                                modificaAdmin(ListaUsuarios, NumUser);
                                 break;
                             case 4:
                                 listarUsuario(ListaUsuarios, NumUser);
@@ -111,43 +112,43 @@ void menu_principal(int opc, char *id, Usuarios *ListaUsuarios, int *NumUser) {
                                 printf("Error al elegir la opcion.\t");
                                 break;
                         }
-                    } while (u != 0);
+                    } while (o != 0);
                     break;
                 case 2:
-                       do{
-                           printf("Introduzca la opcion que desea\n\n "
-                    "1: Alta vehiculo\n "
-                    "2: Baja vehiculos\n "
-                    "3: Listar vehiculos\n "
-                    "4: Modificar vehiculos\n "
-                    "5: Listar los viajes de un vehiculo"
-                    "0: salir\n");
-            x = leer_numero("Indica la opción");
-            switch (x) {
-                case 0:
-                    break;
-                case 1:                    
-                    alta_vehiculo(Vehiculos* L_Vehiculos, int*numVehiculos, char* id);
-                    break;
-                case 2:
-                    baja_vehiculo(Vehiculos*L_Vehiculos, int*numVehiculos);
-                    break;
-                case 3:
-                    vehiculos_user(char* id, Vehiculos* L_Vehiculos, int numVehiculos);
-                    break;
-                case 4:
-                    vehiculos_user(char*id, Vehiculos* L_Vehiculos, int numVehiculos);
-                    matricula=leer_campo(TAM_ID_VEI,"Escriba la matricula del vehiculo a modificar");
-                    pos=buscar_vehiculo(char matricula, Vehiculos* L_Vehiculos, int numVehiculos);
-                    modificar_vehiculo(Vehiculos* L_Vehiculos,int pos);
-                    break;
-                case 5:
-                    listar_viajes_coche(Viajes* L_Viajes, char matricula, int numVehiculos);
-                default:
-                    printf("Error al elegir la opcion.\t");
-                    break;
-            }
-        } while (x != 0);
+                    do {
+                        printf("Introduzca la opcion que desea\n\n "
+                                "1: Alta vehiculo\n "
+                                "2: Baja vehiculos\n "
+                                "3: Listar vehiculos\n "
+                                "4: Modificar vehiculos\n "
+                                "5: Listar los viajes de un vehiculo"
+                                "0: salir\n");
+                        o = leer_numero("Indica la opción");
+                        switch (o) {
+                            case 0:
+                                break;
+                            case 1:
+                                alta_vehiculo(L_Vehiculos,numVehiculos,id);
+                                break;
+                            case 2:
+                                baja_vehiculo(L_Vehiculos,numVehiculos);
+                                break;
+                            case 3:
+                                vehiculos_user(id,L_Vehiculos,numVehiculos);
+                                break;
+                            case 4:
+                                vehiculos_user(id,L_Vehiculos,numVehiculos);
+                                matricula = leer_campo(TAM_ID_VEI, "Escriba la matricula del vehiculo a modificar");
+                                pos = buscar_vehiculo(matricula,L_Vehiculos,numVehiculos);
+                                modificar_vehiculo(L_Vehiculos,pos);
+                                break;
+                            case 5:
+                                listar_viajes_coche(L_Viajes,matricula,numVehiculos);
+                            default:
+                                printf("Error al elegir la opcion.\t");
+                                break;
+                        }
+                    } while (o != 0);
                     break;
                 case 3:
                     do {
@@ -158,16 +159,16 @@ void menu_principal(int opc, char *id, Usuarios *ListaUsuarios, int *NumUser) {
                                 exit(0);
                                 break;
                             case 1:
-                                publicar_viaje(Viajes* L_Viajes, int*numViajes, char* NumUser, char *id);
+                                publicar_viaje(L_Viajes,numViajes,NumUser,id);
                                 break;
                             case 2:
-                                eliminar_viaje(Viajes* L_Viajes, int*numViajes);
+                                eliminar_viaje(L_Viajes,numViajes);
                                 break;
                             case 3:
-                                modificar_viaje(Viajes * L_Viajes);
+                                modificar_viaje(L_Viajes);
                                 break;
                             case 4:
-                                listar_viaje(Viajes* L_Viajes, int*numViajes);
+                                listar_viaje(L_Viajes,numViajes,L_Pasos,numPasos);
                                 break;
                             default:
                                 printf("ERROR: Opcion invalida.");
@@ -176,7 +177,40 @@ void menu_principal(int opc, char *id, Usuarios *ListaUsuarios, int *NumUser) {
                     } while (o != 0);
                     break;
                 case 4:
-
+                    do {
+                        printf("Introduzca la opcion que desea:\n"
+                                "1.- Publicar incidencia.\n"
+                                "2.- Eliminar incidencia.\n"
+                                "3.- Modificar incidencia.\n"
+                                "4.- Listar incidencia.\n"
+                                "5.- Validar incidencia.\n"
+                                "0.- Salir.");
+                        scanf("%d", &o);
+                        char *usuario,*conductor,*viaje;
+                        switch (o) {
+                            case 0:
+                                exit(0);
+                                break;
+                            case 1:
+                                crearIncidencias(L_Incidencias, numIncidencias,usuario,viaje,conductor);
+                                break;
+                            case 2:
+                                eliminarIncidencias(L_Incidencias,numIncidencias,usuario,viaje,conductor);
+                                break;
+                            case 3:
+                                modificarIncidencias(L_Incidencias,numIncidencias,usuario,viaje,conductor);
+                                break;
+                            case 4:
+                                listarIncidencias(L_Incidencias,numIncidencias);
+                                break;
+                            case 5:
+                                validarIncidencias(L_Incidencias,numIncidencias,usuario,viaje,conductor);
+                                break;
+                            default:
+                                printf("ERROR: Opcion invalida.");
+                                break;
+                        }
+                    } while (o != 0);
                     break;
                 default:
                     printf("Error al elegir la opcion.\t");
@@ -204,15 +238,49 @@ void menu_principal(int opc, char *id, Usuarios *ListaUsuarios, int *NumUser) {
                                 "1: Mostrar datos\n "
                                 "2: Modificar datos\n "
                                 "0: salir\n", ListaUsuarios[pos].Nomb_usuario);
-                        x = leer_numero("Indica la opción");
-                        switch (x) {
+                        o = leer_numero("Indica la opción");
+                        switch (o) {
                             case 0:
                                 break;
                             case 1:
-                                  mostrarUsuario(ListaUsuarios,pos);
+                                mostrarUsuario(ListaUsuarios, pos);
                                 break;
                             case 2:
-                                  modificaUsuario(ListaUsuarios,pos);
+                                modificaUsuario(ListaUsuarios, pos);
+                                break;
+                            default:
+                                printf("Error al elegir la opcion.\t");
+                                break;
+                        }
+                    } while (o != 0);
+                    break;
+                case 2:
+                    do {
+                        printf("Bienvenido al menú de la aplicación \n "
+                                "Introduzca la opcion que desea\n\n "
+                                "1: Alta vehiculo\n "
+                                "2: Baja vehiculos\n "
+                                "3: Listas vehiculos(propios)\n "
+                                "4: Modificar vehiculo\n "
+                                "0: salir\n");
+                        o = leer_numero("Indica la opción");
+                        switch (o) {
+                            case 0:
+                                break;
+                            case 1:
+                                alta_vehiculo(L_Vehiculos,numVehiculos,NumUser);
+                                break;
+                            case 2:
+                                baja_vehiculo(L_Vehiculos,numVehiculos);
+                                break;
+                            case 3:
+                                vehiculos_user(id,L_Vehiculos,numVehiculos);
+                                break;
+                            case 4:
+                                vehiculos_user(id,L_Vehiculos,numVehiculos);
+                                matricula = leer_campo(TAM_ID_VEI, "Escriba la matricula del vehiculo a modificar");
+                                pos = buscar_vehiculo(matricula,L_Vehiculos,numVehiculos);
+                                modificar_vehiculo(L_Vehiculos,pos);
                                 break;
                             default:
                                 printf("Error al elegir la opcion.\t");
@@ -220,50 +288,16 @@ void menu_principal(int opc, char *id, Usuarios *ListaUsuarios, int *NumUser) {
                         }
                     } while (x != 0);
                     break;
-                case 2:
-                           do {
-            printf("Bienvenido al menú de la aplicación \n "
-                    "Introduzca la opcion que desea\n\n "
-                    "1: Alta vehiculo\n "
-                    "2: Baja vehiculos\n "
-                    "3: Listas vehiculos(propios)\n "
-                    "4: Modificar vehiculo\n "
-                    "0: salir\n");
-            x = leer_numero("Indica la opción");
-            switch (x) {
-                case 0:
-                    break;
-                case 1:
-                     alta_vehiculo(Vehiculos* L_Vehiculos, int*numVehiculos, char* NumUser);
-                    break;
-                case 2:
-                    baja_vehiculo(Vehiculos*L_Vehiculos, int*numVehiculos);
-                    break;
-                case 3:
-                    vehiculos_user(char* id, Vehiculos* L_Vehiculos, int numVehiculos);
-                    break;
-                case 4:
-                    vehiculos_user(char*id, Vehiculos* L_Vehiculos, int numVehiculos);
-                    matricula=leer_campo(TAM_ID_VEI,"Escriba la matricula del vehiculo a modificar");
-                    pos=buscar_vehiculo(char matricula, Vehiculos* L_Vehiculos, int numVehiculos);
-                    modificar_vehiculo(Vehiculos* L_Vehiculos,int pos);
-                    break;
-                default:
-                    printf("Error al elegir la opcion.\t");
-                    break;
-            }
-        } while (x != 0); 
-                    break;
                 case 3:
                     printf("Bienvenido al menú de viajes. Estos son los viajes que hay abiertos actualmente.\n");
-                    for(i = 0; i < numViajes; i++){
-                        if(!strcmp(L_Viajes[i].Estado, "Abierto")){
-                            listar_viaje(Viajes *L_Viajes, int numViajes);
-                            if(!strcmp(id, L_Vehiculos[i].Id_usuario) && !strcmp(L_Vehiculos[i].Num_plazas, L_Viajes[i].Plazas_libre)){
+                    for (i = 0; i < numViajes; i++) {
+                        if (!strcmp(L_Viajes[i].Estado, "Abierto")) {
+                            listar_viaje(L_Viajes, numViajes, L_Pasos, numPasos);
+                            if (!strcmp(id, L_Vehiculos[i].Id_usuario) && !strcmp(L_Vehiculos[i].Num_plazas, L_Viajes[i].Plazas_libre)) {
                                 printf("¿Desea modificar algún viaje que usted haya publicado? s/n");
                                 scanf("%s", &c);
-                                if(c == "s"){
-                                    modificar_viaje(Viajes* L_Viajes);
+                                if (c == "s") {
+                                    modificar_viaje(L_Viajes);
                                 }
                             }
                         }
