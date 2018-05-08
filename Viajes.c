@@ -276,3 +276,15 @@ void listar_paso(Pasos *lista, int* numPasos, char* idViaje){
     }
 }
 
+void unirse_viaje (Viajes* viaje, int *elementos, char* id){
+    int i;
+    char c, *Plazas_libre;
+    
+    printf("Introduzca el id del viaje al que desea unirse.");
+    scanf("%s", &c);
+    sprintf(Plazas_libre, "%06d", ((int)viaje[c].Plazas_libre) - 1);
+    if (!strcmp(viaje[c].Plazas_libre, "0")){
+        viaje[c].Estado = "Cerrado";
+    }
+    
+}
