@@ -221,7 +221,6 @@ void publicar_paso(Pasos *lista, int* numPasos, char* idViaje){
 
     lista[*numPasos].Id_viaje = idViaje; //Asiganamos los valores recogidos al elemento
     lista[*numPasos].Poblacion = poblacion;
-    lista[*numPasos].Eliminado = "No";
     (*numPasos)++; //Aumentamos el numero de elementos del array
 }
 
