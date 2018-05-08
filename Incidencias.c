@@ -82,3 +82,7 @@ void listarIncidencias(Incidencias *lista, int numIncidencias, char *usuario) {
         }
     }
 }
+
+void validarIncidencias(Incidencias *lista, int numIncidencias, char *usuario, char *idViaje, char *idConductor){
+    
+}
