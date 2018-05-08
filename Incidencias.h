@@ -6,7 +6,7 @@ void crearIncidencias(Incidencias *, int *, char *, char *, char *);
 void eliminarIncidencias(Incidencias *, int *, char *, char *, char *);
 void modificarIncidencias(Incidencias *, int, char *, char *, char *);
 void listarIncidencias(Incidencias *, int, char *);
-void validarIncidencias(Incidencias *, int, char *, char *, char *);
+void validarIncidencias(Incidencias *, int);
 
 #endif /* INCIDENCIAS_H */
 
