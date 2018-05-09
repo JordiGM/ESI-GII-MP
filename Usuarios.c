@@ -4,6 +4,9 @@
 #include "ficheros.h" 
 #include "comun.h"
 #include "Usuarios.h"
+// Cabecera:void modificaAdmin(Usuarios*,int*);
+// Precondicion: Lista de usuarios y numero maximo de elementos del vector
+// Postcondicion: Modifica uno o mas atributos de un usuario
 void modificaAdmin(Usuarios *lista,int *elementos){
     int  pos,seguir,opcion,otro,modificar;
     char* id;
@@ -34,6 +37,9 @@ void modificaAdmin(Usuarios *lista,int *elementos){
     }while(modificar==1);
 }
 
+// Cabecera: void modificaUsuario(Usuarios*,int);
+// Precondicion: Lista de usuarios y numero id de usuario
+// Postcondicion: Se modifica algun atributo del usuario
 void modificaUsuario(Usuarios* lista, int id){
     int opcion;
     printf("Que desea modificar\n1.Nombre\n2.Localidad\n3.Nickname\n4.Password");
@@ -50,6 +56,9 @@ void modificaUsuario(Usuarios* lista, int id){
         }
 }
 
+// Cabecera: void mostrarUsuario(Usuarios*, int);
+// Precondicion: Lista de Usuarios y numero de id
+// Postcondicion:Muestra las caracteristicas del usuario
 void mostrarUsuario(Usuarios *lista, int id){
 printf("\nID:%s\nNombre:%s\nNick:%s\nContraseña:%s\nLocalidad:%s\nEstado:%s",lista[id].Id_usuario,lista[id].Nomb_usuario,lista[id].User,lista[id].Login,lista[id].Localidad,lista[id].Estado);   
 }
