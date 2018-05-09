@@ -1,16 +1,23 @@
 Jordi Güeto Matavera
-    Login 
-    Lectura y escritura de ficheros
-    Actualización de viajes
-    Menus
-    Sacar del main el login
-    Pasos
-    Incidencias
+    Módulo de lectura y escritura de ficheros
+    Actualización de viajes al inicio(funcion)
+    Librería común
+    Login en el módulo de usuario
+    Módulo Incidencias
+    Documentación
 
 Rubén Manuel Descalzo Fénix
     Viajes
+    Pruebas de caja blanca y caja negra "eliminarPasos"
+    Funciones de Pasos
+    Menú viajes
+
 Fernando Candón Berenguer
     Vehículos
+    Pruebas de caja blanca y caja negra "listarViajesCoche"
+    Menú vehiculos
+
 Adrián Cordero Rodriguez
     Usuarios
-    ¿Incidencias?
+    Pruebas de caja blanca y caja negra "buscarUsuario"
+    Menú Usuario
