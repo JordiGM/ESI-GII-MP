@@ -52,7 +52,7 @@ int leer_numero(char *titulo) {
 void menu_principal(int opc, char *id, Usuarios *ListaUsuarios, int *numUser) {
     int x, numVehiculos = 0, numViajes = 0, numPasos = 0, numIncidencias = 0, pos;
     int o, i;
-    char *id_new, matricula, c;
+    char *id_new, *matricula, c;
     Vehiculos* L_Vehiculos;
     Viajes* L_Viajes;
     Pasos* L_Pasos;
@@ -199,10 +199,10 @@ void menu_principal(int opc, char *id, Usuarios *ListaUsuarios, int *numUser) {
                                 exit(0);
                                 break;
                             case 1:
-                                crearIncidencias(L_Incidencias, numIncidencias,usuario,viaje,conductor);
+                                crearIncidencias(L_Incidencias, &numIncidencias,usuario,viaje,conductor);
                                 break;
                             case 2:
-                                eliminarIncidencias(L_Incidencias,numIncidencias,usuario,viaje,conductor);
+                                eliminarIncidencias(L_Incidencias, &numIncidencias,usuario,viaje,conductor);
                                 break;
                             case 3:
                                 modificarIncidencias(L_Incidencias,numIncidencias,usuario,viaje,conductor);
