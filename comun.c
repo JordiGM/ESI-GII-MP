@@ -128,7 +128,7 @@ void menu_principal(int opc, char *id, Usuarios *ListaUsuarios, int *numUser) {
                             case 0:
                                 break;
                             case 1:
-                                alta_vehiculo(L_Vehiculos,numVehiculos,id);
+                                alta_vehiculo(L_Vehiculos,&numVehiculos,id);
                                 break;
                             case 2:
                                 baja_vehiculo(L_Vehiculos,numVehiculos);
@@ -275,7 +275,7 @@ void menu_principal(int opc, char *id, Usuarios *ListaUsuarios, int *numUser) {
                             case 0:
                                 break;
                             case 1:
-                                alta_vehiculo(L_Vehiculos,numVehiculos,numUser);
+                                alta_vehiculo(L_Vehiculos,&numVehiculos,numUser);
                                 break;
                             case 2:
                                 baja_vehiculo(L_Vehiculos,numVehiculos);
