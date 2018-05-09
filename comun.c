@@ -159,16 +159,16 @@ void menu_principal(int opc, char *id, Usuarios *ListaUsuarios, int *numUser) {
                                 exit(0);
                                 break;
                             case 1:
-                                publicar_viaje(L_Viajes,numViajes,numUser,id);
+                                publicar_viaje(L_Viajes,&numViajes,&numUser,id);
                                 break;
                             case 2:
-                                eliminar_viaje(L_Viajes,numViajes);
+                                eliminar_viaje(L_Viajes,&numViajes);
                                 break;
                             case 3:
                                 modificar_viaje(L_Viajes);
                                 break;
                             case 4:
-                                listar_viaje(L_Viajes,numViajes,L_Pasos,numPasos);
+                                listar_viaje(L_Viajes,&numViajes,L_Pasos,&numPasos);
                                 break;
                             default:
                                 printf("ERROR: Opcion invalida.");
@@ -275,7 +275,7 @@ void menu_principal(int opc, char *id, Usuarios *ListaUsuarios, int *numUser) {
                             case 0:
                                 break;
                             case 1:
-                                alta_vehiculo(L_Vehiculos,&numVehiculos,numUser);
+                                alta_vehiculo(L_Vehiculos,&numVehiculos,id);
                                 break;
                             case 2:
                                 baja_vehiculo(L_Vehiculos,numVehiculos);
@@ -299,7 +299,7 @@ void menu_principal(int opc, char *id, Usuarios *ListaUsuarios, int *numUser) {
                     printf("Bienvenido al menú de viajes. Estos son los viajes que hay abiertos actualmente.\n");
                     for (i = 0; i < numViajes; i++) {
                         if (!strcmp(L_Viajes[i].Estado, "Abierto")) {
-                            listar_viaje(L_Viajes, numViajes, L_Pasos, numPasos);
+                            listar_viaje(L_Viajes, &numViajes, L_Pasos, &numPasos);
                             if (!strcmp(id, L_Vehiculos[i].Id_usuario) && !strcmp(L_Vehiculos[i].Num_plazas, L_Viajes[i].Plazas_libre)) {
                                 printf("¿Desea modificar algún viaje que usted haya publicado? s/n");
                                 scanf("%s", &c);
@@ -323,7 +323,7 @@ void menu_principal(int opc, char *id, Usuarios *ListaUsuarios, int *numUser) {
                             publicar_viaje(L_Viajes, numViajes, numUser, id);
                             break;
                         case 2:
-                            
+                            unirse_viaje(L_Viajes, &numViajes,id);
                             break;
                         case 3:
                             listar_viaje(L_Viajes, numViajes, L_Pasos, numPasos);

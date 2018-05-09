@@ -6,28 +6,6 @@
 #include <string.h>
 #include "comun.h"
 
-
-
-
-// Cabecera: void listar_vehiculo(Vehiculos* vh, int elementos)
-// Precondicion: lista de vehiculos y numero de elementos 
-// Poscondicion: Imprime por pantalla todos los elementos del vector vehiculo
-
-void listar_vehiculo(Vehiculos* vh, int elementos) {
-    int i;
-
-    for (i = 0; i < elementos; i++) {
-        if (!strcmp(vh[i].Eliminado, (char *) "No") == 0) {
-            //Visualiza cada regisrtro del fichero no eliminado
-            printf("Nº ||Id matricula||Usuario||Descripción||Numero plaza");
-            printf("\n : %d - %s - %s - %s - %s >>> OK\n",
-                    i + 1, vh[i].Id_mat, vh[i].Id_usuario, vh[i].Desc_veh, vh[i].Num_plazas);
-        }
-    }
-}
-
-
-
 // Cabecera: void *alta_vehiculo(Vehiculos *vh,int *elementos,char *usuario)
 // Precondicion: vector vehiculo, nª de elementos del vectoy y usuario
 // Poscondicion: añade un elemento mas al vector con informacion nueva de un elemento vehiculo que se pide por teclado
