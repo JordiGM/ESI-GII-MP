@@ -16,7 +16,7 @@
 char *leer_campo( int, char * );
 int leer_numero( char * );
 void vacia_buffer();
-void menu_principal(int opc, char *id, Usuarios *ListaUsuarios, int *NumUser);
+void menu_principal(int, char *, Usuarios *, int *);
 
 #endif /* COMUN_H */
 

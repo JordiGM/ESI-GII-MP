@@ -172,7 +172,7 @@ void modificar_viaje(Viajes *viaje){
 Precondición: Recibe un puntero a viaje y un puntero a entero.
 Postcondición: Permite al usuario visualizar una lista de todos los viajes que se encuentran en el sistema.*/
 
-void listar_viaje(Viajes* viaje, int elementos, Pasos *lista, int* numPasos) {
+void listar_viaje(Viajes *viaje, int elementos, Pasos *lista, int *numPasos) {
     int i;
 
     printf("Id del viaje - Matricula del vehiculo - Fecha de inicio - Hora de inicio - Hora de finalizacion - Numero de plazas libres - Sentido del viaje - Importe - Estado del viaje");

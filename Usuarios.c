@@ -51,7 +51,7 @@ void modificaUsuario(Usuarios* lista, int id){
 }
 
 void mostrarUsuario(Usuarios *lista, int id){
-printf("\nID:%s\nNombre:%s\nNick:%s\nContraseña:%s\nLocalidad:%s\nEstado:%s",&lista[id].Id_usuario,&lista[id].Nomb_usuario,&lista[id].User,&lista[id].Login,&lista[id].Localidad,&lista[id].Estado);   
+printf("\nID:%s\nNombre:%s\nNick:%s\nContraseña:%s\nLocalidad:%s\nEstado:%s",lista[id].Id_usuario,lista[id].Nomb_usuario,lista[id].User,lista[id].Login,lista[id].Localidad,lista[id].Estado);   
 }
 
 

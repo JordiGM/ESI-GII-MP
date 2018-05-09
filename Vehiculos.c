@@ -1,9 +1,11 @@
+#include "ficheros.h"
+#include "Vehiculos.h"
+#include "Viajes.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "ficheros.h"
 #include "comun.h"
-#include "Viajes.h"
+
 
 
 
@@ -18,7 +20,7 @@ void listar_vehiculo(Vehiculos* vh, int elementos) {
         if (!strcmp(vh[i].Eliminado, (char *) "No") == 0) {
             //Visualiza cada regisrtro del fichero no eliminado
             printf("Nº ||Id matricula||Usuario||Descripción||Numero plaza");
-            printf("\n : %d - |%*s| - |%*s| - |%*s| - |%*s| >>> OK\n",
+            printf("\n : %d - %s - %s - %s - %s >>> OK\n",
                     i + 1, vh[i].Id_mat, vh[i].Id_usuario, vh[i].Desc_veh, vh[i].Num_plazas);
         }
     }
@@ -30,7 +32,7 @@ void listar_vehiculo(Vehiculos* vh, int elementos) {
 // Precondicion: vector vehiculo, nª de elementos del vectoy y usuario
 // Poscondicion: añade un elemento mas al vector con informacion nueva de un elemento vehiculo que se pide por teclado
 
-void *alta_vehiculo(Vehiculos *vh, int *elementos, char *usuario) {
+void alta_vehiculo(Vehiculos *vh, int *elementos, char *usuario) {
     char *id_mat, *descripcion, *num_plazas;
 
     //Obtenemos espacio en memoria suficiente para la dimension maxima de cada cadena
@@ -102,7 +104,7 @@ void baja_vehiculo(Vehiculos *lista, int elementos) {
 
     matricula = leer_campo(TAM_ID_VEI, "Introduce matricula"); //Solicitamos la matricula
 
-    pos = buscar_vehiculo(*matricula, *lista, elementos);
+    pos = buscar_vehiculo(matricula, lista, elementos);
 
     lista[pos].Eliminado = "Si";
     printf("El vehiculo ha sido eliminado con exito");
@@ -141,7 +143,7 @@ void vehiculos_user(char *id_usu, Vehiculos *lista, int elementos) {
         if (!strncmp(id_usu, lista[i].Id_usuario, TAM_ID_USER)) {
             //exisUser = 1; //Si hay una concidencia guardamos y salimos
             printf("Nº ||Id matricula||Usuario||Descripción||Numero plaza");
-            printf("\n : %d - |%*s| - |%-*s| - |%-*s| - |%-*s| >>> OK\n",
+            printf("\n : %d - %s - %s - %s - %s >>> OK\n",
                     i + 1, lista[i].Id_mat, lista[i].Id_usuario, lista[i].Desc_veh, lista[i].Num_plazas);
             pos = i;
         }
@@ -155,13 +157,13 @@ void vehiculos_user(char *id_usu, Vehiculos *lista, int elementos) {
 // Precondicion: lista de viajes, matricula, y numero de elementos 
 // Poscondicion: imprime todos los viajes realizados por el vehiculo
 
-void listar_viajes_coche(Viajes* v, char matricula, int elementos) {
+void listar_viajes_coche(Viajes* v, char* matricula, int elementos) {
     int pos = -1, exisUser = 0, i = 0;
 
     while (i < elementos) { //Buscamos el nombre del vehiculo si existe
         if (!strncmp(matricula, v[i].Id_mat, TAM_ID_VEI)) {
             printf("Nº ||Id matricula||Usuario||Descripción||Numero plaza");
-            printf("\n : %d - |%*s| - |%-*s| - |%-*s| - |%-*s| - |%-*s| - |%-*s| >>> OK\n",
+            printf("\n : %d - %s - %s - %s - %s - %s - %s >>> OK\n",
                     i + 1, v[i].Id_mat, v[i].Id_viaje, v[i].F_inic, v[i].H_inic, v[i].Sentido, v[i].Importe);
             pos = i;
         }

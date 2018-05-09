@@ -205,7 +205,6 @@ Pasos* obtenerPasos(int *n) {
 
         alm[*n].Id_viaje = id; //Asiganamos los valores recogidos al elemento
         alm[*n].Poblacion = poblacion;
-        alm[*n].Eliminado = eliminado;
         (*n)++; //Aumentamos el numero de elementos del array
     }
 
@@ -356,10 +355,10 @@ void guardarDatosPasos(Pasos* pasos, int elementos) {
         e = pasos[i];
         if (i == 0) {
             //Para escribir el primer elemento
-            fprintf(FichPasos, "%s-%s-%s", e.Id_viaje, e.Poblacion, e.Eliminado);
+            fprintf(FichPasos, "%s-%s", e.Id_viaje, e.Poblacion);
         } else {
             //Para escribir las demas lineas
-            fprintf(FichPasos, "\n%s-%s-%s", e.Id_viaje, e.Poblacion, e.Eliminado);
+            fprintf(FichPasos, "\n%s-%s", e.Id_viaje, e.Poblacion);
         }
 
     }
