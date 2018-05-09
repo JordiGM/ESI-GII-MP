@@ -61,26 +61,6 @@ void publicar_viaje(Viajes *v, int *elementos, char *viaje, char *id){
             /*Obtenemos memoria para un nuevo elemento*/
             v = (Viajes *) realloc(v, (*elementos + 1) * sizeof (Viajes));
             
-//Variable de control
-            
-/*if( > fecha.tm_year - actual){
-    v[*elementos].F_inic = F_inic;
-} else {
-    if( <= fecha.tm_year - actual){
-        if( > fecha.tm_mon - actual){
-            v[*elementos].F_inic = F_inic;
-        } else {
-            if( <= fecha.tm_mon - actual){
-                if( >= fecha.tm_mday - actual){
-                    v[*elementos].F_inic = F_inic;
-                } else {
-                    printf("ERROR: La tiene tiene que ser la actual o una posterior a la actual.");
-                    return 0;
-                }
-            }
-        }
-    }
-}*/
             /*Guardamos la informacionrecogida y generada en el nuevo elemento*/
             sprintf(Id_viaje, "%06d", *elementos + 1);
             v[*elementos].Id_mat = Id_mat;

@@ -12,5 +12,6 @@ void autoFinalizarViaje(Viajes *, int );
 void publicar_paso(Pasos*, int*, char*);
 void eliminar_paso(Pasos*, int*, char*,char*);
 void listar_paso(Pasos*, int*, char*);
+void unirse_viaje (Viajes*, int*, char* id);
 
 #endif //VIAJE_H_INCLUDED 
