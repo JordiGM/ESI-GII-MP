@@ -45,11 +45,11 @@ int leer_numero(char *titulo) {
     return num;
 }
 
-// Cabecera: int menu_principal(int opc, int id, Usuarios ListaUsuarios, int NumUser)
+// Cabecera: int menu_principal(int opc, int id, Usuarios ListaUsuarios, int numUser)
 // Precondicion: Valor 1 para administrados, valor <> 1 para usuario
 // Poscondicion:  Accede a los distintos menus de la aplicación, no retorna nada
 
-void menu_principal(int opc, char *id, Usuarios *ListaUsuarios, int *NumUser) {
+void menu_principal(int opc, char *id, Usuarios *ListaUsuarios, int *numUser) {
     int x, numVehiculos = 0, numViajes = 0, numPasos = 0, numIncidencias = 0, pos;
     int o, i;
     char *id_new, matricula, c;
@@ -96,17 +96,17 @@ void menu_principal(int opc, char *id, Usuarios *ListaUsuarios, int *NumUser) {
                             case 0:
                                 break;
                             case 1:
-                                id = altaUsuario(ListaUsuarios, NumUser);
+                                id = altaUsuario(ListaUsuarios, numUser);
                                 printf("\n\tDado de alta usuario nuevo con el id : %s\n", id_new);
                                 break;
                             case 2:
-                                bajaUsuario(ListaUsuarios, NumUser);
+                                bajaUsuario(ListaUsuarios, numUser);
                                 break;
                             case 3:
-                                modificaAdmin(ListaUsuarios, NumUser);
+                                modificaAdmin(ListaUsuarios, numUser);
                                 break;
                             case 4:
-                                listarUsuario(ListaUsuarios, NumUser);
+                                listarUsuario(ListaUsuarios, numUser);
                                 break;
                             default:
                                 printf("Error al elegir la opcion.\t");
@@ -159,7 +159,7 @@ void menu_principal(int opc, char *id, Usuarios *ListaUsuarios, int *NumUser) {
                                 exit(0);
                                 break;
                             case 1:
-                                publicar_viaje(L_Viajes,numViajes,NumUser,id);
+                                publicar_viaje(L_Viajes,numViajes,numUser,id);
                                 break;
                             case 2:
                                 eliminar_viaje(L_Viajes,numViajes);
@@ -187,6 +187,13 @@ void menu_principal(int opc, char *id, Usuarios *ListaUsuarios, int *NumUser) {
                                 "0.- Salir.");
                         scanf("%d", &o);
                         char *usuario,*conductor,*viaje;
+                        
+                        if(o == 1 || o == 2 || o == 3){
+                            usuario = leer_campo(TAM_ID_USER,"Introduce el id del usuario que realiza la incidencia");
+                            viaje = leer_campo(TAM_ID_VIA,"Introduce el id dek viaje de la incidencia");
+                            conductor = leer_campo(TAM_ID_USER,"Introduce el id del conductor de la incidencia");
+                        }
+               
                         switch (o) {
                             case 0:
                                 exit(0);
@@ -201,10 +208,10 @@ void menu_principal(int opc, char *id, Usuarios *ListaUsuarios, int *NumUser) {
                                 modificarIncidencias(L_Incidencias,numIncidencias,usuario,viaje,conductor);
                                 break;
                             case 4:
-                                listarIncidencias(L_Incidencias,numIncidencias);
+                                listarIncidencias(L_Incidencias,numIncidencias,"Admin");
                                 break;
                             case 5:
-                                validarIncidencias(L_Incidencias,numIncidencias,usuario,viaje,conductor);
+                                validarIncidencias(L_Incidencias,numIncidencias);
                                 break;
                             default:
                                 printf("ERROR: Opcion invalida.");
@@ -218,7 +225,7 @@ void menu_principal(int opc, char *id, Usuarios *ListaUsuarios, int *NumUser) {
             }
         } while (x != 0);
     } else {
-        pos = buscar_usuario(id, ListaUsuarios, *NumUser);
+        pos = buscar_usuario(id, ListaUsuarios, *numUser);
         do {
             printf("Bienvenido al menú de la aplicación %s\n "
                     "Introduzca la opcion que desea\n\n "
@@ -268,7 +275,7 @@ void menu_principal(int opc, char *id, Usuarios *ListaUsuarios, int *NumUser) {
                             case 0:
                                 break;
                             case 1:
-                                alta_vehiculo(L_Vehiculos,numVehiculos,NumUser);
+                                alta_vehiculo(L_Vehiculos,numVehiculos,numUser);
                                 break;
                             case 2:
                                 baja_vehiculo(L_Vehiculos,numVehiculos);
@@ -333,16 +340,18 @@ void menu_principal(int opc, char *id, Usuarios *ListaUsuarios, int *NumUser) {
                                 "2.- Listar incidencia.\n"
                                 "0.- Salir.");
                         scanf("%d", &o);
-                        char *usuario,*conductor,*viaje;
+                        char *conductor,*viaje;
                         switch (o) {
                             case 0:
                                 exit(0);
                                 break;
                             case 1:
-                                crearIncidencias(L_Incidencias, numIncidencias,usuario,viaje,conductor);
+                                viaje = leer_campo(TAM_ID_VIA,"Introduce el id dek viaje de la incidencia");
+                                conductor = leer_campo(TAM_ID_USER,"Introduce el id del conductor de la incidencia");
+                                crearIncidencias(L_Incidencias, numIncidencias,id,viaje,conductor);
                                 break;
                             case 2:
-                                listarIncidencias(L_Incidencias,numIncidencias);
+                                listarIncidencias(L_Incidencias,numIncidencias,id);
                                 break;
                             default:
                                 printf("ERROR: Opcion invalida.");

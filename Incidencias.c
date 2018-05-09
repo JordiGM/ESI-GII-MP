@@ -114,15 +114,15 @@ void listarIncidencias(Incidencias *lista, int numIncidencias, char *usuario) {
 
     for (indice = 0; indice < numIncidencias; indice++) { //Vamos accediento a cada elemento
         elemento = lista[indice];
-        if (!strcmp(lista[indice].Id_us_incidencia, usuario)) { //En el caso que se pase un id de un usuario solo imprimira las incidencias hechas a ese usuario, si es admin imprimira todas las incidencias
-            if (!strcmp(elemento.Eliminado, (char *) "No")) {
-                printf("\n%s-%s-%s", elemento.Id_viaje, elemento.Est_incidencia, elemento.Desc_incidencia);
-            }
-        }
-
+        
         if (!strcmp(usuario, (char*) "Admin")) {
             printf("\n%s-%s-%s-%s-%s-%s", elemento.Id_viaje, elemento.Est_incidencia, elemento.Id_us_registra,
                     elemento.Id_us_incidencia, elemento.Eliminado, elemento.Desc_incidencia);
+        } else if (!strcmp(lista[indice].Id_us_incidencia, usuario)) {//En el caso que se pase un id de un usuario solo imprimira las incidencias hechas a ese usuario, si es admin imprimira todas las incidencias
+            
+            if (!strcmp(elemento.Eliminado, (char *) "No")) {
+                printf("\n%s-%s-%s", elemento.Id_viaje, elemento.Est_incidencia, elemento.Desc_incidencia);
+            }
         }
     }
 }
