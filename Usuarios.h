@@ -13,9 +13,9 @@
 
 #ifndef USUARIOS_H
 #define USUARIOS_H
-void modificaUsuario(Usuarios*,int*);
-void modificaAdmin(Usuarios*,int);
-void mostrarUsuario(Usuarios*, int*);
+void modificaUsuario(Usuarios*,int);
+void modificaAdmin(Usuarios*,int*);
+void mostrarUsuario(Usuarios*, int);
 //Funciones hechas por Jordi
 int buscar_usuario(char*,Usuarios*,int);
 char *altaUsuarioInicio(Usuarios *, int *, char *);
