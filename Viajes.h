@@ -2,7 +2,7 @@
 #define VIAJE_H_INCLUDED
 
 int buscar_viaje(char *, Viajes *, int );
-void publicar_viaje(Viajes *, int *, char *, char *);
+void publicar_viaje(Viajes *, int *, char *);
 void eliminar_viaje(Viajes *, int *);
 void modificar_viaje(Viajes *);
 void listar_viaje(Viajes *, int , Pasos *, int *);
