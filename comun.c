@@ -348,7 +348,7 @@ void menu_principal(int opc, char *id, Usuarios *ListaUsuarios, int *numUser) {
                             case 1:
                                 viaje = leer_campo(TAM_ID_VIA,"Introduce el id dek viaje de la incidencia");
                                 conductor = leer_campo(TAM_ID_USER,"Introduce el id del conductor de la incidencia");
-                                crearIncidencias(L_Incidencias, numIncidencias,id,viaje,conductor);
+                                crearIncidencias(L_Incidencias, &numIncidencias,id,viaje,conductor);
                                 break;
                             case 2:
                                 listarIncidencias(L_Incidencias,numIncidencias,id);
